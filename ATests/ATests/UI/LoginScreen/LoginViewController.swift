@@ -49,7 +49,8 @@ class LoginViewController: ValidationFormViewController {
     
     @IBAction func login(sender: UIButton?) {
         do {
-            if let usr = try User.find(with: "email == \"\(emailVM.text!)\" AND password == \"\(passwordVM.text!)\"") as? User {
+            let encryptedPassword = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword")
+            if let usr = try User.find(with: "email == \"\(emailVM.text!)\" AND password == \"\(encryptedPassword!)\"") as? User {
                 user = usr
                 // do login
                 print("found")

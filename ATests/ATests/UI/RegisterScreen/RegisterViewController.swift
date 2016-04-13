@@ -70,13 +70,15 @@ class RegisterViewController: ValidationFormViewController {
     
     @IBAction func register(sender: UIButton?) -> Void {
         if User.count(with: "email ==\"\(emailVM.text!)\"") == 0 {
-            if let user = User.new([
+            let encryptedPassword = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword")
+            if let password = encryptedPassword, let user = User.new([
                 "email" : emailVM.text!,
-                "password" : passwordVM.text!,
+                "password" : password,
                 "firstName" : firstNameVM.text!,
                 "lastName" : lastNameVM.text!
                 ]) as? User {
                 user.tryPersit()
+                print("created: \(user)")
                 performSegueWithIdentifier("toMyAccount", sender: nil)
             }
         }

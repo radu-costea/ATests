@@ -26,7 +26,6 @@
 		6234153E1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234153C1CB6C61300031EBB /* NSFetchRequest-Extensions.swift */; };
 		6234153F1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234153C1CB6C61300031EBB /* NSFetchRequest-Extensions.swift */; };
 		6240843A1CB50D44008C78C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624084391CB50D44008C78C1 /* AppDelegate.swift */; };
-		6240843C1CB50D44008C78C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6240843B1CB50D44008C78C1 /* ViewController.swift */; };
 		6240843F1CB50D45008C78C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6240843D1CB50D45008C78C1 /* Main.storyboard */; };
 		624084421CB50D45008C78C1 /* ATests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 624084401CB50D45008C78C1 /* ATests.xcdatamodeld */; };
 		624084441CB50D45008C78C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624084431CB50D45008C78C1 /* Assets.xcassets */; };
@@ -145,7 +144,6 @@
 		6234153C1CB6C61300031EBB /* NSFetchRequest-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchRequest-Extensions.swift"; sourceTree = "<group>"; };
 		624084361CB50D44008C78C1 /* ATests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		624084391CB50D44008C78C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6240843B1CB50D44008C78C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6240843E1CB50D45008C78C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		624084411CB50D45008C78C1 /* ATests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ATests.xcdatamodel; sourceTree = "<group>"; };
 		624084431CB50D45008C78C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				6289F0FD1CB6D632004022FE /* UIKitExtensions */,
 				623415331CB6B9FE00031EBB /* CoreData */,
 				624084391CB50D44008C78C1 /* AppDelegate.swift */,
-				6240843B1CB50D44008C78C1 /* ViewController.swift */,
 				6240843D1CB50D45008C78C1 /* Main.storyboard */,
 				624084431CB50D45008C78C1 /* Assets.xcassets */,
 				624084451CB50D45008C78C1 /* LaunchScreen.storyboard */,
@@ -567,7 +564,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
-				6240843C1CB50D44008C78C1 /* ViewController.swift in Sources */,
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
