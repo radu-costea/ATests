@@ -15,6 +15,7 @@ class MyAccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("received user: \(user)")
     }
 
     override func didReceiveMemoryWarning() {

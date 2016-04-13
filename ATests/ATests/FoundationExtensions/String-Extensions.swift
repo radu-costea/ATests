@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CommonCrypto
 
 extension String {
     var length: Int {
@@ -20,5 +19,9 @@ extension String {
     
     func sign(with encryption: Encryption, key: String) -> String? {
         return encryption.sign(self, key: key)
+    }
+    
+    func toBase64Data() -> NSData? {
+        return NSData(base64EncodedString: self, options: .IgnoreUnknownCharacters)
     }
 }

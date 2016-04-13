@@ -16,4 +16,8 @@ extension NSData {
     func sign(with encryption: Encryption, key: NSData) -> NSData {
         return encryption.sign(self, key: key)
     }
+    
+    func toBase64String() -> String {
+        return base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+    }
 }
