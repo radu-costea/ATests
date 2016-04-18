@@ -5,10 +5,13 @@
 //  Created by Radu Costea on 11/04/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
-
+import Foundation
 import UIKit
+import MobileCoreServices
 
-class RegisterViewController: ValidationFormViewController {
+protocol ImagePickerDelegate: UINavigationControllerDelegate, UIImagePickerControllerDelegate {}
+
+class RegisterViewController: ValidationFormViewController, ImagePickerDelegate {
     lazy var emailVM: FieldValidationViewModel = ValidationFieldViewModel(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")
     lazy var firstNameVM: FieldValidationViewModel = WordLengthValidationFieldViewModel(length: 1)
     lazy var lastNameVM: FieldValidationViewModel = WordLengthValidationFieldViewModel(length: 1)
@@ -25,12 +28,13 @@ class RegisterViewController: ValidationFormViewController {
     @IBOutlet var retypePasswordField: ValidationTextField!
     @IBOutlet var emailField: ValidationTextField!
     @IBOutlet var registerButton: UIButton!
-
+    @IBOutlet var avatarImageView: UIImageView!
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         firstNameField.delegate = self
         lastNameField.delegate = self
@@ -38,7 +42,7 @@ class RegisterViewController: ValidationFormViewController {
         retypePasswordField.delegate = self
         emailField.delegate = self
     }
-
+    
     // MARK: - Overrides
     
     override func createBindings() -> [ValidationTextField : FieldValidationViewModel] {
@@ -67,20 +71,64 @@ class RegisterViewController: ValidationFormViewController {
     }
     
     // MARK: - Actions
+    var image: UIImage?
+    var user: User!
     
     @IBAction func register(sender: UIButton?) -> Void {
-        if User.count(with: "email ==\"\(emailVM.text!)\"") == 0 {
-            let encryptedPassword = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword")
-            if let password = encryptedPassword, let user = User.new([
-                "email" : emailVM.text!,
-                "password" : password,
-                "firstName" : firstNameVM.text!,
-                "lastName" : lastNameVM.text!
-                ]) as? User {
-                user.tryPersit()
-                print("created: \(user)")
-                performSegueWithIdentifier("toMyAccount", sender: nil)
-            }
+        guard User.count(with: "email ==\"\(emailVM.text!)\"") == 0 else {
+            return
         }
+        guard let password = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword") else {
+            return
+        }
+        let userInfo = [
+            "email" : emailVM.text!,
+            "password" : password,
+            "firstName" : firstNameVM.text!,
+            "lastName" : lastNameVM.text!,
+            "avatar" : UserAvatar.new(image?.base64String.map{["base64String" : $0]} ?? [:])!
+        ]
+        guard let created = User.new(userInfo) as? User else {
+            return
+        }
+        user = created
+        user.tryPersit()
+        performSegueWithIdentifier("toMyAccount", sender: nil)
+    }
+    
+    /// MARK: -
+    /// MARK: Navigation
+    
+    
+    override var navigationCallbacks: [String: (UIViewController) -> Void] {
+        return [
+            "toMyAccount" : { [unowned self] next in
+                self.view.endEditing(true)
+                let myAccountScreen = next as! MyAccountViewController
+                myAccountScreen.user = self.user!
+            }
+        ]
+    }
+    
+    /// MARK: -
+    /// MARK: Actions
+    
+    @IBAction func loadImage(sender: UIButton?) -> Void {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.mediaTypes = [kUTTypeImage as String]
+        imagePicker.delegate = self
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let img = info[UIImagePickerControllerOriginalImage] as? UIImage
+        image = img
+        avatarImageView.image = img
+        picker.dismissViewControllerAnimated(true) { }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true) { }
     }
 }

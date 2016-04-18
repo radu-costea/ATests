@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension NSFetchRequest {
-    convenience init(entityName: String, where predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) {
+    convenience init(entityName: String, with predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) {
         self.init(entityName: entityName)
         if let format = predicateFormat {
             self.predicate = NSPredicate(format: format)

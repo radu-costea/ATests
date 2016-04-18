@@ -20,22 +20,12 @@ class ValidationTextField: UIStackView, UITextFieldDelegate {
     @IBOutlet var validationIcon: UIImageView!
     weak var delegate: ValidationTextFieldDelegate?
     
-    // Dependency injection
-    lazy var notificationCenter = NSNotificationCenter.defaultCenter()
-    lazy var notificationCallbacks: [String: (NSNotification) -> ()] = [
-        UITextFieldTextDidChangeNotification: { [unowned self] _ in self.delegate?.validationFieldTextDidChanged(self) },
-        UITextFieldTextDidBeginEditingNotification: { [unowned self] _ in  self.delegate?.validationFieldTextDidBeginEditing(self) },
-        UITextFieldTextDidEndEditingNotification: { [unowned self] _ in self.delegate?.validationFieldTextDidEndEditing(self) }
-    ]
-    
     // MARK: - Getters & Setters
     
     var text: String? {
         set { self.textField.text = newValue }
         get { return self.textField.text }
     }
-    
-    var observers: [String: NSObjectProtocol] = [:]
     
     override func didMoveToWindow() {
         guard let _ = window else {
@@ -51,6 +41,15 @@ class ValidationTextField: UIStackView, UITextFieldDelegate {
     
     // MARK: - Notifications
     
+    lazy var notificationCenter = NSNotificationCenter.defaultCenter()
+    lazy var notificationCallbacks: [String: (NSNotification) -> ()] = [
+        UITextFieldTextDidChangeNotification: { [unowned self] _ in self.delegate?.validationFieldTextDidChanged(self) },
+        UITextFieldTextDidBeginEditingNotification: { [unowned self] _ in  self.delegate?.validationFieldTextDidBeginEditing(self) },
+        UITextFieldTextDidEndEditingNotification: { [unowned self] _ in self.delegate?.validationFieldTextDidEndEditing(self) }
+    ]
+    
+    var observers: [String: NSObjectProtocol] = [:]
+
     func registerNotifications() -> Void {
         unregisterNotifications()
         observers = notificationCallbacks.reduce([String: NSObjectProtocol]()) {

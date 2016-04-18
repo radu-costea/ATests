@@ -50,7 +50,7 @@ class ScrollViewKeyboardAvoider: KeyboardAvoidingContainer {
             return
         }
         
-        let finalFrame = info[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() ?? CGRectZero
+        let finalFrame = info[UIKeyboardFrameEndUserInfoKey]?.CGRectValue ?? CGRectZero
         let scrollViewFrame = self.scrollView.superview?.convertRect(self.scrollView.frame, toView: nil) ?? CGRectZero
         let intersection = CGRectIntersection(scrollViewFrame, finalFrame)
         

@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
+class OrangeNavigationController: UINavigationController { }
+
 class AppearenceCustomizer {
     static func setupDefaultAppearence() -> Void {
         RoundedButton.appearance().cornerRadius = 5.0
         OrangeButton.appearance().backgroundColor = UIColor(hex: "#D44400")
         BlueButton.appearance().backgroundColor = UIColor(hex: "#429DC0")
-        UINavigationBar.appearance().backgroundColor = UIColor(hex: "#333333")
+        UINavigationBar.appearanceWhenContainedInInstancesOfClasses([OrangeNavigationController.self]).backgroundColor = UIColor(hex: "#333333")
     }
 }

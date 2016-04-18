@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ValidationFormViewController: UIViewController, ValidationTextFieldDelegate {
+class ValidationFormViewController: BaseViewController, ValidationTextFieldDelegate {
     lazy var bindings: [ValidationTextField: FieldValidationViewModel] = self.createBindings()
     lazy var viewModels: [FieldValidationViewModel] = self.createViewModels()
     var formIsValid: Bool { return viewModels.reduce(true){ $0 && $1.isValid } }

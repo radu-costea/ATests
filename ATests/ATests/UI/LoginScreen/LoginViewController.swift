@@ -16,6 +16,7 @@ class LoginViewController: ValidationFormViewController {
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var passwordField: ValidationTextField!
     @IBOutlet var emailField: ValidationTextField!
+    @IBOutlet var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,14 @@ class LoginViewController: ValidationFormViewController {
                 user = usr
                 // do login
                 print("found")
-                performSegueWithIdentifier("toMyAccount", sender: nil)
+                self.view.endEditing(true)
+                if let imgData = user?.avatar?.base64String?.toBase64Data() {
+                    imageView.image = UIImage(data: imgData)
+                }
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [unowned self] _ in
+                    self.performSegueWithIdentifier("toMyAccount", sender: nil)
+                }
             }
         } catch {
             print("exception")
@@ -63,11 +71,15 @@ class LoginViewController: ValidationFormViewController {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toMyAccount" {
-            let myAccountScreen = segue.destinationViewController as! MyAccountViewController
-            myAccountScreen.user = user!
-        }
+    override var navigationCallbacks: [String: (UIViewController) -> Void] {
+        return [
+            "toMyAccount" : { [unowned self] next in
+                self.view.endEditing(true)
+                let myAccountScreen = next as! MyAccountViewController
+                myAccountScreen.user = self.user!
+            }
+        ]
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) -> Void { }
 }

@@ -26,7 +26,7 @@ protocol ActiveManagedObject: ActiveRecord {
 
 extension ActiveManagedObject {
     private static func all(inContext context: NSManagedObjectContext, with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) throws -> [AnyObject] {
-        return try context.fetchObjects(ofType: String(Self), where: predicateFormat, limit: limit, sortBy: sortBy)
+        return try context.fetchObjects(ofType: String(Self), with: predicateFormat, limit: limit, sortBy: sortBy)
     }
     
     private static func new(inContext context: NSManagedObjectContext) -> NSManagedObject {
@@ -34,7 +34,7 @@ extension ActiveManagedObject {
     }
     
     private static func count(inContext context: NSManagedObjectContext, with predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) -> Int {
-        return context.countObjects(ofType: String(Self), where: predicateFormat, limit: limit, sortBy: sortBy)
+        return context.countObjects(ofType: String(Self), with: predicateFormat, limit: limit, sortBy: sortBy)
     }
     
     private static func find(inContext context: NSManagedObjectContext, with predicateFormat: String) throws -> AnyObject? {
@@ -97,7 +97,7 @@ extension NSManagedObject: ActiveManagedObject {
         try managedObjectContext?.save()
     }
     
-    func tryPersit() -> Void {
+    func tryPersit() {
         do {
             try persist()
         } catch { }
