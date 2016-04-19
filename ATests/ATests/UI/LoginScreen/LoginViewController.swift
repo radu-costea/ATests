@@ -17,6 +17,7 @@ class LoginViewController: ValidationFormViewController {
     @IBOutlet var passwordField: ValidationTextField!
     @IBOutlet var emailField: ValidationTextField!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var avatarContainer: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +51,18 @@ class LoginViewController: ValidationFormViewController {
     
     @IBAction func login(sender: UIButton?) {
         do {
+            self.view.endEditing(true)
             let encryptedPassword = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword")
             if let usr = try User.find(with: "email == \"\(emailVM.text!)\" AND password == \"\(encryptedPassword!)\"") as? User {
                 user = usr
                 // do login
-                print("found")
                 self.view.endEditing(true)
                 if let imgData = user?.avatar?.base64String?.toBase64Data() {
-                    imageView.image = UIImage(data: imgData)
+                    UIView.animateWithDuration(0.5, animations: { [unowned self] _ in
+                        self.avatarContainer.hidden = false
+                        self.imageView.image = UIImage(data: imgData)
+                        self.view.layoutIfNeeded()
+                    })
                 }
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [unowned self] _ in

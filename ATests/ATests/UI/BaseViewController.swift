@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
-    var navigationCallbacks: [String: (UIViewController) -> ()] {
-        return [:]
-    }
+    var navigationCallbacks: [String: (UIViewController) -> ()] { return [:] }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier, let callback = navigationCallbacks[identifier] {

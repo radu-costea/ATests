@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KwQ-KC-tKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KwQ-KC-tKd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -21,6 +21,30 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eYX-ia-OOL">
                                 <rect key="frame" x="60" y="219" width="200" height="130"/>
                                 <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyj-S9-6mN">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="0.0"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dT2-dy-mHT">
+                                                <rect key="frame" x="100" y="0.0" width="0.0" height="0.0"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="800" constant="120" id="0RJ-xL-I9R"/>
+                                                    <constraint firstAttribute="width" secondItem="dT2-dy-mHT" secondAttribute="height" multiplier="1:1" id="lfy-ep-Kqd"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="60"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="dT2-dy-mHT" firstAttribute="top" secondItem="lyj-S9-6mN" secondAttribute="top" id="gbB-eL-qJG"/>
+                                            <constraint firstAttribute="bottom" secondItem="dT2-dy-mHT" secondAttribute="bottom" id="rAL-hA-JMp"/>
+                                            <constraint firstItem="dT2-dy-mHT" firstAttribute="centerX" secondItem="lyj-S9-6mN" secondAttribute="centerX" id="v1C-aw-TL8"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xhn-od-BaM" customClass="ValidationTextField" customModule="ATests" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                         <subviews>
@@ -112,43 +136,21 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dT2-dy-mHT">
-                                <rect key="frame" x="100" y="91" width="120" height="120"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="0RJ-xL-I9R"/>
-                                    <constraint firstAttribute="width" secondItem="dT2-dy-mHT" secondAttribute="height" multiplier="1:1" id="lfy-ep-Kqd"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="60"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94208705778725155" green="0.97604364548610001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dT2-dy-mHT" firstAttribute="centerX" secondItem="JKu-1M-qwY" secondAttribute="centerX" id="MiG-yH-GaK"/>
                             <constraint firstItem="eYX-ia-OOL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="N4D-eT-MxD"/>
                             <constraint firstItem="eYX-ia-OOL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UHc-ud-sVr"/>
                             <constraint firstItem="JKu-1M-qwY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xkn-iK-ch2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JKu-1M-qwY" secondAttribute="bottom" constant="10" id="hmq-VK-cyR"/>
-                            <constraint firstItem="dT2-dy-mHT" firstAttribute="centerX" secondItem="IoS-9L-Fhv" secondAttribute="centerX" id="kGs-pS-dzw"/>
                             <constraint firstItem="JKu-1M-qwY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eYX-ia-OOL" secondAttribute="bottom" constant="10" id="l7c-qQ-8fX"/>
-                            <constraint firstItem="dT2-dy-mHT" firstAttribute="width" secondItem="dT2-dy-mHT" secondAttribute="height" multiplier="1:1" id="mjD-ns-FEz"/>
-                            <constraint firstItem="IoS-9L-Fhv" firstAttribute="top" secondItem="dT2-dy-mHT" secondAttribute="bottom" constant="8" id="qO0-uw-svE"/>
                             <constraint firstItem="JKu-1M-qwY" firstAttribute="top" secondItem="eYX-ia-OOL" secondAttribute="bottom" priority="900" constant="80" id="z2Z-bU-5lY"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="kGs-pS-dzw"/>
-                                <exclude reference="mjD-ns-FEz"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="q6W-ge-wTX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="avatarContainer" destination="lyj-S9-6mN" id="Ss9-l9-epl"/>
                         <outlet property="emailField" destination="Xhn-od-BaM" id="tl3-6w-E8C"/>
                         <outlet property="imageView" destination="dT2-dy-mHT" id="YPf-WF-igf"/>
                         <outlet property="loginButton" destination="QlY-Rd-nO2" id="Xcz-Tj-hOn"/>

@@ -88,6 +88,7 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
             "lastName" : lastNameVM.text!,
             "avatar" : UserAvatar.new(image?.base64String.map{["base64String" : $0]} ?? [:])!
         ]
+        
         guard let created = User.new(userInfo) as? User else {
             return
         }
@@ -98,7 +99,6 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
     
     /// MARK: -
     /// MARK: Navigation
-    
     
     override var navigationCallbacks: [String: (UIViewController) -> Void] {
         return [
