@@ -66,10 +66,10 @@ class ValidationTextField: UIStackView, UITextFieldDelegate {
     
     func setValidationIconVisible(visible: Bool) -> Void {
         let isVisible = !visible
-        UIView.animateWithDuration(0.25, animations: { 
+        UIView.animateWithDuration(0.25, animations: { [unowned self] in
             self.validationIcon.hidden = isVisible
             self.layoutIfNeeded()
-            }) { _ in
+            }) { [unowned self]  _ in
                 self.validationIcon.hidden = isVisible
         }
     }
@@ -85,10 +85,10 @@ class ValidationTextField: UIStackView, UITextFieldDelegate {
     }
     
     func showErrorIcon() -> Void {
-        self.validationIcon.backgroundColor = UIColor.redColor()
+        validationIcon.image = UIImage(named: "icon_incorrect")
     }
     
     func showSuccessIcon() -> Void {
-        self.validationIcon.backgroundColor = UIColor.greenColor()
+        validationIcon.image = UIImage(named: "icon_correct")
     }
 }

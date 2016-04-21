@@ -104,9 +104,42 @@
 		625C5A051CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
 		625C5A061CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
 		625C5A071CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
+		62650EF71CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF51CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift */; };
+		62650EF81CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF51CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift */; };
+		62650EF91CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF51CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift */; };
+		62650EFA1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF61CC92129008D00F3 /* AnswerEvaluator.swift */; };
+		62650EFB1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF61CC92129008D00F3 /* AnswerEvaluator.swift */; };
+		62650EFC1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EF61CC92129008D00F3 /* AnswerEvaluator.swift */; };
+		62650EFF1CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFD1CC9217A008D00F3 /* Answer+CoreDataProperties.swift */; };
+		62650F001CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFD1CC9217A008D00F3 /* Answer+CoreDataProperties.swift */; };
+		62650F011CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFD1CC9217A008D00F3 /* Answer+CoreDataProperties.swift */; };
+		62650F021CC9217A008D00F3 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFE1CC9217A008D00F3 /* Answer.swift */; };
+		62650F031CC9217A008D00F3 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFE1CC9217A008D00F3 /* Answer.swift */; };
+		62650F041CC9217A008D00F3 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650EFE1CC9217A008D00F3 /* Answer.swift */; };
+		62650F0F1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */; };
+		62650F101CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */; };
+		62650F111CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */; };
+		62650F121CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */; };
+		62650F131CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */; };
+		62650F141CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */; };
 		6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
 		6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
 		6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
+		62A229CF1CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
+		62A229D01CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
+		62A229D11CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
+		62A229D31CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
+		62A229D41CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
+		62A229D51CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
+		62A229D71CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
+		62A229D81CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
+		62A229D91CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
+		62A229DB1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
+		62A229DC1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
+		62A229DD1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
+		62A229DF1CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
+		62A229E01CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
+		62A229E11CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
 		62C044461CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044471CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044481CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
@@ -232,7 +265,18 @@
 		625C59A61CBCE8F300B155A7 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		625C59A71CBCE8F300B155A7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		62650EF51CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnswerEvaluator+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62650EF61CC92129008D00F3 /* AnswerEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerEvaluator.swift; sourceTree = "<group>"; };
+		62650EFD1CC9217A008D00F3 /* Answer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Answer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62650EFE1CC9217A008D00F3 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedVariantEvaluator+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedVariantEvaluator.swift; sourceTree = "<group>"; };
 		6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
+		62A229CE1CC929E4002DE64B /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		62A229D21CC929F9002DE64B /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerEvaluatorModel.swift; sourceTree = "<group>"; };
+		62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerVariantModel.swift; sourceTree = "<group>"; };
+		62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerModel.swift; sourceTree = "<group>"; };
 		62C044451CBE400B00682E77 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		62C045751CBE6F9300682E77 /* NSData-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData-Extensions.swift"; sourceTree = "<group>"; };
 		62C045AB1CBE759A00682E77 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,6 +385,7 @@
 		624084381CB50D44008C78C1 /* ATests */ = {
 			isa = PBXGroup;
 			children = (
+				62A229CD1CC929D0002DE64B /* Model */,
 				6205EC8A1CBEB05A00B9A9F1 /* Encryption */,
 				62E4E6F61CB7F5BE003C6FB2 /* UI */,
 				62E4E6FF1CB80121003C6FB2 /* FoundationExtensions */,
@@ -377,21 +422,17 @@
 		625C59A51CBCE8D000B155A7 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				625C59A61CBCE8F300B155A7 /* User+CoreDataProperties.swift */,
+				62650EF41CC920EE008D00F3 /* Object Properties Extensions */,
 				625C59A71CBCE8F300B155A7 /* User.swift */,
-				334B69571CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift */,
 				334B69581CBEF68D00B4E5E8 /* UserAvatar.swift */,
-				334B69591CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift */,
 				334B695A1CBEF68D00B4E5E8 /* Image.swift */,
-				332B76FA1CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift */,
 				332B76FB1CC050FF004F7602 /* QuestionImage.swift */,
-				332B76FC1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift */,
 				332B76FD1CC050FF004F7602 /* TextAndImageQuestion.swift */,
-				332B76FE1CC050FF004F7602 /* Question+CoreDataProperties.swift */,
+				62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */,
 				332B76FF1CC050FF004F7602 /* Question.swift */,
-				332B77001CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift */,
+				62650EF61CC92129008D00F3 /* AnswerEvaluator.swift */,
+				62650EFE1CC9217A008D00F3 /* Answer.swift */,
 				332B77011CC050FF004F7602 /* TextQuestion.swift */,
-				332B77021CC050FF004F7602 /* ImageQuestion+CoreDataProperties.swift */,
 				332B77031CC050FF004F7602 /* ImageQuestion.swift */,
 			);
 			path = Objects;
@@ -405,6 +446,24 @@
 			path = MyAccountScreen;
 			sourceTree = "<group>";
 		};
+		62650EF41CC920EE008D00F3 /* Object Properties Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */,
+				62650EFD1CC9217A008D00F3 /* Answer+CoreDataProperties.swift */,
+				62650EF51CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift */,
+				625C59A61CBCE8F300B155A7 /* User+CoreDataProperties.swift */,
+				334B69571CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift */,
+				334B69591CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift */,
+				332B76FA1CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift */,
+				332B76FC1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift */,
+				332B76FE1CC050FF004F7602 /* Question+CoreDataProperties.swift */,
+				332B77001CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift */,
+				332B77021CC050FF004F7602 /* ImageQuestion+CoreDataProperties.swift */,
+			);
+			name = "Object Properties Extensions";
+			sourceTree = "<group>";
+		};
 		6289F0FD1CB6D632004022FE /* UIKitExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +475,18 @@
 				334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */,
 			);
 			path = UIKitExtensions;
+			sourceTree = "<group>";
+		};
+		62A229CD1CC929D0002DE64B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62A229CE1CC929E4002DE64B /* QuestionModel.swift */,
+				62A229D21CC929F9002DE64B /* AnswerModel.swift */,
+				62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */,
+				62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */,
+				62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		62C045AC1CBE759B00682E77 /* CommonCrypto */ = {
@@ -658,10 +729,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				332B770A1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
+				62A229D71CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */,
 				334B69641CBEF68D00B4E5E8 /* Image.swift in Sources */,
+				62650EFF1CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
 				332B771F1CC050FF004F7602 /* ImageQuestion.swift in Sources */,
 				6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
@@ -674,13 +747,17 @@
 				332B770D1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC841CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				334B695B1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
+				62A229D31CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62D403A61CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				6234153D1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62D4039D1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				332B77071CC050FF004F7602 /* QuestionImage.swift in Sources */,
+				62650F0F1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				332B77161CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
 				624084421CB50D45008C78C1 /* ATests.xcdatamodeld in Sources */,
+				62650EF71CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				625C59AB1CBCE8F300B155A7 /* User.swift in Sources */,
+				62A229DF1CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				62E4E7011CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				332B76F71CC04CC3004F7602 /* QuestionsViewController.swift in Sources */,
 				625C59A21CBCD87400B155A7 /* ContextManager.swift in Sources */,
@@ -689,17 +766,22 @@
 				6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */,
 				332B77131CC050FF004F7602 /* Question.swift in Sources */,
 				62E4E6FC1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
+				62A229DB1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				623415391CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
 				332B77041CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				334B695E1CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
 				623415351CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */,
+				62A229CF1CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				334B69611CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				62E4E7051CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
 				625C599A1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
 				625C59A81CBCE8F300B155A7 /* User+CoreDataProperties.swift in Sources */,
 				62E4E6F81CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
 				6240843A1CB50D44008C78C1 /* AppDelegate.swift in Sources */,
+				62650F121CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
 				625C5A051CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
+				62650F021CC9217A008D00F3 /* Answer.swift in Sources */,
+				62650EFA1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
 				6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 			);
@@ -710,17 +792,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D4039A1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
+				62A229D41CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62E4E6F91CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
 				334B695C1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
 				62D403A71CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				625C59A31CBCD87400B155A7 /* ContextManager.swift in Sources */,
 				334B695F1CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
+				62A229E01CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				332B770E1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC851CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				332B77201CC050FF004F7602 /* ImageQuestion.swift in Sources */,
 				332B770B1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
 				625C599F1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				6234153A1CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
+				62A229D01CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				6205EC951CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				62C044471CBE400B00682E77 /* Buttons.swift in Sources */,
@@ -730,6 +815,7 @@
 				625C59AC1CBCE8F300B155A7 /* User.swift in Sources */,
 				332B76F31CC047F9004F7602 /* BaseViewController.swift in Sources */,
 				62D403901CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
+				62A229DC1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				62FE98531CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				624084521CB50D45008C78C1 /* ATestsTests.swift in Sources */,
 				6205EC911CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
@@ -738,17 +824,24 @@
 				62E4E6FD1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
 				334B69651CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599B1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
+				62A229D81CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77051CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
+				62650F131CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
+				62650F101CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				334B69691CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
+				62650F001CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
 				62E4E7021CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				62D403941CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
+				62650EFB1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
 				332B771D1CC050FF004F7602 /* ImageQuestion+CoreDataProperties.swift in Sources */,
 				62D403A21CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
 				625C5A061CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				332B77171CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
+				62650F031CC9217A008D00F3 /* Answer.swift in Sources */,
 				62D4039E1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				334B69621CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153E1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
+				62650EF81CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				62E4E7061CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
 				332B77111CC050FF004F7602 /* Question+CoreDataProperties.swift in Sources */,
 				6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */,
@@ -761,17 +854,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D4039B1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
+				62A229D51CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62E4E6FA1CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
 				334B695D1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
 				62D403A81CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				625C59A41CBCD87400B155A7 /* ContextManager.swift in Sources */,
 				334B69601CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
+				62A229E11CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				332B770F1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC861CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				332B77211CC050FF004F7602 /* ImageQuestion.swift in Sources */,
 				332B770C1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
 				625C59A01CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				6234153B1CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
+				62A229D11CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				6205EC961CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				62C044481CBE400B00682E77 /* Buttons.swift in Sources */,
@@ -781,6 +877,7 @@
 				625C59AD1CBCE8F300B155A7 /* User.swift in Sources */,
 				332B76F41CC047F9004F7602 /* BaseViewController.swift in Sources */,
 				62D403911CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
+				62A229DD1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				62FE98541CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				6240845D1CB50D45008C78C1 /* ATestsUITests.swift in Sources */,
 				6205EC921CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
@@ -789,17 +886,24 @@
 				62E4E6FE1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
 				334B69661CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599C1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
+				62A229D91CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77061CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
+				62650F141CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
+				62650F111CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				334B696A1CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
+				62650F011CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
 				62E4E7031CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				62D403951CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
+				62650EFC1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
 				332B771E1CC050FF004F7602 /* ImageQuestion+CoreDataProperties.swift in Sources */,
 				62D403A31CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
 				625C5A071CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				332B77181CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
+				62650F041CC9217A008D00F3 /* Answer.swift in Sources */,
 				62D4039F1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				334B69631CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153F1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
+				62650EF91CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				62E4E7071CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
 				332B77121CC050FF004F7602 /* Question+CoreDataProperties.swift in Sources */,
 				6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */,

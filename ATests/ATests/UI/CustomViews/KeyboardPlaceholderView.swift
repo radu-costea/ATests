@@ -38,7 +38,8 @@ class KeyboardPlaceholderView: UIView {
                 let option: UInt = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue ?? 0
                 var value: CGFloat = 0.0
                 
-                if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue(), let keyboardFrameToSuperview = self.superview?.convertRect(keyboardFrame, fromView: nil) {
+                if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue(),
+                    let keyboardFrameToSuperview = self.superview?.convertRect(keyboardFrame, fromView: nil) {
                     let minY = CGRectGetMinY(keyboardFrameToSuperview)
                     let maxY = CGRectGetMaxY(self.frame)
                     if minY < maxY {
@@ -46,10 +47,11 @@ class KeyboardPlaceholderView: UIView {
                     }
                 }
                 
-                UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: option) as UIViewAnimationOptions, animations: { [unowned self] in
+                let animation = { [unowned self] in
                     self.heightConstraint.constant = value
                     self.superview?.layoutIfNeeded()
-                    }, completion: nil)
+                }
+                UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: option), animations: animation, completion: nil)
             }
             keyboardObserver = notificationCenter.addObserverForName(UIKeyboardWillChangeFrameNotification, object: nil, queue: nil, usingBlock: callback)
         } else if let observer = keyboardObserver {
