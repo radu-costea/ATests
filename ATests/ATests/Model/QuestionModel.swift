@@ -10,6 +10,10 @@ import Foundation
 
 
 protocol QuestionModel {
-    var answer: Answer { get set }
-    var evaluator: AnswerEvaluatorModel { get set }
+    associatedtype EvaluatorType: AnswerEvaluatorModel
+    associatedtype AnswerType: AnswerModel
+    associatedtype ContentType: ContentModel
+    var content: ContentType { get set }
+    var answer: AnswerType { get set }
+    var evaluator: EvaluatorType { get set }
 }

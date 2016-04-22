@@ -9,22 +9,10 @@
 import Foundation
 
 protocol AnswerEvaluatorModel {
-    func evaluateAnswer<T: AnswerModel>(answer: T, against: T, completion: (Float) -> Void)
+    associatedtype T: AnswerModel
+    var answer: T { get set }
+    init(answer: T)
+    func evauateAnswer(candidateAnswer: T) -> Float
 }
 
-protocol EquatableAnswer: AnswerModel, Equatable { }
-
-func == <T: EquatableAnswer>(lhs: T, rhs: T) -> Bool {
-    return false
-}
-
-class EqualAnswersEvaluator: AnswerEvaluatorModel {
-    func evaluateAnswer<T: AnswerModel>(answer: T, against: T, completion: (Float) -> Void) {
-        
-        let v = evaluateEquatableAnswer(answer, against: against)
-    }
-    
-    func evaluateEquatableAnswer<E: EquatableAnswer>(answer: E, against: E) -> Bool {
-        return against == answer
-    }
-}
+func evaluate<T: AnswerModel>(answer: T, against: T) -> Float { return 0.0 }

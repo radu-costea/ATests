@@ -140,6 +140,9 @@
 		62A229DF1CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
 		62A229E01CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
 		62A229E11CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
+		62B15EF71CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
+		62B15EF81CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
+		62B15EF91CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
 		62C044461CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044471CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044481CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
@@ -277,6 +280,7 @@
 		62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerEvaluatorModel.swift; sourceTree = "<group>"; };
 		62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerVariantModel.swift; sourceTree = "<group>"; };
 		62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerModel.swift; sourceTree = "<group>"; };
+		62B15EF61CCA127A00600C45 /* ContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		62C044451CBE400B00682E77 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		62C045751CBE6F9300682E77 /* NSData-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData-Extensions.swift"; sourceTree = "<group>"; };
 		62C045AB1CBE759A00682E77 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -485,6 +489,7 @@
 				62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */,
 				62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */,
 				62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */,
+				62B15EF61CCA127A00600C45 /* ContentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -742,6 +747,7 @@
 				62D403A11CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
 				332B771C1CC050FF004F7602 /* ImageQuestion+CoreDataProperties.swift in Sources */,
 				62D4038F1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
+				62B15EF71CCA127A00600C45 /* ContentModel.swift in Sources */,
 				332B77191CC050FF004F7602 /* TextQuestion.swift in Sources */,
 				332B77101CC050FF004F7602 /* Question+CoreDataProperties.swift in Sources */,
 				332B770D1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
@@ -824,6 +830,7 @@
 				62E4E6FD1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
 				334B69651CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599B1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
+				62B15EF81CCA127A00600C45 /* ContentModel.swift in Sources */,
 				62A229D81CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77051CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				62650F131CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
@@ -886,6 +893,7 @@
 				62E4E6FE1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
 				334B69661CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599C1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
+				62B15EF91CCA127A00600C45 /* ContentModel.swift in Sources */,
 				62A229D91CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77061CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				62650F141CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,

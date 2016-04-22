@@ -9,5 +9,6 @@
 import Foundation
 
 protocol AnswerModel {
-    var question: QuestionModel { get set }
+    associatedtype ContentType: ContentModel
+    var content: ContentType { get set }
 }
