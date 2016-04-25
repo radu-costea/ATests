@@ -9,3 +9,5 @@
 import Foundation
 
 protocol ContentModel { }
+protocol ComparableContent: ContentModel, Comparable { }
+protocol PercentComparableContent: ContentModel, PercentComparable { }

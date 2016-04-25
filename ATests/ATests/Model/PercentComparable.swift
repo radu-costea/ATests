@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  PercentComparable.swift
 //  ATests
 //
 //  Created by Radu Costea on 25/04/16.
@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-protocol AnswerModel {
-    associatedtype ContentType: ContentModel
-    var content: ContentType { get set }
+protocol PercentComparable {
+    func match(with: Self, completion: (Float) -> Void)
 }

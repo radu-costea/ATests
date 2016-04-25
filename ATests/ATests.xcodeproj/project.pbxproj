@@ -125,24 +125,30 @@
 		6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
 		6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
 		6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
-		62A229CF1CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
-		62A229D01CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
-		62A229D11CC929E4002DE64B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229CE1CC929E4002DE64B /* QuestionModel.swift */; };
-		62A229D31CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
-		62A229D41CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
-		62A229D51CC929F9002DE64B /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D21CC929F9002DE64B /* AnswerModel.swift */; };
-		62A229D71CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
-		62A229D81CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
-		62A229D91CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */; };
-		62A229DB1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
-		62A229DC1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
-		62A229DD1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */; };
-		62A229DF1CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
-		62A229E01CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
-		62A229E11CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */; };
 		62B15EF71CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
 		62B15EF81CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
 		62B15EF91CCA127A00600C45 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B15EF61CCA127A00600C45 /* ContentModel.swift */; };
+		62BA4F941CCE63A40016AC34 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F931CCE63A40016AC34 /* AnswerModel.swift */; };
+		62BA4F951CCE63A40016AC34 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F931CCE63A40016AC34 /* AnswerModel.swift */; };
+		62BA4F961CCE63A40016AC34 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F931CCE63A40016AC34 /* AnswerModel.swift */; };
+		62BA4F981CCE63E10016AC34 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F971CCE63E10016AC34 /* QuestionModel.swift */; };
+		62BA4F991CCE63E10016AC34 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F971CCE63E10016AC34 /* QuestionModel.swift */; };
+		62BA4F9A1CCE63E10016AC34 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F971CCE63E10016AC34 /* QuestionModel.swift */; };
+		62BA4F9C1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */; };
+		62BA4F9D1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */; };
+		62BA4F9E1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */; };
+		62BA4FA01CCE697D0016AC34 /* PercentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */; };
+		62BA4FA11CCE697D0016AC34 /* PercentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */; };
+		62BA4FA21CCE697D0016AC34 /* PercentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */; };
+		62BA4FA41CCE69E20016AC34 /* TextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA31CCE69E20016AC34 /* TextContent.swift */; };
+		62BA4FA51CCE69E20016AC34 /* TextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA31CCE69E20016AC34 /* TextContent.swift */; };
+		62BA4FA61CCE69E20016AC34 /* TextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA31CCE69E20016AC34 /* TextContent.swift */; };
+		62BA4FA91CCE6A390016AC34 /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA81CCE6A390016AC34 /* ImageContent.swift */; };
+		62BA4FAA1CCE6A390016AC34 /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA81CCE6A390016AC34 /* ImageContent.swift */; };
+		62BA4FAB1CCE6A390016AC34 /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FA81CCE6A390016AC34 /* ImageContent.swift */; };
+		62BA4FAD1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FAC1CCE6D510016AC34 /* ImageAndTextContent.swift */; };
+		62BA4FAE1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FAC1CCE6D510016AC34 /* ImageAndTextContent.swift */; };
+		62BA4FAF1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4FAC1CCE6D510016AC34 /* ImageAndTextContent.swift */; };
 		62C044461CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044471CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C044481CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
@@ -275,12 +281,14 @@
 		62650F0D1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedVariantEvaluator+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62650F0E1CC9233A008D00F3 /* SelectedVariantEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedVariantEvaluator.swift; sourceTree = "<group>"; };
 		6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
-		62A229CE1CC929E4002DE64B /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		62A229D21CC929F9002DE64B /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
-		62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerEvaluatorModel.swift; sourceTree = "<group>"; };
-		62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerVariantModel.swift; sourceTree = "<group>"; };
-		62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerModel.swift; sourceTree = "<group>"; };
 		62B15EF61CCA127A00600C45 /* ContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		62BA4F931CCE63A40016AC34 /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		62BA4F971CCE63E10016AC34 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerEvaluatorModel.swift; sourceTree = "<group>"; };
+		62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentComparable.swift; sourceTree = "<group>"; };
+		62BA4FA31CCE69E20016AC34 /* TextContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContent.swift; sourceTree = "<group>"; };
+		62BA4FA81CCE6A390016AC34 /* ImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
+		62BA4FAC1CCE6D510016AC34 /* ImageAndTextContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAndTextContent.swift; sourceTree = "<group>"; };
 		62C044451CBE400B00682E77 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		62C045751CBE6F9300682E77 /* NSData-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData-Extensions.swift"; sourceTree = "<group>"; };
 		62C045AB1CBE759A00682E77 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,14 +492,24 @@
 		62A229CD1CC929D0002DE64B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				62A229CE1CC929E4002DE64B /* QuestionModel.swift */,
-				62A229D21CC929F9002DE64B /* AnswerModel.swift */,
-				62A229D61CC92A12002DE64B /* AnswerEvaluatorModel.swift */,
-				62A229DA1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift */,
-				62A229DE1CC92BA9002DE64B /* VariantsAnswerModel.swift */,
-				62B15EF61CCA127A00600C45 /* ContentModel.swift */,
+				62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */,
+				62BA4FA71CCE6A1C0016AC34 /* Content */,
+				62BA4F931CCE63A40016AC34 /* AnswerModel.swift */,
+				62BA4F971CCE63E10016AC34 /* QuestionModel.swift */,
+				62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		62BA4FA71CCE6A1C0016AC34 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				62B15EF61CCA127A00600C45 /* ContentModel.swift */,
+				62BA4FA31CCE69E20016AC34 /* TextContent.swift */,
+				62BA4FA81CCE6A390016AC34 /* ImageContent.swift */,
+				62BA4FAC1CCE6D510016AC34 /* ImageAndTextContent.swift */,
+			);
+			name = Content;
 			sourceTree = "<group>";
 		};
 		62C045AC1CBE759B00682E77 /* CommonCrypto */ = {
@@ -734,7 +752,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				332B770A1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
-				62A229D71CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */,
@@ -753,33 +770,34 @@
 				332B770D1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC841CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				334B695B1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
-				62A229D31CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62D403A61CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				6234153D1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62D4039D1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				332B77071CC050FF004F7602 /* QuestionImage.swift in Sources */,
 				62650F0F1CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				332B77161CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
+				62BA4FA01CCE697D0016AC34 /* PercentComparable.swift in Sources */,
 				624084421CB50D45008C78C1 /* ATests.xcdatamodeld in Sources */,
 				62650EF71CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				625C59AB1CBCE8F300B155A7 /* User.swift in Sources */,
-				62A229DF1CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				62E4E7011CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				332B76F71CC04CC3004F7602 /* QuestionsViewController.swift in Sources */,
 				625C59A21CBCD87400B155A7 /* ContextManager.swift in Sources */,
+				62BA4FAD1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */,
 				62C044461CBE400B00682E77 /* Buttons.swift in Sources */,
 				334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */,
 				332B77131CC050FF004F7602 /* Question.swift in Sources */,
+				62BA4FA41CCE69E20016AC34 /* TextContent.swift in Sources */,
 				62E4E6FC1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
-				62A229DB1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				623415391CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
 				332B77041CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				334B695E1CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
+				62BA4FA91CCE6A390016AC34 /* ImageContent.swift in Sources */,
 				623415351CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */,
-				62A229CF1CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				334B69611CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				62E4E7051CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
+				62BA4F9C1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */,
 				625C599A1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
 				625C59A81CBCE8F300B155A7 /* User+CoreDataProperties.swift in Sources */,
 				62E4E6F81CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
@@ -788,6 +806,8 @@
 				625C5A051CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				62650F021CC9217A008D00F3 /* Answer.swift in Sources */,
 				62650EFA1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
+				62BA4F941CCE63A40016AC34 /* AnswerModel.swift in Sources */,
+				62BA4F981CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 			);
@@ -798,20 +818,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D4039A1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
-				62A229D41CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62E4E6F91CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
 				334B695C1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
+				62BA4F9D1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */,
+				62BA4FA51CCE69E20016AC34 /* TextContent.swift in Sources */,
 				62D403A71CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				625C59A31CBCD87400B155A7 /* ContextManager.swift in Sources */,
 				334B695F1CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
-				62A229E01CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				332B770E1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC851CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				332B77201CC050FF004F7602 /* ImageQuestion.swift in Sources */,
 				332B770B1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
 				625C599F1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				6234153A1CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
-				62A229D01CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				6205EC951CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				62C044471CBE400B00682E77 /* Buttons.swift in Sources */,
@@ -820,8 +839,8 @@
 				623415361CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */,
 				625C59AC1CBCE8F300B155A7 /* User.swift in Sources */,
 				332B76F31CC047F9004F7602 /* BaseViewController.swift in Sources */,
+				62BA4F991CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				62D403901CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
-				62A229DC1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				62FE98531CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				624084521CB50D45008C78C1 /* ATestsTests.swift in Sources */,
 				6205EC911CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
@@ -831,7 +850,6 @@
 				334B69651CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599B1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
 				62B15EF81CCA127A00600C45 /* ContentModel.swift in Sources */,
-				62A229D81CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77051CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				62650F131CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
 				62650F101CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
@@ -845,13 +863,17 @@
 				625C5A061CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				332B77171CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
 				62650F031CC9217A008D00F3 /* Answer.swift in Sources */,
+				62BA4FAA1CCE6A390016AC34 /* ImageContent.swift in Sources */,
 				62D4039E1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
+				62BA4FA11CCE697D0016AC34 /* PercentComparable.swift in Sources */,
 				334B69621CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153E1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62650EF81CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				62E4E7061CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
 				332B77111CC050FF004F7602 /* Question+CoreDataProperties.swift in Sources */,
+				62BA4F951CCE63A40016AC34 /* AnswerModel.swift in Sources */,
 				6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */,
+				62BA4FAE1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */,
 				332B77081CC050FF004F7602 /* QuestionImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -861,20 +883,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D4039B1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
-				62A229D51CC929F9002DE64B /* AnswerModel.swift in Sources */,
 				62E4E6FA1CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
 				334B695D1CBEF68D00B4E5E8 /* UserAvatar+CoreDataProperties.swift in Sources */,
+				62BA4F9E1CCE64730016AC34 /* AnswerEvaluatorModel.swift in Sources */,
+				62BA4FA61CCE69E20016AC34 /* TextContent.swift in Sources */,
 				62D403A81CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				625C59A41CBCD87400B155A7 /* ContextManager.swift in Sources */,
 				334B69601CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
-				62A229E11CC92BA9002DE64B /* VariantsAnswerModel.swift in Sources */,
 				332B770F1CC050FF004F7602 /* TextAndImageQuestion.swift in Sources */,
 				6251BC861CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				332B77211CC050FF004F7602 /* ImageQuestion.swift in Sources */,
 				332B770C1CC050FF004F7602 /* TextAndImageQuestion+CoreDataProperties.swift in Sources */,
 				625C59A01CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				6234153B1CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
-				62A229D11CC929E4002DE64B /* QuestionModel.swift in Sources */,
 				6205EC961CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				62C044481CBE400B00682E77 /* Buttons.swift in Sources */,
@@ -883,8 +904,8 @@
 				623415371CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */,
 				625C59AD1CBCE8F300B155A7 /* User.swift in Sources */,
 				332B76F41CC047F9004F7602 /* BaseViewController.swift in Sources */,
+				62BA4F9A1CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				62D403911CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
-				62A229DD1CC92B8A002DE64B /* VariantsAnswerVariantModel.swift in Sources */,
 				62FE98541CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				6240845D1CB50D45008C78C1 /* ATestsUITests.swift in Sources */,
 				6205EC921CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
@@ -894,7 +915,6 @@
 				334B69661CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				625C599C1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
 				62B15EF91CCA127A00600C45 /* ContentModel.swift in Sources */,
-				62A229D91CC92A12002DE64B /* AnswerEvaluatorModel.swift in Sources */,
 				332B77061CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				62650F141CC9233A008D00F3 /* SelectedVariantEvaluator.swift in Sources */,
 				62650F111CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
@@ -908,13 +928,17 @@
 				625C5A071CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				332B77181CC050FF004F7602 /* TextQuestion+CoreDataProperties.swift in Sources */,
 				62650F041CC9217A008D00F3 /* Answer.swift in Sources */,
+				62BA4FAB1CCE6A390016AC34 /* ImageContent.swift in Sources */,
 				62D4039F1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
+				62BA4FA21CCE697D0016AC34 /* PercentComparable.swift in Sources */,
 				334B69631CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153F1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62650EF91CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
 				62E4E7071CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
 				332B77121CC050FF004F7602 /* Question+CoreDataProperties.swift in Sources */,
+				62BA4F961CCE63A40016AC34 /* AnswerModel.swift in Sources */,
 				6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */,
+				62BA4FAF1CCE6D510016AC34 /* ImageAndTextContent.swift in Sources */,
 				332B77091CC050FF004F7602 /* QuestionImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

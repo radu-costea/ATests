@@ -2,18 +2,19 @@
 //  QuestionModel.swift
 //  ATests
 //
-//  Created by Radu Costea on 21/04/16.
+//  Created by Radu Costea on 25/04/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
 
 import Foundation
 
-
 protocol QuestionModel {
-    associatedtype EvaluatorType: AnswerEvaluatorModel
-    associatedtype AnswerType: AnswerModel
     associatedtype ContentType: ContentModel
+    associatedtype AnswerType: Answer
+    associatedtype EvaluatorType: AnswerEvaluatorModel
+    
     var content: ContentType { get set }
     var answer: AnswerType { get set }
     var evaluator: EvaluatorType { get set }
 }
+
