@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ *  @brief <#Description#>
+ */
 protocol TextContent: ComparableContent {
     var text: String { get set }// = ""
 }

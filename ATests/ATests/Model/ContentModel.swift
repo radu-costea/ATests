@@ -8,6 +8,17 @@
 
 import Foundation
 
+/**
+ *  @brief <#Description#>
+ */
 protocol ContentModel { }
+
+/**
+ *  @brief <#Description#>
+ */
 protocol ComparableContent: ContentModel, Comparable { }
+
+/**
+ *  @brief <#Description#>
+ */
 protocol PercentComparableContent: ContentModel, PercentComparable { }

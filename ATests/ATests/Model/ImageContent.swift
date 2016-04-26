@@ -11,14 +11,7 @@ import UIKit
 
 protocol ImageContent: ComparableContent {
     var base64Image: String { get set }
-//    = "" {
-//        didSet {
-//            if let data = base64Image.toBase64Data() {
-//                image = UIImage(data: data)
-//            }
-//        }
-//    }
-    var image: UIImage! { get }
+    var image: UIImage! { get set }
 }
 
 func == <T: ImageContent>(lhs: T, rhs: T) -> Bool {
