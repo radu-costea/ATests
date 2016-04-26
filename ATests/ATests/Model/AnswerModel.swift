@@ -12,3 +12,16 @@ protocol AnswerModel {
     associatedtype ContentType: ContentModel
     var content: ContentType { get set }
 }
+
+protocol EquatableAnswer: AnswerModel, Equatable {
+    associatedtype ContentType: ComparableContent
+}
+
+func == <T: EquatableAnswer>(lhs: T, rhs: T) -> Bool {
+    return lhs.content == rhs.content
+}
+
+protocol PercentComparableAnswer: AnswerModel, PercentComparable {
+    associatedtype ContentType: PercentComparableContent
+}
+

@@ -67,6 +67,15 @@
 		6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
 		6205EC951CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
 		6205EC961CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
+		620A360C1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360B1CCFC756000799B4 /* ComparableAnswerVariant.swift */; };
+		620A360D1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360B1CCFC756000799B4 /* ComparableAnswerVariant.swift */; };
+		620A360E1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360B1CCFC756000799B4 /* ComparableAnswerVariant.swift */; };
+		620A36101CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360F1CCFC938000799B4 /* VariantsAnswerContent.swift */; };
+		620A36111CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360F1CCFC938000799B4 /* VariantsAnswerContent.swift */; };
+		620A36121CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A360F1CCFC938000799B4 /* VariantsAnswerContent.swift */; };
+		620A36141CCFCE19000799B4 /* VariantsAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A36131CCFCE19000799B4 /* VariantsAnswer.swift */; };
+		620A36151CCFCE19000799B4 /* VariantsAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A36131CCFCE19000799B4 /* VariantsAnswer.swift */; };
+		620A36161CCFCE19000799B4 /* VariantsAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A36131CCFCE19000799B4 /* VariantsAnswer.swift */; };
 		623415351CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623415341CB6BA2000031EBB /* NSManagedObject-Extensions.swift */; };
 		623415361CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623415341CB6BA2000031EBB /* NSManagedObject-Extensions.swift */; };
 		623415371CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623415341CB6BA2000031EBB /* NSManagedObject-Extensions.swift */; };
@@ -251,6 +260,9 @@
 		6205EC8B1CBEB07600B9A9F1 /* Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgoritm.swift; sourceTree = "<group>"; };
+		620A360B1CCFC756000799B4 /* ComparableAnswerVariant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableAnswerVariant.swift; sourceTree = "<group>"; };
+		620A360F1CCFC938000799B4 /* VariantsAnswerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswerContent.swift; sourceTree = "<group>"; };
+		620A36131CCFCE19000799B4 /* VariantsAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantsAnswer.swift; sourceTree = "<group>"; };
 		623415341CB6BA2000031EBB /* NSManagedObject-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject-Extensions.swift"; sourceTree = "<group>"; };
 		623415381CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext-Extensions.swift"; sourceTree = "<group>"; };
 		6234153C1CB6C61300031EBB /* NSFetchRequest-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchRequest-Extensions.swift"; sourceTree = "<group>"; };
@@ -358,6 +370,17 @@
 				6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */,
 			);
 			path = Encryption;
+			sourceTree = "<group>";
+		};
+		620A360A1CCFC539000799B4 /* Answer */ = {
+			isa = PBXGroup;
+			children = (
+				62BA4F931CCE63A40016AC34 /* AnswerModel.swift */,
+				620A36131CCFCE19000799B4 /* VariantsAnswer.swift */,
+				620A360B1CCFC756000799B4 /* ComparableAnswerVariant.swift */,
+				620A360F1CCFC938000799B4 /* VariantsAnswerContent.swift */,
+			);
+			name = Answer;
 			sourceTree = "<group>";
 		};
 		623415331CB6B9FE00031EBB /* CoreData */ = {
@@ -494,7 +517,7 @@
 			children = (
 				62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */,
 				62BA4FA71CCE6A1C0016AC34 /* Content */,
-				62BA4F931CCE63A40016AC34 /* AnswerModel.swift */,
+				620A360A1CCFC539000799B4 /* Answer */,
 				62BA4F971CCE63E10016AC34 /* QuestionModel.swift */,
 				62BA4F9B1CCE64730016AC34 /* AnswerEvaluatorModel.swift */,
 			);
@@ -758,6 +781,7 @@
 				334B69641CBEF68D00B4E5E8 /* Image.swift in Sources */,
 				62650EFF1CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
 				332B771F1CC050FF004F7602 /* ImageQuestion.swift in Sources */,
+				620A360C1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */,
 				6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
 				62D403931CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
@@ -793,7 +817,9 @@
 				623415391CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
 				332B77041CC050FF004F7602 /* QuestionImage+CoreDataProperties.swift in Sources */,
 				334B695E1CBEF68D00B4E5E8 /* UserAvatar.swift in Sources */,
+				620A36101CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */,
 				62BA4FA91CCE6A390016AC34 /* ImageContent.swift in Sources */,
+				620A36141CCFCE19000799B4 /* VariantsAnswer.swift in Sources */,
 				623415351CB6BA2000031EBB /* NSManagedObject-Extensions.swift in Sources */,
 				334B69611CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				62E4E7051CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
@@ -842,6 +868,7 @@
 				62BA4F991CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				62D403901CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
 				62FE98531CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
+				620A36111CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */,
 				624084521CB50D45008C78C1 /* ATestsTests.swift in Sources */,
 				6205EC911CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
 				332B77141CC050FF004F7602 /* Question.swift in Sources */,
@@ -855,6 +882,7 @@
 				62650F101CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				334B69691CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				62650F001CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
+				620A360D1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */,
 				62E4E7021CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				62D403941CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
 				62650EFB1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
@@ -866,6 +894,7 @@
 				62BA4FAA1CCE6A390016AC34 /* ImageContent.swift in Sources */,
 				62D4039E1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				62BA4FA11CCE697D0016AC34 /* PercentComparable.swift in Sources */,
+				620A36151CCFCE19000799B4 /* VariantsAnswer.swift in Sources */,
 				334B69621CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153E1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62650EF81CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,
@@ -907,6 +936,7 @@
 				62BA4F9A1CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				62D403911CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
 				62FE98541CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
+				620A36121CCFC938000799B4 /* VariantsAnswerContent.swift in Sources */,
 				6240845D1CB50D45008C78C1 /* ATestsUITests.swift in Sources */,
 				6205EC921CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
 				332B77151CC050FF004F7602 /* Question.swift in Sources */,
@@ -920,6 +950,7 @@
 				62650F111CC9233A008D00F3 /* SelectedVariantEvaluator+CoreDataProperties.swift in Sources */,
 				334B696A1CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				62650F011CC9217A008D00F3 /* Answer+CoreDataProperties.swift in Sources */,
+				620A360E1CCFC756000799B4 /* ComparableAnswerVariant.swift in Sources */,
 				62E4E7031CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
 				62D403951CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
 				62650EFC1CC92129008D00F3 /* AnswerEvaluator.swift in Sources */,
@@ -931,6 +962,7 @@
 				62BA4FAB1CCE6A390016AC34 /* ImageContent.swift in Sources */,
 				62D4039F1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				62BA4FA21CCE697D0016AC34 /* PercentComparable.swift in Sources */,
+				620A36161CCFCE19000799B4 /* VariantsAnswer.swift in Sources */,
 				334B69631CBEF68D00B4E5E8 /* Image+CoreDataProperties.swift in Sources */,
 				6234153F1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62650EF91CC92129008D00F3 /* AnswerEvaluator+CoreDataProperties.swift in Sources */,

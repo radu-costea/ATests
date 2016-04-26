@@ -13,6 +13,8 @@ import Foundation
  */
 protocol ContentModel { }
 
+
+protocol EquatableContent: ContentModel { }
 /**
  *  @brief <#Description#>
  */

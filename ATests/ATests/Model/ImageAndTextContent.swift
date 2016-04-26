@@ -10,36 +10,34 @@ import Foundation
 
 protocol ImageAndTextContent: ImageContent, TextContent { }
 
-extension ImageAndTextContent {
-    func compareWith(content: Self) -> Int {
-        guard text == content.text else {
-            return text < content.text ? -1 : 1
-        }
-        guard base64Image == content.base64Image else {
-            return base64Image < content.base64Image ? -1 : 1
-        }
-        return 0
+func compare<T: ImageAndTextContent>(content: T, with otherContent: T) -> Int {
+    guard content.text == otherContent.text else {
+        return content.text < otherContent.text ? -1 : 1
     }
+    guard content.base64Image == otherContent.base64Image else {
+        return content.base64Image < otherContent.base64Image ? -1 : 1
+    }
+    return 0
 }
 
 func <= <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
-    let result = lhs.compareWith(rhs)
-    return [-1, 0].contains(result)
+    let result = compare(lhs, with: rhs)
+    return result == 0 || result == -1
 }
 
 func >= <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
-    let result = lhs.compareWith(rhs)
-    return [1, 0].contains(result)
+    let result = compare(lhs, with: rhs)
+    return result == 0 || result == 1
 }
 
 func == <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.compareWith(rhs) == 0
+    return compare(lhs, with: rhs) == 0
 }
 
 func < <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.compareWith(rhs) == -1
+    return compare(lhs, with: rhs) == -1
 }
 
 func > <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.compareWith(rhs) == 1
+    return compare(lhs, with: rhs) == 1
 }
