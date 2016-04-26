@@ -8,27 +8,24 @@
 
 import Foundation
 
-class ImageAndTextContent: ImageContent {
-    var text: String = ""
-}
+protocol ImageAndTextContent: ImageContent, TextContent { }
 
-func ==(lhs: ImageAndTextContent, rhs: ImageAndTextContent) -> Bool {
+func == <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text == rhs.text && lhs.base64Image == rhs.base64Image
 }
 
-func <=(lhs: ImageAndTextContent, rhs: ImageAndTextContent) -> Bool {
+func <= <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text <= rhs.text && lhs.base64Image == rhs.base64Image
-    return lhs.base64Image <= rhs.base64Image
 }
 
-func >=(lhs: ImageAndTextContent, rhs: ImageAndTextContent) -> Bool {
+func >= <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image >= rhs.base64Image
 }
 
-func <(lhs: ImageAndTextContent, rhs: ImageAndTextContent) -> Bool {
+func < <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image < rhs.base64Image
 }
 
-func >(lhs: ImageAndTextContent, rhs: ImageAndTextContent) -> Bool {
+func > <T: ImageAndTextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image > rhs.base64Image
 }

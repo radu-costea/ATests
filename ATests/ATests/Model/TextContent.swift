@@ -8,26 +8,26 @@
 
 import Foundation
 
-class TextContent: ComparableContent {
-    var text: String = ""
+protocol TextContent: ComparableContent {
+    var text: String { get set }// = ""
 }
 
-func ==(lhs: TextContent, rhs: TextContent) -> Bool {
+func == <T: TextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text == rhs.text
 }
 
-func <=(lhs: TextContent, rhs: TextContent) -> Bool {
+func <= <T: TextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text <= rhs.text
 }
 
-func >=(lhs: TextContent, rhs: TextContent) -> Bool {
+func >= <T: TextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text >= rhs.text
 }
 
-func <(lhs: TextContent, rhs: TextContent) -> Bool {
+func < <T: TextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text < rhs.text
 }
 
-func >(lhs: TextContent, rhs: TextContent) -> Bool {
+func > <T: TextContent>(lhs: T, rhs: T) -> Bool {
     return lhs.text > rhs.text
 }

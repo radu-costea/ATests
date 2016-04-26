@@ -9,33 +9,34 @@
 import Foundation
 import UIKit
 
-class ImageContent: ComparableContent {
-    var base64Image: String = "" {
-        didSet {
-            if let data = base64Image.toBase64Data() {
-                image = UIImage(data: data)
-            }
-        }
-    }
-    var image: UIImage!
+protocol ImageContent: ComparableContent {
+    var base64Image: String { get set }
+//    = "" {
+//        didSet {
+//            if let data = base64Image.toBase64Data() {
+//                image = UIImage(data: data)
+//            }
+//        }
+//    }
+    var image: UIImage! { get }
 }
 
-func ==(lhs: ImageContent, rhs: ImageContent) -> Bool {
+func == <T: ImageContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image == rhs.base64Image
 }
 
-func <=(lhs: ImageContent, rhs: ImageContent) -> Bool {
+func <= <T: ImageContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image <= rhs.base64Image
 }
 
-func >=(lhs: ImageContent, rhs: ImageContent) -> Bool {
+func >= <T: ImageContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image >= rhs.base64Image
 }
 
-func <(lhs: ImageContent, rhs: ImageContent) -> Bool {
+func < <T: ImageContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image < rhs.base64Image
 }
 
-func >(lhs: ImageContent, rhs: ImageContent) -> Bool {
+func > <T: ImageContent>(lhs: T, rhs: T) -> Bool {
     return lhs.base64Image > rhs.base64Image
 }
