@@ -7,20 +7,24 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  *  @brief <#Description#>
  */
 protocol ContentModel { }
 
-
-//protocol EquatableContent: ContentModel { }
 /**
  *  @brief <#Description#>
  */
-//protocol ComparableContent: ContentModel, Comparable { }
+protocol TextContent: ContentModel {
+    var text: String { get set }
+}
 
 /**
  *  @brief <#Description#>
  */
-//protocol PercentEquatableContent: ContentModel, PercentEquatable { }
+protocol ImageContent: ContentModel {
+    var base64Image: String { get set }
+    var image: UIImage { get }
+}

@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol AnswerEvaluatorModel {
-    associatedtype AnswerType: Answer
+    associatedtype AnswerType: AnswerModel
     var reference: AnswerType { get set }
     
     func match(answer: AnswerType) -> Float
