@@ -11,26 +11,50 @@ import Foundation
 /**
  *  @brief <#Description#>
  */
-protocol TextContent: ComparableContent {
+protocol TextContent: ContentModel, Comparable {
     var text: String { get set }// = ""
 }
 
-func == <T: TextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.text == rhs.text
+class TextContentObject: TextContent, Comparable {
+    var text: String = ""
 }
 
-func <= <T: TextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.text <= rhs.text
-}
-
-func >= <T: TextContent>(lhs: T, rhs: T) -> Bool {
-    return lhs.text >= rhs.text
-}
-
-func < <T: TextContent>(lhs: T, rhs: T) -> Bool {
+func < (lhs: TextContentObject, rhs: TextContentObject) -> Bool {
     return lhs.text < rhs.text
 }
 
-func > <T: TextContent>(lhs: T, rhs: T) -> Bool {
+func <= (lhs: TextContentObject, rhs: TextContentObject) -> Bool {
+    return lhs.text <= rhs.text
+}
+
+func > (lhs: TextContentObject, rhs: TextContentObject) -> Bool {
     return lhs.text > rhs.text
 }
+
+func >= (lhs: TextContentObject, rhs: TextContentObject) -> Bool {
+    return lhs.text >= rhs.text
+}
+
+func == (lhs: TextContentObject, rhs: TextContentObject) -> Bool {
+    return lhs.text > rhs.text
+}
+
+//func == <T: TextContent>(lhs: T, rhs: T) -> Bool {
+//    return lhs.text == rhs.text
+//}
+//
+//func <= <T: TextContent>(lhs: T, rhs: T) -> Bool {
+//    return lhs.text <= rhs.text
+//}
+//
+//func >= <T: TextContent>(lhs: T, rhs: T) -> Bool {
+//    return lhs.text >= rhs.text
+//}
+//
+//func < <T: TextContent>(lhs: T, rhs: T) -> Bool {
+//    return lhs.text < rhs.text
+//}
+//
+//func > <T: TextContent>(lhs: T, rhs: T) -> Bool {
+//    return lhs.text > rhs.text
+//}

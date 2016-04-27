@@ -7,6 +7,6 @@
 //
 
 import Foundation
-protocol PercentComparable {
+protocol PercentEquatable {
     func match(with: Self, completion: (Float) -> Void)
 }

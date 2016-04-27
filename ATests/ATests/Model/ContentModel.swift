@@ -14,13 +14,13 @@ import Foundation
 protocol ContentModel { }
 
 
-protocol EquatableContent: ContentModel { }
+//protocol EquatableContent: ContentModel { }
 /**
  *  @brief <#Description#>
  */
-protocol ComparableContent: ContentModel, Comparable { }
+//protocol ComparableContent: ContentModel, Comparable { }
 
 /**
  *  @brief <#Description#>
  */
-protocol PercentComparableContent: ContentModel, PercentComparable { }
+//protocol PercentEquatableContent: ContentModel, PercentEquatable { }
