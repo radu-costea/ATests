@@ -9,6 +9,6 @@
 import Foundation
 
 protocol AnswerModel {
-    associatedtype ContentType: ContentModel
+    typealias ContentType: ContentModel
     var content: ContentType { get set }
 }

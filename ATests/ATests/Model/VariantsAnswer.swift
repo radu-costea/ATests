@@ -9,17 +9,17 @@
 import Foundation
 
 protocol AnswerVariant {
-    associatedtype ContentType: ContentModel
+    typealias ContentType: ContentModel
     var index: UInt { get set }
     var correct: Bool { get set }
     var content: ContentType { get set }
 }
 
 protocol VariantsAnswerContent: ContentModel {
-    associatedtype VariantType: AnswerVariant, Equatable
+    typealias VariantType: AnswerVariant, Equatable
     var variants: [VariantType] { get set }
 }
 
 protocol VariantsAnswer: AnswerModel {
-    associatedtype ContentType: VariantsAnswerContent, Equatable
+    typealias ContentType: VariantsAnswerContent, Equatable
 }

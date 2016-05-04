@@ -10,8 +10,8 @@ import Foundation
 
 
 protocol AnswerEvaluatorModel {
-    associatedtype AnswerType: AnswerModel
+    typealias AnswerType: AnswerModel
     var reference: AnswerType { get set }
     
-    func match(answer: AnswerType) -> Float
+    func match(with answer: AnswerType, competion: (Float) -> Void)
 }

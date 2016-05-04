@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PercentAnswer: AnswerModel {
-    associatedtype ContentType: ContentModel, PercentEquatable
+    typealias ContentType: ContentModel, PercentEquatable
 }

@@ -9,12 +9,20 @@
 import Foundation
 
 protocol QuestionModel {
-    associatedtype ContentType: ContentModel
-    associatedtype AnswerType: Answer
-    associatedtype EvaluatorType: AnswerEvaluatorModel
+    typealias ContentType: ContentModel
+    typealias AnswerType: Answer
+    typealias EvaluatorType: AnswerEvaluatorModel
     
     var content: ContentType { get set }
     var answer: AnswerType { get set }
     var evaluator: EvaluatorType { get set }
+}
+
+protocol VariantsQuestion: QuestionModel {
+    typealias AnswerType: VariantsAnswer
+}
+
+protocol FreeAnswerQuestion: QuestionModel {
+    typealias AnswerType: PercentAnswer
 }
 

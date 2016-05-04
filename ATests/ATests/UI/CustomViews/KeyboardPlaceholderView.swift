@@ -38,7 +38,7 @@ class KeyboardPlaceholderView: UIView {
                 let option: UInt = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue ?? 0
                 var value: CGFloat = 0.0
                 
-                if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue(),
+                if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
                     let keyboardFrameToSuperview = self.superview?.convertRect(keyboardFrame, fromView: nil) {
                     let minY = CGRectGetMinY(keyboardFrameToSuperview)
                     let maxY = CGRectGetMaxY(self.frame)

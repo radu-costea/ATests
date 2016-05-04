@@ -12,7 +12,9 @@ import UIKit
 /**
  *  @brief <#Description#>
  */
-protocol ContentModel { }
+protocol ContentModel {
+    var identifier: String { get }
+}
 
 /**
  *  @brief <#Description#>
@@ -26,5 +28,4 @@ protocol TextContent: ContentModel {
  */
 protocol ImageContent: ContentModel {
     var base64Image: String { get set }
-    var image: UIImage { get }
 }
