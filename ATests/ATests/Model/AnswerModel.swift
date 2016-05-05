@@ -10,5 +10,5 @@ import Foundation
 
 protocol AnswerModel {
     typealias ContentType: ContentModel
-    var content: ContentType { get set }
+    var content: ContentType? { get set }
 }

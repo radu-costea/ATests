@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="AnswerVariantObject" representedClassName=".AnswerVariantObject" isAbstract="YES" syncable="YES">
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orderIdx" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ContentObject" representedClassName=".ContentObject" isAbstract="YES" syncable="YES"/>
+    <entity name="ImageContentObject" representedClassName=".ImageContentObject" parentEntity="ContentObject" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ImageVariantObject" representedClassName=".ImageVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentObject" syncable="YES"/>
+    </entity>
+    <entity name="ImageVariantsAnswerContentObject" representedClassName=".ImageVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
+        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageVariantObject" syncable="YES"/>
+    </entity>
+    <entity name="ImageVariantsAnswerObject" representedClassName=".ImageVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageVariantsAnswerContentObject" syncable="YES"/>
+    </entity>
+    <entity name="MixedContentObject" representedClassName=".MixedContentObject" parentEntity="ContentObject" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MixedVariantObject" representedClassName=".MixedVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedContentObject" syncable="YES"/>
+    </entity>
+    <entity name="MixedVariantsAnswerContentObject" representedClassName=".MixedVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
+        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MixedVariantObject" syncable="YES"/>
+    </entity>
+    <entity name="MixedVariantsAnswerObject" representedClassName=".MixedVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedVariantsAnswerContentObject" syncable="YES"/>
+    </entity>
+    <entity name="TextContentObject" representedClassName=".TextContentObject" parentEntity="ContentObject" syncable="YES">
+        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TextVariantObject" representedClassName=".TextVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentObject" syncable="YES"/>
+    </entity>
+    <entity name="TextVariantsAnswerContentObject" representedClassName=".TextVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
+        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TextVariantObject" syncable="YES"/>
+    </entity>
+    <entity name="TextVariantsAnswerObject" representedClassName=".TextVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
+        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextVariantsAnswerContentObject" syncable="YES"/>
+    </entity>
+    <entity name="VariantsAnswerContentObject" representedClassName=".VariantsAnswerContentObject" isAbstract="YES" syncable="YES"/>
+    <entity name="VariantsAnswerObject" representedClassName=".VariantsAnswerObject" isAbstract="YES" syncable="YES"/>
+    <elements>
+        <element name="AnswerVariantObject" positionX="0" positionY="54" width="128" height="75"/>
+        <element name="ContentObject" positionX="0" positionY="63" width="128" height="45"/>
+        <element name="ImageContentObject" positionX="-54" positionY="0" width="128" height="60"/>
+        <element name="ImageVariantObject" positionX="-9" positionY="45" width="128" height="60"/>
+        <element name="ImageVariantsAnswerContentObject" positionX="27" positionY="90" width="128" height="60"/>
+        <element name="MixedContentObject" positionX="-36" positionY="18" width="128" height="75"/>
+        <element name="MixedVariantObject" positionX="36" positionY="99" width="128" height="60"/>
+        <element name="MixedVariantsAnswerContentObject" positionX="36" positionY="99" width="128" height="60"/>
+        <element name="TextContentObject" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="TextVariantObject" positionX="18" positionY="81" width="128" height="60"/>
+        <element name="TextVariantsAnswerContentObject" positionX="18" positionY="81" width="128" height="60"/>
+        <element name="VariantsAnswerContentObject" positionX="9" positionY="72" width="128" height="45"/>
+        <element name="VariantsAnswerObject" positionX="0" positionY="54" width="128" height="45"/>
+        <element name="TextVariantsAnswerObject" positionX="9" positionY="63" width="128" height="60"/>
+        <element name="ImageVariantsAnswerObject" positionX="18" positionY="72" width="128" height="60"/>
+        <element name="MixedVariantsAnswerObject" positionX="27" positionY="81" width="128" height="60"/>
+    </elements>
+</model>

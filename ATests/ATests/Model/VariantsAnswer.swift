@@ -12,12 +12,12 @@ protocol AnswerVariant {
     typealias ContentType: ContentModel
     var index: UInt { get set }
     var correct: Bool { get set }
-    var content: ContentType { get set }
+    var content: ContentType? { get set }
 }
 
 protocol VariantsAnswerContent: ContentModel {
     typealias VariantType: AnswerVariant, Equatable
-    var variants: [VariantType] { get set }
+    var variants: [VariantType]? { get set }
 }
 
 protocol VariantsAnswer: AnswerModel {
