@@ -15,9 +15,23 @@ protocol AnswerVariant {
     var content: ContentType? { get set }
 }
 
+extension AnswerVariant {
+    var content: ContentType? {
+        get { return nil }
+        set { }
+    }
+}
+
 protocol VariantsAnswerContent: ContentModel {
     typealias VariantType: AnswerVariant, Equatable
     var variants: [VariantType]? { get set }
+}
+
+extension VariantsAnswerContent {
+    var variants: [VariantType]? {
+        get { return nil }
+        set {}
+    }
 }
 
 protocol VariantsAnswer: AnswerModel {

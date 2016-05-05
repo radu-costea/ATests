@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class TextVariantObject: AnswerVariantObject, AnswerVariant {
+class TextVariantObject: AnswerVariantObject {
 
 // Insert code here to add functionality to your managed object subclass
     var content: TextContentObject? {

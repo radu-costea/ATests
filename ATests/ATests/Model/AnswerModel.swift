@@ -12,3 +12,10 @@ protocol AnswerModel {
     typealias ContentType: ContentModel
     var content: ContentType? { get set }
 }
+
+extension AnswerModel {
+    var content: ContentType? {
+        get { return nil }
+        set { }
+    }
+}

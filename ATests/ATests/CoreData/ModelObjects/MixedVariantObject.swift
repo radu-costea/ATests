@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class MixedVariantObject: AnswerVariantObject, AnswerVariant {
+class MixedVariantObject: AnswerVariantObject {
 
 // Insert code here to add functionality to your managed object subclass
     var content: MixedContentObject? {

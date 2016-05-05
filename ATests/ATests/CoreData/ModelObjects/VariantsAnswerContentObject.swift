@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 
-class VariantsAnswerContentObject: NSManagedObject {
-    
+class VariantsAnswerContentObject: NSManagedObject, VariantsAnswerContent {
+    typealias VariantType = AnswerVariantObject
 // Insert code here to add functionality to your managed object subclass
     var identifier: String? { return objectID.URIRepresentation().relativePath }
 

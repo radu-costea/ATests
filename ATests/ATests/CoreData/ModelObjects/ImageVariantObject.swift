@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class ImageVariantObject: AnswerVariantObject, AnswerVariant {
+class ImageVariantObject: AnswerVariantObject {
 
 // Insert code here to add functionality to your managed object subclass
     var content: ImageContentObject? {

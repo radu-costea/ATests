@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 
-class VariantsAnswerObject: NSManagedObject {
-
+class VariantsAnswerObject: NSManagedObject, VariantsAnswer {
+    typealias ContentType = VariantsAnswerContentObject
 // Insert code here to add functionality to your managed object subclass
-
 }

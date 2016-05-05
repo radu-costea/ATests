@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 
-class AnswerVariantObject: NSManagedObject {
-
+class AnswerVariantObject: NSManagedObject, AnswerVariant {
+    typealias ContentType = ContentObject
 // Insert code here to add functionality to your managed object subclass
     var index: UInt {
         get { return UInt(orderIdx) }

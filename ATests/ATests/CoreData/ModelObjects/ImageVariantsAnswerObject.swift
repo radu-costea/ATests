@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class ImageVariantsAnswerObject: VariantsAnswerObject, VariantsAnswer {
+class ImageVariantsAnswerObject: VariantsAnswerObject {
     typealias ContentType = ImageVariantsAnswerContentObject
 // Insert code here to add functionality to your managed object subclass
     var content: ImageVariantsAnswerContentObject? {
