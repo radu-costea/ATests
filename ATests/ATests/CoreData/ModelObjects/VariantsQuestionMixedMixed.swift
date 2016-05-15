@@ -14,4 +14,14 @@ class VariantsQuestionMixedMixed: QuestionObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    var content: MixedContentObject? {
+        get { return contentObj }
+        set { contentObj = newValue }
+    }
+    
+    var answer: MixedVariantsAnswerObject? {
+        get { return answerObj }
+        set { answerObj = newValue }
+    }
+    
 }

@@ -14,4 +14,14 @@ class VariantsQuestionImageText: QuestionObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    var content: ImageContentObject? {
+        get { return contentObj }
+        set { contentObj = newValue }
+    }
+    
+    var answer: TextVariantsAnswerObject? {
+        get { return answerObj }
+        set { answerObj = newValue }
+    }
+    
 }

@@ -68,7 +68,15 @@ class VariantsQuestionConfiguration: QuestionConfiguration {
         
         switch (questionType, answerType) {
         case (.Text, .Text):
-            return VariantsQuestionTextText.new(nil) as? QuestionObject
+            let textContent = TextContentObject.new(nil) as? TextContentObject
+            let answerObject = TextVariantsAnswerObject.new(nil) as? TextVariantsAnswerObject
+            guard let answer = answerObject, content = textContent else {
+                return nil
+            }
+            guard let question = VariantsQuestionTextText.new(["content" : content, "answer" : answer]) as? VariantsQuestionTextText else {
+                return nil
+            }
+            return question as? QuestionObject
         case (.Text, .Image):
             return VariantsQuestionTextImage.new(nil) as? QuestionObject
         case let (.Text, .Mixed(layout)):
