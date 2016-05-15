@@ -10,13 +10,31 @@ import Foundation
 
 protocol QuestionModel {
     typealias ContentType: ContentModel
-    typealias AnswerType: Answer
+    typealias AnswerType: AnswerModel
     typealias EvaluatorType: AnswerEvaluatorModel
     
-    var content: ContentType { get set }
-    var answer: AnswerType { get set }
-    var evaluator: EvaluatorType { get set }
+    var content: ContentType? { get set }
+    var answer: AnswerType? { get set }
+    var evaluator: EvaluatorType? { get set }
 }
+
+extension QuestionModel {
+    var content: ContentType? {
+        get { return nil }
+        set { }
+    }
+    
+    var answer: AnswerType? {
+        get { return nil}
+        set { }
+    }
+    
+    var evaluator: EvaluatorType? {
+        get { return nil}
+        set { }
+    }
+}
+
 
 protocol VariantsQuestion: QuestionModel {
     typealias AnswerType: VariantsAnswer
