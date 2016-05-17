@@ -1,8 +1,8 @@
 //
-//  SelectedVariantEvaluator.swift
+//  UserAvatar.swift
 //  ATests
 //
-//  Created by Radu Costea on 21/04/16.
+//  Created by Radu Costea on 17/05/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class SelectedVariantEvaluator: AnswerEvaluator {
+class UserAvatar: Image {
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol SelectContentLayoutViewControllerDelegate: class {
+    func layoutViewControllerDidSelectLayout(controller: SelectContentLayoutViewController) -> Void
+}
+
 class SelectContentLayoutViewController: UITableViewController {
     var layoutType: LayoutTypeEnum!
+    weak var delegate: SelectContentLayoutViewControllerDelegate?
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
@@ -22,6 +27,9 @@ class SelectContentLayoutViewController: UITableViewController {
         default:
             layoutType = .ImageAtRight
         }
-        performSegueWithIdentifier("goBack", sender: self)
+        
+        if let safeDelegate = delegate {
+            safeDelegate.layoutViewControllerDidSelectLayout(self)
+        }
     }
 }

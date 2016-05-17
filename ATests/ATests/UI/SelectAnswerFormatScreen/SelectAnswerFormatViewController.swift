@@ -8,27 +8,48 @@
 
 import UIKit
 
-class SelectAnswerFormatViewController: UITableViewController {
+protocol AnswerFormatViewControllerDelegate: class {
+    func answerFormatViewControllerDidSelectFormat(controller: SelectAnswerFormatViewController) -> Void
+}
+
+class SelectAnswerFormatViewController: UITableViewController, SelectContentLayoutViewControllerDelegate {
     var answersType: ContentTypeEnum!
+    weak var delegate: AnswerFormatViewControllerDelegate?
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
             answersType = .Image
-            performSegueWithIdentifier("goBack", sender: self)
+            notifiSelection()
         case 1:
             answersType = .Text
-            performSegueWithIdentifier("goBack", sender: self)
-        default: break
+            notifiSelection()
+        default:
+            break
         }
     }
     
-    @IBAction func backFromContentLayoutSelection(segue: UIStoryboardSegue) {
-        if let source = segue.sourceViewController as? SelectContentLayoutViewController {
-            answersType = .Mixed(layout: source.layoutType)
-            dispatch_async(dispatch_get_main_queue(), { [unowned self] () -> Void in
-                self.performSegueWithIdentifier("goBack", sender: self)
-            })
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToSelectLayout" {
+            if let destination = segue.destinationViewController as? SelectContentLayoutViewController {
+                destination.delegate = self
+            }
+        }
+    }
+    
+    private func notifiSelection() {
+        if let safeDelegate = delegate {
+            safeDelegate.answerFormatViewControllerDidSelectFormat(self)
+        }
+    }
+    
+    /// MARK: -
+    /// MARK: SelectContentLayoutViewControllerDelegate
+    
+    func layoutViewControllerDidSelectLayout(controller: SelectContentLayoutViewController) {
+        answersType = .Mixed(layout: controller.layoutType)
+        dismissViewControllerAnimated(true) { [unowned self] in
+            self.notifiSelection()
         }
     }
 }

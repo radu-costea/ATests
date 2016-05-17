@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ATests
 //
-//  Created by Radu Costea on 14/04/16.
+//  Created by Radu Costea on 17/05/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,6 +19,6 @@ extension User {
     @NSManaged var lastName: String?
     @NSManaged var password: String?
     @NSManaged var avatar: UserAvatar?
-    @NSManaged var questions: NSSet?
+    @NSManaged var tests: NSSet?
 
 }

@@ -1,8 +1,8 @@
 //
-//  Question+CoreDataProperties.swift
+//  UserAvatar+CoreDataProperties.swift
 //  ATests
 //
-//  Created by Radu Costea on 15/04/16.
+//  Created by Radu Costea on 17/05/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,11 +12,8 @@
 import Foundation
 import CoreData
 
-extension Question {
+extension UserAvatar {
 
-    @NSManaged var category: String?
-    @NSManaged var displayedAnswer: NSManagedObject?
-    @NSManaged var evaluator: NSManagedObject?
-    @NSManaged var owner: User?
+    @NSManaged var user: User?
 
 }

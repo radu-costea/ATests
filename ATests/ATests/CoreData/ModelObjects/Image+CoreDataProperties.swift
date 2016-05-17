@@ -1,8 +1,8 @@
 //
-//  Answer+CoreDataProperties.swift
+//  Image+CoreDataProperties.swift
 //  ATests
 //
-//  Created by Radu Costea on 21/04/16.
+//  Created by Radu Costea on 17/05/16.
 //  Copyright © 2016 Radu Costea. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,9 +12,9 @@
 import Foundation
 import CoreData
 
-extension Answer {
+extension Image {
 
-    @NSManaged var question: Question?
-    @NSManaged var variants: NSSet?
+    @NSManaged var base64String: String?
+    @NSManaged var title: String?
 
 }
