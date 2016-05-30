@@ -231,17 +231,17 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="150"/>
                     <connections>
-                        <outlet property="textView" destination="Kx8-tu-Gy6" id="tiN-gr-sWf"/>
+                        <outlet property="textView" destination="Kx8-tu-Gy6" id="2c0-bx-yuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ete-fI-3gL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2600" y="912"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Answer View Controller-->
         <scene sceneID="Vto-F8-lZM">
             <objects>
-                <viewController id="8a8-6b-bRR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editAnswer" id="8a8-6b-bRR" customClass="EditAnswerViewController" customModule="ATests" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gb4-xO-bRp"/>
                         <viewControllerLayoutGuide type="bottom" id="2C5-4g-RRp"/>
@@ -250,7 +250,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iCK-Hz-TFt">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iCK-Hz-TFt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hk9-84-fzH">
@@ -260,6 +260,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.67843137249999996" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Add answer"/>
+                                                <connections>
+                                                    <action selector="didTapAddAnswer:" destination="8a8-6b-bRR" eventType="touchUpInside" id="rNL-uX-D1E"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -284,6 +287,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="60"/>
+                    <connections>
+                        <outlet property="stackView" destination="iCK-Hz-TFt" id="Siu-aN-oXm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCs-Ws-91g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

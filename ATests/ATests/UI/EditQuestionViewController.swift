@@ -17,17 +17,17 @@ class EditQuestionViewController: UIViewController {
     @IBOutlet var questionContentView: UIView!
     @IBOutlet var questionAnswerView: UIView!
     
-    var editContentController: EditImageContentViewController!
-    var editTextController: EditMixedContentViewController!
+    var editContentController: EditRawContentController!
+    var editTextController: ContainedViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        editContentController = EditImageContentViewController.editContentController()
+        editContentController = EditContentFabric.imageController(nil)
         addEditController(editContentController, toView: questionContentView)
         
-        editTextController = EditMixedContentViewController.editContentController()
+        editTextController = EditAnswerViewController.controller()
         addEditController(editTextController, toView: questionAnswerView)
     }
     

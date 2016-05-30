@@ -8,24 +8,11 @@
 
 import UIKit
 
-class EditMixedContentViewController: UIViewController, ContainedController, ContentProviderDelegate {
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+class EditMixedContentViewController: EditRawContentController, ContentProviderDelegate {
     var imageObject: MixedContentObject?
-    weak var presenter: UIViewController?
     
     var image: UIImage?
     var text: String?
-    
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var textView: UILabel!
@@ -42,7 +29,6 @@ class EditMixedContentViewController: UIViewController, ContainedController, Con
         return provider
     }()
 
-    
     func loadImage() {
         if let data = imageObject?.base64Image?.toBase64Data(),
             let img = UIImage(data: data) {
@@ -51,23 +37,32 @@ class EditMixedContentViewController: UIViewController, ContainedController, Con
         }
     }
     
-    static func editContentController() -> EditMixedContentViewController? {
-        return UIStoryboard(name: "EditQuestionStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("editMixed") as? EditMixedContentViewController
+    override func loadWith<T : RawContent>(content: T?) {
+        if let mixed = content as? MixedRawContent {
+            image = mixed.image
+            text = mixed.text
+        }
     }
+    
+    /// MARK: -
+    /// MARK: Class 
+    
+    override static var storyboardName: String { return "EditQuestionStoryboard" }
+    override static var storyboardId: String { return "editMixed" }
     
     /// MARK: -
     /// MARK: Actions
     
     @IBAction func didTapOnImageContent(sender: AnyObject?) {
-        presenter?.presentViewController(self.imageProvider, animated: true, completion: nil)
+        presentViewController(self.imageProvider, animated: true, completion: nil)
     }
     
     @IBAction func didTapOnTextContent(sender: AnyObject?) {
-        presenter?.presentViewController(self.textProvider, animated: true, completion: nil)
+        presentViewController(self.textProvider, animated: true, completion: nil)
     }
     
     /// MARK: -
-    /// MARK: Conten Provider Delegate
+    /// MARK: Content Provider Delegate
     
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void {        
         if let currentProvider = provider as? PhotoViewController,
@@ -81,5 +76,11 @@ class EditMixedContentViewController: UIViewController, ContainedController, Con
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 textView.text = txt
         }
+    }
+}
+
+extension EditContentFabric {
+    class func mixedController(mixed: MixedRawContent?) -> EditMixedContentViewController? {
+        return EditMixedContentViewController.editController(mixed) as? EditMixedContentViewController
     }
 }

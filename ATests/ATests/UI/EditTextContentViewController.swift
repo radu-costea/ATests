@@ -8,12 +8,11 @@
 
 import UIKit
 
-class EditTextContentViewController: UIViewController, ContentProviderDelegate, ContainedController {
+class EditTextContentViewController: EditRawContentController, ContentProviderDelegate {
     var textObject: TextContentObject?
     var text: String?
     var contentProvider: TextProviderViewController!
-    
-    weak var presenter: UIViewController?
+
     @IBOutlet var textView: UILabel!
     
     override func viewDidLoad() {
@@ -31,9 +30,19 @@ class EditTextContentViewController: UIViewController, ContentProviderDelegate, 
         }
     }
     
-    static func editContentController() -> EditTextContentViewController? {
-        return UIStoryboard(name: "EditQuestionStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("editText") as? EditTextContentViewController
+    override func loadWith<T : RawContent>(content: T?) {
+        if let txt = content as? String {
+            text = txt
+            textView?.text = txt
+            contentProvider?.loadWith(txt)
+        }
     }
+    
+    /// MARK: -
+    /// MARK: Class
+    
+    override static var storyboardName: String { return "EditQuestionStoryboard" }
+    override static var storyboardId: String { return "editText" }
     
     /// MARK: -
     /// MARK: Actions
@@ -52,5 +61,10 @@ class EditTextContentViewController: UIViewController, ContentProviderDelegate, 
                 textView.text = txt
         }
     }
+}
 
+extension EditContentFabric {
+    class func textController(text: String?) -> EditTextContentViewController? {
+        return EditTextContentViewController.editController(text) as? EditTextContentViewController
+    }
 }

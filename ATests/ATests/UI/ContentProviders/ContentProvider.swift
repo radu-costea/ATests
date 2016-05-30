@@ -12,6 +12,15 @@ protocol RawContent { }
 extension String: RawContent { }
 extension UIImage: RawContent { }
 
+class MixedRawContent {
+    var image: UIImage?
+    var text: String?
+}
+
+extension MixedRawContent: RawContent { }
+
+class EmptyRawContent: RawContent { }
+
 protocol ContentProviderDelegate: class {
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void
 }

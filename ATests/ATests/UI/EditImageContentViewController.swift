@@ -8,12 +8,11 @@
 
 import UIKit
 
-class EditImageContentViewController: UIViewController, ContentProviderDelegate, ContainedController {
+class EditImageContentViewController: EditRawContentController, ContentProviderDelegate {
     var imageObject: ImageContentObject?
-    var image: UIImage?
+    var content: UIImage?
     var contentProvider: PhotoViewController!
     
-    weak var presenter: UIViewController?
     @IBOutlet var imageView: UIImageView!
 
     override func viewDidLoad() {
@@ -23,24 +22,35 @@ class EditImageContentViewController: UIViewController, ContentProviderDelegate,
         contentProvider = PhotoViewController.photoProvider(nil)
         contentProvider.delegate = self
     }
+    
+    override func loadWith<T : RawContent>(content: T?) {
+        guard let img = content as? UIImage else {
+            return
+        }
+        
+        self.content = img
+        contentProvider.loadWith(img)
+    }
 
     func loadImage() {
         if let data = imageObject?.base64Image?.toBase64Data(),
             let img = UIImage(data: data) {
-                image = img
-                contentProvider.loadWith(image)
+                content = img
+                contentProvider.loadWith(content)
         }
     }
     
-    static func editContentController() -> EditImageContentViewController? {
-        return UIStoryboard(name: "EditQuestionStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("editImage") as? EditImageContentViewController
-    }
+    /// MARK: -
+    /// MARK: Class functions
+    
+    override static var storyboardName: String { return "EditQuestionStoryboard" }
+    override static var storyboardId: String { return "editImage" }
 
     /// MARK: -
     /// MARK: Actions
     
     @IBAction func didTapOnContent(sender: AnyObject?) {
-        presenter?.presentViewController(self.contentProvider, animated: true, completion: nil)
+        presentViewController(self.contentProvider, animated: true, completion: nil)
     }
     
     /// MARK: -
@@ -52,5 +62,11 @@ class EditImageContentViewController: UIViewController, ContentProviderDelegate,
             currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 imageView.image = img
         }
+    }
+}
+
+extension EditContentFabric {
+    class func imageController(image: UIImage?) -> EditImageContentViewController? {
+        return EditImageContentViewController.editController(image) as? EditImageContentViewController
     }
 }

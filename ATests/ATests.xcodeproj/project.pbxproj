@@ -13,6 +13,8 @@
 		332B76F71CC04CC3004F7602 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F61CC04CC3004F7602 /* QuestionsViewController.swift */; };
 		332B76F81CC04CC3004F7602 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F61CC04CC3004F7602 /* QuestionsViewController.swift */; };
 		332B76F91CC04CC3004F7602 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F61CC04CC3004F7602 /* QuestionsViewController.swift */; };
+		334AC04F1CFCD01D0079C089 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AC04E1CFCD01D0079C089 /* EditAnswerViewController.swift */; };
+		334AC0511CFCD75B0079C089 /* EditRawContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */; };
 		334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
 		334B69691CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
 		334B696A1CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
@@ -314,6 +316,8 @@
 /* Begin PBXFileReference section */
 		332B76F11CC047F9004F7602 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		332B76F61CC04CC3004F7602 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
+		334AC04E1CFCD01D0079C089 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
+		334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRawContentViewController.swift; sourceTree = "<group>"; };
 		334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
 		3357835C1CDB3CC70054F0C5 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		335783911CDB40AB0054F0C5 /* ImageContentObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageContentObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -597,9 +601,11 @@
 			isa = PBXGroup;
 			children = (
 				33E22C1E1CF7A01600E3F07E /* EditQuestionViewController.swift */,
+				334AC04E1CFCD01D0079C089 /* EditAnswerViewController.swift */,
 				33762EC11CFB790000167F87 /* EditImageContentViewController.swift */,
 				33762EC31CFB790E00167F87 /* EditMixedContentViewController.swift */,
 				33762EC51CFB791C00167F87 /* EditTextContentViewController.swift */,
+				334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */,
 			);
 			name = EditQuestion;
 			sourceTree = "<group>";
@@ -1114,6 +1120,7 @@
 				62D4038F1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
 				62B15EF71CCA127A00600C45 /* ContentModel.swift in Sources */,
 				33A2B6301CDBEFC500C68E71 /* TextVariantsAnswerObject.swift in Sources */,
+				334AC0511CFCD75B0079C089 /* EditRawContentViewController.swift in Sources */,
 				33F138821CE9140900F8699A /* SelectAnswerFormatViewController.swift in Sources */,
 				335783B41CDB4C380054F0C5 /* AnswerVariantObject+CoreDataProperties.swift in Sources */,
 				336D1B6E1CE3D924001D4A70 /* VariantsQuestionImageText.swift in Sources */,
@@ -1189,6 +1196,7 @@
 				62BA4F941CCE63A40016AC34 /* AnswerModel.swift in Sources */,
 				62BA4F981CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				33E609691CEBB55900C1B32C /* UserAvatar.swift in Sources */,
+				334AC04F1CFCD01D0079C089 /* EditAnswerViewController.swift in Sources */,
 				6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				335783BD1CDB4C380054F0C5 /* MixedVariantObject.swift in Sources */,
