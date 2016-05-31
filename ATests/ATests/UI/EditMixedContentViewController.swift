@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditMixedContentViewController: EditRawContentController, ContentProviderDelegate {
+class EditMixedContentViewController: EditContentController, ContentProviderDelegate {
     var imageObject: MixedContentObject?
     
     var image: UIImage?
@@ -58,6 +58,13 @@ class EditMixedContentViewController: EditRawContentController, ContentProviderD
     }
     
     @IBAction func didTapOnTextContent(sender: AnyObject?) {
+        startEditing()
+    }
+    
+    /// MARK: -
+    /// MARK: Actions
+    
+    override func startEditing() {
         presentViewController(self.textProvider, animated: true, completion: nil)
     }
     
@@ -80,7 +87,7 @@ class EditMixedContentViewController: EditRawContentController, ContentProviderD
 }
 
 extension EditContentFabric {
-    class func mixedController(mixed: MixedRawContent?) -> EditMixedContentViewController? {
-        return EditMixedContentViewController.editController(mixed) as? EditMixedContentViewController
-    }
+//    class func mixedController(mixed: MixedRawContent?) -> EditMixedContentViewController? {
+//        return EditMixedContentViewController.editController(mixed) as? EditMixedContentViewController
+//    }
 }

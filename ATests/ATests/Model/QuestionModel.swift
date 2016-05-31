@@ -43,4 +43,3 @@ protocol VariantsQuestion: QuestionModel {
 protocol FreeAnswerQuestion: QuestionModel {
     typealias AnswerType: PercentAnswer
 }
-

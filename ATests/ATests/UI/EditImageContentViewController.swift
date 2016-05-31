@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EditImageContentViewController: EditRawContentController, ContentProviderDelegate {
-    var imageObject: ImageContentObject?
-    var content: UIImage?
+class EditImageContentViewController: EditContentController, ContentProviderDelegate {
+    var content: LiteImageContent?
+    var image: UIImage?
     var contentProvider: PhotoViewController!
     
     @IBOutlet var imageView: UIImageView!
@@ -23,20 +23,19 @@ class EditImageContentViewController: EditRawContentController, ContentProviderD
         contentProvider.delegate = self
     }
     
-    override func loadWith<T : RawContent>(content: T?) {
-        guard let img = content as? UIImage else {
+    override func loadWith<T : LiteContent>(content: T?) {
+        guard let img = content as? LiteImageContent else {
             return
         }
-        
         self.content = img
-        contentProvider.loadWith(img)
+        loadImage()
     }
 
     func loadImage() {
-        if let data = imageObject?.base64Image?.toBase64Data(),
+        if let data = content?.base64Image?.toBase64Data(),
             let img = UIImage(data: data) {
-                content = img
-                contentProvider.loadWith(content)
+                image = img
+                contentProvider.loadWith(img)
         }
     }
     
@@ -50,6 +49,10 @@ class EditImageContentViewController: EditRawContentController, ContentProviderD
     /// MARK: Actions
     
     @IBAction func didTapOnContent(sender: AnyObject?) {
+        startEditing()
+    }
+    
+    override func startEditing() {
         presentViewController(self.contentProvider, animated: true, completion: nil)
     }
     
@@ -59,14 +62,15 @@ class EditImageContentViewController: EditRawContentController, ContentProviderD
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void {
         if let currentProvider = provider as? PhotoViewController,
             let img = content as? UIImage {
-            currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 imageView.image = img
+                self.content?.base64Image = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
+                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
 
 extension EditContentFabric {
-    class func imageController(image: UIImage?) -> EditImageContentViewController? {
+    class func imageController(image: LiteImageContent?) -> EditImageContentViewController? {
         return EditImageContentViewController.editController(image) as? EditImageContentViewController
     }
 }

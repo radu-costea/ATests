@@ -30,10 +30,13 @@ protocol VariantsAnswerContent: ContentModel {
 extension VariantsAnswerContent {
     var variants: [VariantType]? {
         get { return nil }
-        set {}
+        set { }
     }
 }
 
 protocol VariantsAnswer: AnswerModel {
     typealias ContentType: VariantsAnswerContent, Equatable
 }
+
+
+/////// concrete  classes

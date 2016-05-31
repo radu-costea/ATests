@@ -31,35 +31,43 @@ class ContainedViewController: UIViewController, ContainedController {
     }
 }
 
-class EditRawContentController: ContainedViewController {
-    override class func controller() -> EditRawContentController? {
-        return super.controller() as? EditRawContentController
+class EditContentController: ContainedViewController {
+    override class func controller() -> EditContentController? {
+        return super.controller() as? EditContentController
     }
     
-    class func editController<T: RawContent>(content: T?) -> EditRawContentController! {
-        let controllerVC: EditRawContentController = self.controller()!
+    class func editController<T: LiteContent>(content: T?) -> EditContentController! {
+        let controllerVC: EditContentController = self.controller()!
         controllerVC.loadWith(content)
         return controllerVC
     }
     
-    func loadWith<T: RawContent>(content: T?) {
+    func loadWith<T: LiteContent>(content: T?) {
+        // STUB
+    }
+    
+    func startEditing() {
         // STUB
     }
 }
 
 class EditContentFabric {
-    class func editController(content: RawContent) -> EditRawContentController {
-        if let text = content as? String {
+    class func editController(content: LiteContent) -> EditContentController {
+        if let text = content as? LiteTextContent {
             return textController(text)!
         }
         
-        if let image = content as? UIImage {
+        if let image = content as? LiteImageContent {
             return imageController(image)!
         }
         
-        if let mixed = content as? MixedRawContent {
-            return mixedController(mixed)!
+        if let variants = content as? LiteVariantsAnswerContent {
+            return variantsController(variants)!
         }
+        
+//        if let mixed = content as? MixedRawContent {
+//            return mixedController(mixed)!
+//        }
         
         fatalError("WE cant find a controller")
     }

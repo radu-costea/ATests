@@ -8,8 +8,8 @@
 
 import UIKit
 
-class EditTextContentViewController: EditRawContentController, ContentProviderDelegate {
-    var textObject: TextContentObject?
+class EditTextContentViewController: EditContentController, ContentProviderDelegate {
+    var content: LiteTextContent?
     var text: String?
     var contentProvider: TextProviderViewController!
 
@@ -24,17 +24,18 @@ class EditTextContentViewController: EditRawContentController, ContentProviderDe
     }
     
     func loadText() {
-        if let txt = textObject?.text {
+        if let txt = content?.text {
             text = txt
             contentProvider.loadWith(txt)
         }
     }
     
-    override func loadWith<T : RawContent>(content: T?) {
-        if let txt = content as? String {
-            text = txt
-            textView?.text = txt
-            contentProvider?.loadWith(txt)
+    override func loadWith<T : LiteContent>(content: T?) {
+        if let txt = content as? LiteTextContent {
+            self.content = txt
+            let str = txt.text ?? ""
+            textView?.text = str
+            contentProvider?.loadWith(str)
         }
     }
     
@@ -48,7 +49,11 @@ class EditTextContentViewController: EditRawContentController, ContentProviderDe
     /// MARK: Actions
     
     @IBAction func didTapOnContent(sender: AnyObject?) {
-        presenter?.presentViewController(self.contentProvider, animated: true, completion: nil)
+        startEditing()
+    }
+    
+    override func startEditing() {
+        presentViewController(self.contentProvider, animated: true, completion: nil)
     }
     
     /// MARK: -
@@ -57,14 +62,15 @@ class EditTextContentViewController: EditRawContentController, ContentProviderDe
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void {
         if let currentProvider = provider as? TextProviderViewController,
             let txt = content as? String {
-                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 textView.text = txt
+                self.content?.text = txt
+                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
 
 extension EditContentFabric {
-    class func textController(text: String?) -> EditTextContentViewController? {
+    class func textController(text: LiteTextContent?) -> EditTextContentViewController? {
         return EditTextContentViewController.editController(text) as? EditTextContentViewController
     }
 }

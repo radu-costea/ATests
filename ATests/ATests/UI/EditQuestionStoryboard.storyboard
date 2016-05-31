@@ -238,6 +238,70 @@
             </objects>
             <point key="canvasLocation" x="2600" y="912"/>
         </scene>
+        <!--Edit Variant Controller-->
+        <scene sceneID="MHW-xh-AHw">
+            <objects>
+                <viewController storyboardIdentifier="editVariant" id="z3i-1c-0yY" customClass="EditVariantController" customModule="ATests" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qXI-ob-58K"/>
+                        <viewControllerLayoutGuide type="bottom" id="6xr-2s-0tH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tI6-2n-UN3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISg-37-uhq">
+                                <rect key="frame" x="0.0" y="0.0" width="38" height="150"/>
+                                <color key="backgroundColor" red="0.29344657060000001" green="0.49528143299999999" blue="0.29344657060000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Cpv-6f-VyO"/>
+                                </constraints>
+                                <state key="normal" title="v"/>
+                                <connections>
+                                    <action selector="didTapVariantAsCorrect:" destination="z3i-1c-0yY" eventType="touchUpInside" id="2Sh-3g-s6d"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AU7-b3-QYI">
+                                <rect key="frame" x="38" y="0.0" width="244" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEy-OY-KZe">
+                                <rect key="frame" x="282" y="0.0" width="38" height="150"/>
+                                <color key="backgroundColor" red="0.74019254800000001" green="0.28791569410000001" blue="0.26934010149999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Gr9-Lx-nrb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="hkp-J4-ern"/>
+                                </constraints>
+                                <state key="normal" title="x"/>
+                                <connections>
+                                    <action selector="didTapRemoveVariant:" destination="z3i-1c-0yY" eventType="touchUpInside" id="1no-hc-G6j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rEy-OY-KZe" secondAttribute="trailing" id="31v-Bz-Vpw"/>
+                            <constraint firstItem="AU7-b3-QYI" firstAttribute="top" secondItem="tI6-2n-UN3" secondAttribute="top" id="5LW-22-xo9"/>
+                            <constraint firstItem="6xr-2s-0tH" firstAttribute="top" secondItem="rEy-OY-KZe" secondAttribute="bottom" id="DYQ-qN-ebq"/>
+                            <constraint firstItem="rEy-OY-KZe" firstAttribute="top" secondItem="tI6-2n-UN3" secondAttribute="top" id="GtR-eq-kMs"/>
+                            <constraint firstItem="ISg-37-uhq" firstAttribute="leading" secondItem="tI6-2n-UN3" secondAttribute="leading" id="U6a-bN-urX"/>
+                            <constraint firstItem="rEy-OY-KZe" firstAttribute="leading" secondItem="AU7-b3-QYI" secondAttribute="trailing" id="Yh2-nm-IMU"/>
+                            <constraint firstItem="6xr-2s-0tH" firstAttribute="top" secondItem="AU7-b3-QYI" secondAttribute="bottom" id="bBz-a4-Yci"/>
+                            <constraint firstItem="AU7-b3-QYI" firstAttribute="leading" secondItem="ISg-37-uhq" secondAttribute="trailing" id="dLd-fn-OFo"/>
+                            <constraint firstItem="6xr-2s-0tH" firstAttribute="top" secondItem="ISg-37-uhq" secondAttribute="bottom" id="kkt-SU-izG"/>
+                            <constraint firstItem="ISg-37-uhq" firstAttribute="top" secondItem="tI6-2n-UN3" secondAttribute="top" id="nfW-4z-xyv"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="150"/>
+                    <connections>
+                        <outlet property="contentView" destination="AU7-b3-QYI" id="oaA-Z6-1fZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VpX-cV-JmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2977" y="1086"/>
+        </scene>
         <!--Edit Answer View Controller-->
         <scene sceneID="Vto-F8-lZM">
             <objects>
@@ -288,6 +352,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="60"/>
                     <connections>
+                        <outlet property="addAnswerView" destination="9NQ-vJ-sHG" id="oez-5n-fX5"/>
                         <outlet property="stackView" destination="iCK-Hz-TFt" id="Siu-aN-oXm"/>
                     </connections>
                 </viewController>

@@ -64,7 +64,9 @@ class ScrollViewKeyboardAvoider: KeyboardAvoidingContainer {
         scrollerInsets.bottom += CGFloat(self.insetsOffset)
         contentInsets.bottom += CGFloat(self.insetsOffset)
         
-        let animationCurve = UIViewAnimationOptions(rawValue:info[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue ?? 0)
+        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey]?.integerValue ?? 0
+        let option = UIViewAnimationOptions(rawValue: UInt(curve) << 16)
+        
         let duration = info[UIKeyboardAnimationDurationUserInfoKey]?.floatValue ?? 0.0
         
         let animationBlock = { [unowned self] in
@@ -72,6 +74,6 @@ class ScrollViewKeyboardAvoider: KeyboardAvoidingContainer {
             self.scrollView.scrollIndicatorInsets = scrollerInsets
         }
         
-        UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: animationCurve, animations: animationBlock) { _ in animationBlock() }
+        UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: option, animations: animationBlock) { _ in animationBlock() }
     }
 }

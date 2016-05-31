@@ -62,9 +62,10 @@ class TextProviderViewController: UIViewController, ContentProvider, UITextViewD
         let viewFrame = self.view.convertRect(self.view.bounds, toView: nil) ?? CGRectZero
         let intersection = CGRectIntersection(viewFrame, finalFrame)
         if intersection.size.height != self.keyboardPlaceholderHeightConstraint.constant {
-            let animationCurve = UIViewAnimationOptions(rawValue:info[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue ?? 0)
+            let curve = infoDict?[UIKeyboardAnimationCurveUserInfoKey]?.integerValue ?? 0
+            let option = UIViewAnimationOptions(rawValue: UInt(curve) << 16)
             let duration = info[UIKeyboardAnimationDurationUserInfoKey]?.timeInterval ?? 0.0
-            UIView.animateWithDuration(duration, delay: 0.0, options: animationCurve, animations: { [unowned self] _ in
+            UIView.animateWithDuration(duration, delay: 0.0, options: option, animations: { [unowned self] _ in
                 self.keyboardPlaceholderHeightConstraint.constant = intersection.size.height
                 self.view.layoutIfNeeded()
             }, completion: nil)
