@@ -11,6 +11,7 @@ import UIKit
 class EditAnswerViewController: EditContentController, EditVariantControllerDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var addAnswerView: UIView!
+    var allowedTypes: [LiteContentType] = [.Text, .Image]
     
     var content: LiteVariantsAnswerContent?
     var variants: [LiteAnswerVariant] { return content?.variants.sort{ $0.index < $1.index } ?? [] }
@@ -53,20 +54,35 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     }
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
-        let variant = LiteAnswerVariant(content: LiteImageContent(identifier: NSUUID().UUIDString, image: nil))
-        addVariant(variant)
+        showSelectContentType {  [unowned self] type in
+            let variant = LiteAnswerVariant(content: type.createNewContent(NSUUID().UUIDString))
+            let controller = self.addVariant(variant)
+            controller?.startEditing()
+        }
+    }
+    
+    func showSelectContentType(completion: (type: LiteContentType) -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please select content type", preferredStyle: .ActionSheet)
+        var actions = allowedTypes.map { type in
+            return UIAlertAction(title: type.name(), style: .Default, handler: { _ in completion(type: type) })
+        }
+        actions.append(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        actions.forEach{ alert.addAction($0) }
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     /// MARK: -
     /// MARK: Edit Variant Controller Delegate 
     
-    func addVariant(variant: LiteAnswerVariant) {
+    func addVariant(variant: LiteAnswerVariant) -> EditVariantController? {
         content?.variants = variants + [variant]
-        if let controller = EditVariantController.controllerWithVariant(variant) {
-            setupVariantController(controller)
+        guard let controller = EditVariantController.controllerWithVariant(variant) else {
+            return nil
         }
+        setupVariantController(controller)
+        return controller
     }
-    
+
     func editVariantControllerDidSelectDeleteVariant(controller: EditVariantController) {
         var answerVariants = variants
         guard let variant = controller.variant,

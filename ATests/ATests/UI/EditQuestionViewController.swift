@@ -12,13 +12,22 @@ protocol ContainedController {
     var presenter: UIViewController? { get set }
 }
 
-class EditQuestionViewController: UIViewController {
+class EditQuestionViewController: ContainedViewController, EditContentViewControllerDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var questionContentView: UIView!
     @IBOutlet var questionAnswerView: UIView!
     
-    var editContentController: EditContentController!
+    var editContentController: EditContentViewController!
     var editTextController: ContainedViewController!
+    
+    /// MARK: -
+    /// MARK: Class
+    
+    override static var storyboardName: String { return "EditQuestionStoryboard" }
+    override static var storyboardId: String { return "editQuestion" }
+    override class func controller() -> EditQuestionViewController? {
+        return super.controller() as? EditQuestionViewController
+    }
     
     var question: LiteQuestion?
 
@@ -27,26 +36,19 @@ class EditQuestionViewController: UIViewController {
         
         if let _ = question { }
         else {
-            let content = LiteTextContent(identifier: NSUUID().UUIDString, text: nil)
             let answer = LiteAnswer(content: LiteVariantsAnswerContent(identifier: NSUUID().UUIDString, variants: []))
-            question = LiteQuestion(content: content, answer: answer, evaluator: nil)
+            question = LiteQuestion(content: nil, answer: answer, evaluator: nil)
         }
 
         // Do any additional setup after loading the view.
-        editContentController = EditContentFabric.editController((question?.content)!)
+        editContentController = EditContentViewController.controller()
+        editContentController.content = question?.content
+        editContentController.delegate = self
+        
         addEditController(editContentController, toView: questionContentView)
         
         editTextController = EditContentFabric.editController((question?.answer?.content)!)
         addEditController(editTextController, toView: questionAnswerView)
-        
-        showQuestion()
-    }
-    
-    func showQuestion() {
-        print("\(question)")
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { [unowned self] _ in
-            self.showQuestion()
-        })
     }
     
     func addEditController<T: ContainedController where T: UIViewController>(var controller: T, toView view: UIView) {
@@ -63,21 +65,10 @@ class EditQuestionViewController: UIViewController {
             controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor)
         ])
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
+        if controller === editContentController {
+            question?.content = controller.content
+        }
     }
-    */
-
 }

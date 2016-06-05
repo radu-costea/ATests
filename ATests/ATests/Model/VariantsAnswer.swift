@@ -9,14 +9,14 @@
 import Foundation
 
 protocol AnswerVariant {
-    typealias ContentType: ContentModel
+//    typealias ContentType: ContentModel
     var index: UInt { get set }
     var correct: Bool { get set }
-    var content: ContentType? { get set }
+    var content: ContentModel? { get set }
 }
 
 extension AnswerVariant {
-    var content: ContentType? {
+    var content: ContentModel? {
         get { return nil }
         set { }
     }

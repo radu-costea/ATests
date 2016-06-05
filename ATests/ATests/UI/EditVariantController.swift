@@ -14,6 +14,8 @@ protocol EditVariantControllerDelegate: class {
 
 class EditVariantController: ContainedViewController {
     weak var delegate: EditVariantControllerDelegate?
+    
+    @IBOutlet var selectionView: UIView!
     var variant: LiteAnswerVariant?
     var editContentController: EditContentController!
     
@@ -38,6 +40,7 @@ class EditVariantController: ContainedViewController {
         // Do any additional setup after loading the view.
         editContentController = EditContentFabric.editController((variant?.content)!)
         addController(editContentController)
+        refreshSelection()
     }
     
     func addController(controller: EditContentController) {
@@ -55,6 +58,10 @@ class EditVariantController: ContainedViewController {
         ])
     }
     
+    func startEditing() {
+        editContentController?.startEditing()
+    }
+    
     /// MARK: -
     /// MARK: Actions
     
@@ -64,6 +71,11 @@ class EditVariantController: ContainedViewController {
     
     @IBAction func didTapVariantAsCorrect(sender: AnyObject?) {
         variant?.correct = !(variant?.correct ?? false)
+        refreshSelection()
+    }
+    
+    func refreshSelection() {
+        selectionView.backgroundColor = (variant?.correct ?? false) ? UIColor.greenColor() : UIColor.whiteColor()
     }
 
 }

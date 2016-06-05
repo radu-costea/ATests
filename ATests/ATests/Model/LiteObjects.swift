@@ -13,7 +13,7 @@ class LiteQuestion: QuestionModel, CustomStringConvertible {
     var answer: LiteAnswer?
     var evaluator: LiteEvaluator?
     
-    init(content: LiteContent, answer: LiteAnswer, evaluator: LiteEvaluator?) {
+    init(content: LiteContent?, answer: LiteAnswer?, evaluator: LiteEvaluator?) {
         self.content = content
         self.answer = answer
         self.evaluator = evaluator
@@ -66,6 +66,29 @@ class LiteImageContent: LiteContent {
     }
     
     override var description: String { return "\(super.description) image: \(base64Image?.hashValue)" }
+}
+
+enum LiteContentType {
+    case Text
+    case Image
+    
+    func name() -> String {
+        switch self {
+        case .Text:
+            return "Text"
+        case .Image:
+            return "Image"
+        }
+    }
+    
+    func createNewContent(identifier: String)-> LiteContent {
+        switch self {
+        case .Text:
+            return LiteTextContent(identifier: identifier, text: nil)
+        case .Image:
+            return LiteImageContent(identifier: identifier, image: nil)
+        }
+    }
 }
 
 // Answer specific content

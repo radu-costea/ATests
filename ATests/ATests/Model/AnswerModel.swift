@@ -9,12 +9,12 @@
 import Foundation
 
 protocol AnswerModel {
-    typealias ContentType: ContentModel
-    var content: ContentType? { get set }
+//    typealias ContentType: ContentModel
+    var content: ContentModel? { get set }
 }
 
 extension AnswerModel {
-    var content: ContentType? {
+    var content: ContentModel? {
         get { return nil }
         set { }
     }

@@ -14,6 +14,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     var contentProvider: PhotoViewController!
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var ratioConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
                 image = img
                 contentProvider.loadWith(img)
         }
+        
+        correctRatio()
     }
     
     /// MARK: -
@@ -65,7 +68,16 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
                 imageView.image = img
                 self.content?.base64Image = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                correctRatio()
+        
         }
+    }
+    
+    func correctRatio() {
+        ratioConstraint?.active = false
+        let newRatio = CGFloat((imageView?.image?.size.width ?? 2.0) / (imageView?.image?.size.height ?? 1.0))
+        ratioConstraint = imageView?.widthAnchor.constraintEqualToAnchor(imageView?.heightAnchor, multiplier: newRatio)
+        ratioConstraint?.active = true
     }
 }
 
