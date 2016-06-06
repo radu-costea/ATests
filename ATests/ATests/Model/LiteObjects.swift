@@ -22,6 +22,12 @@ class LiteQuestion: QuestionModel, CustomStringConvertible {
     var description: String { return "\(self.dynamicType) content: \(content), answer: \(answer), evaluator: \(evaluator)" }
 }
 
+class LiteTestQuestion: TestQuestion {
+    typealias QuestionType = LiteQuestion
+    var question: LiteQuestion?
+    var weight: Int = 10
+}
+
 /// Answers
 
 class LiteAnswer: AnswerModel, CustomStringConvertible {

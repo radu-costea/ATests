@@ -43,3 +43,26 @@ protocol VariantsQuestion: QuestionModel {
 protocol FreeAnswerQuestion: QuestionModel {
     typealias AnswerType: PercentAnswer
 }
+
+protocol TestQuestion {
+    typealias QuestionType: QuestionModel
+    var question: QuestionType? { get set }
+    var weight: Int { get set }
+}
+
+extension TestQuestion {
+    var question: QuestionType? {
+        get { return nil }
+        set { }
+    }
+    
+    var weight: Int {
+        get { return 10 }
+        set { }
+    }
+}
+
+protocol TestModel {
+    typealias QuestionType: TestQuestion
+    var questions: [QuestionType] { get set }
+}
