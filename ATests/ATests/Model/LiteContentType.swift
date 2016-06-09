@@ -22,9 +22,9 @@ enum LiteContentType {
     func createNewContent(identifier: String)-> LiteContent {
         switch self {
         case .Text:
-            return LiteTextContent.new(["identifier" : identifier]) as! LiteTextContent
+            return LiteTextContent(with: ["identifier" : identifier])!
         case .Image:
-            return LiteImageContent.new(["identifier" : identifier]) as! LiteImageContent
+            return LiteImageContent(with: ["identifier" : identifier])!
         }
     }
 }

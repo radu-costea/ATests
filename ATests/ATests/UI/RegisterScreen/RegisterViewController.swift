@@ -81,15 +81,15 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
         guard let password = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword") else {
             return
         }
-        let userInfo = [
+        let userInfo: [String: AnyObject] = [
             "email" : emailVM.text!,
             "password" : password,
             "firstName" : firstNameVM.text!,
             "lastName" : lastNameVM.text!,
-            "avatar" : UserAvatar.new(image?.base64String.map{["base64String" : $0]} ?? [:])!
+            "avatar" : UserAvatar(with: image?.base64String.map{["base64String" : $0]} ?? [:])!
         ]
         
-        guard let created = User.new(userInfo) as? User else {
+        guard let created = User(with: userInfo) else {
             return
         }
         user = created

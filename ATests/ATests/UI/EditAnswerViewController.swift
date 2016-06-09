@@ -55,7 +55,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
         showSelectContentType {  [unowned self] type in
-            let variant = LiteAnswerVariant.new(["content": type.createNewContent(NSUUID().UUIDString)]) as! LiteAnswerVariant
+            let variant = LiteAnswerVariant(with: ["content": type.createNewContent(NSUUID().UUIDString)])! //as! LiteAnswerVariant
             let controller = self.addVariant(variant)
             controller?.startEditing()
         }

@@ -36,12 +36,12 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
         
         if let _ = question { }
         else {
-            let answerContent = LiteVariantsAnswerContent.new([
+            let answerContent = LiteVariantsAnswerContent(with: [
                 "identifier": NSUUID().UUIDString,
                 "variants": NSSet()
-            ]) as! LiteVariantsAnswerContent
-            let answer = LiteAnswer.new(["content": answerContent]) as! LiteAnswer
-            question = LiteQuestion.new(["answer": answer]) as? LiteQuestion
+            ])!
+            let answer = LiteAnswer(with: ["content": answerContent])!
+            question = LiteQuestion(with: ["answer": answer])!
         }
 
         // Do any additional setup after loading the view.

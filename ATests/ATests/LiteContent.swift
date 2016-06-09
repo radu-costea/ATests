@@ -17,9 +17,7 @@ class LiteContent: NSManagedObject {
 
 }
 
-extension LiteContent: ContentModel {
-    
-}
+extension LiteContent: ContentModel { }
 
 func ==<T: LiteContent>(lhs: T, rhs: T) -> Bool {
     guard let lhsIdentifier = lhs.identifier,

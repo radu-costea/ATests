@@ -19,79 +19,46 @@ protocol ActiveRecord: AnyObject {
 /**
  *  @brief Active managed object
  */
-protocol ActiveManagedObject: ActiveRecord {
-    static func sharedContext() -> NSManagedObjectContext?
-    func persist() throws
-}
-
-extension ActiveManagedObject {
-    private static func all(inContext context: NSManagedObjectContext, with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) throws -> [AnyObject] {
-        return try context.fetchObjects(ofType: String(Self), with: predicateFormat, limit: limit, sortBy: sortBy)
-    }
+extension NSManagedObject: ActiveRecord {
     
-    private static func new(inContext context: NSManagedObjectContext) -> NSManagedObject {
-        return NSEntityDescription.insertNewObjectForEntityForName(String(Self), inManagedObjectContext: context)
-    }
+    // MARK: -
+    // MARK: Object creation
     
-    private static func count(inContext context: NSManagedObjectContext, with predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) -> Int {
-        return context.countObjects(ofType: String(Self), with: predicateFormat, limit: limit, sortBy: sortBy)
-    }
-    
-    private static func find(inContext context: NSManagedObjectContext, with predicateFormat: String) throws -> AnyObject? {
-        if count(inContext: context, with: predicateFormat, limit: nil, sortBy: nil) == 1 {
-            return try all(inContext: context, with: predicateFormat, limit: nil, sortBy: nil).first!
-        }
-        return nil
-    }
-}
-
-extension ActiveManagedObject {
-    // MARK: - Active Record Implementation
-    static func all(with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) throws -> [AnyObject] {
-        guard let context = sharedContext() else {
-            return []
-        }
-        return try all(inContext: context, with: predicateFormat, limit: limit, sortBy: sortBy)
-    }
-    
-    static func count(with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) -> Int {
-        guard let context = sharedContext() else {
-            return 0
-        }
-        return count(inContext: context, with: predicateFormat, limit: limit, sortBy: sortBy)
-    }
-    
-    static func find(with predicateFormat: String) throws -> AnyObject? {
-        guard let context = sharedContext() else {
+    public convenience init?(with: [String : AnyObject]?) {
+        guard let entity = NSEntityDescription.entityForName(String(self.dynamicType), inManagedObjectContext: NSManagedObject.sharedContext()) else {
             return nil
         }
-        return try find(inContext: context, with: predicateFormat)
+        self.init(entity: entity, insertIntoManagedObjectContext: NSManagedObject.sharedContext())
+        if let values = with {
+            setValuesForKeysWithDictionary(values)
+        }
     }
     
     static func new(with: [String: AnyObject]? = nil) -> AnyObject? {
-        guard let context = sharedContext() else {
-            return nil
-        }
-        let object = new(inContext: context)
+        let object = new(inContext: sharedContext())
         if let values = with {
             object.setValuesForKeysWithDictionary(values)
         }
         return object
     }
-}
-
-/**
- *  @brief Active managed object
- */
-extension NSManagedObject: ActiveManagedObject {
-    private static var sharedInstance: NSManagedObjectContext?
-    static func sharedContext() -> NSManagedObjectContext? {
-        return sharedInstance
+    
+    // MARK: -
+    // MARK: Active record implementation
+    
+    class func all(with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) throws -> [AnyObject] {
+        return try all(inContext: sharedContext(), with: predicateFormat, limit: limit, sortBy: sortBy)
     }
     
-    static func configureWithContextManager(manager: ContextManager) -> Void {
-        sharedInstance = manager.managedObjectContext
+    class func count(with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) -> Int {
+        return count(inContext: sharedContext(), with: predicateFormat, limit: limit, sortBy: sortBy)
     }
+    
+    class func find(with predicateFormat: String) throws -> AnyObject? {
+        return try find(inContext: sharedContext(), with: predicateFormat)
+    }
+    
+    // MARK: - 
+    // MARK: Save & setup
     
     func persist() throws {
         try managedObjectContext?.save()
@@ -101,5 +68,43 @@ extension NSManagedObject: ActiveManagedObject {
         do {
             try persist()
         } catch { }
+    }
+
+    
+    // MARK: -
+    // MARK: Private helpers
+    
+    private static var sharedInstance: NSManagedObjectContext?
+    private static func sharedContext() -> NSManagedObjectContext! {
+        guard let instance = sharedInstance else {
+            fatalError("Tried to use context before setup")
+        }
+        return instance
+    }
+    
+    static func configureWithContextManager(manager: ContextProvider) -> Void {
+        sharedInstance = manager.managedObjectContext
+    }
+    
+    // MARK: -
+    // MARK: Active record like but with a context passed
+    
+    public class func all(inContext context: NSManagedObjectContext, with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) throws -> [AnyObject] {
+        return try context.fetchObjects(ofType: String(self), with: predicateFormat, limit: limit, sortBy: sortBy)
+    }
+    
+    public class func new(inContext context: NSManagedObjectContext) -> NSManagedObject {
+        return NSEntityDescription.insertNewObjectForEntityForName(String(self.dynamicType), inManagedObjectContext: context)
+    }
+    
+    public class func count(inContext context: NSManagedObjectContext, with predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) -> Int {
+        return context.countObjects(ofType: String(self), with: predicateFormat, limit: limit, sortBy: sortBy)
+    }
+    
+    public static func find(inContext context: NSManagedObjectContext, with predicateFormat: String) throws -> AnyObject? {
+        guard count(inContext: context, with: predicateFormat, limit: nil, sortBy: nil) == 1 else {
+            return nil
+        }
+        return try all(inContext: context, with: predicateFormat, limit: nil, sortBy: nil).first
     }
 }

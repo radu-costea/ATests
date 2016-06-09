@@ -15,7 +15,12 @@ extension NSFileManager {
     }
 }
 
-class ContextManager {
+protocol ContextProvider {
+    var managedObjectContext: NSManagedObjectContext { get }
+    func saveContext ()
+}
+
+class ContextManager: ContextProvider {
     // MARK: - Dependencies
     lazy var fileManager: NSFileManager = NSFileManager.defaultManager()
     lazy var managedObjectModel: NSManagedObjectModel = self.createManagedObjectModel()
@@ -77,7 +82,7 @@ class ContextManager {
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+    func saveContext() {
         guard managedObjectContext.hasChanges else {
             return
         }

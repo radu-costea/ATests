@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum SortCriteria {
+public enum SortCriteria {
     case ascending(String)
     case descending(String)
     
@@ -32,7 +32,7 @@ extension NSManagedObjectContext {
     func countObjects(ofType type: String, with predicateFormat: String? = nil, limit: NSInteger? = nil, sortBy: [SortCriteria]? = nil) -> Int {
         let request = NSFetchRequest(entityName: type, with: predicateFormat, limit: limit, sortBy: sortBy)
         request.resultType = .CountResultType
-        var error: NSError?     = nil
+        var error: NSError? = nil
         let count = countForFetchRequest(request, error: &error)
         return count
     }
