@@ -45,17 +45,19 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
         }
 
         // Do any additional setup after loading the view.
-        editContentController = EditContentViewController.controller()
-        editContentController.content = question?.content
-        editContentController.delegate = self
+        var contentController = EditContentViewController.controller()!
+        contentController.content = question?.content
+        contentController.delegate = self
         
-        addEditController(editContentController, toView: questionContentView)
+        addEditController(&contentController, toView: questionContentView)
+        editContentController = contentController
         
-        editTextController = EditContentFabric.editController((question?.answer?.content)!)
-        addEditController(editTextController, toView: questionAnswerView)
+        var answerController = EditContentFabric.editController((question?.answer?.content)!)
+        addEditController(&answerController, toView: questionAnswerView)
+        editTextController = answerController
     }
     
-    func addEditController<T: ContainedController where T: UIViewController>(var controller: T, toView view: UIView) {
+    func addEditController<T: ContainedViewController>(inout controller: T, toView view: UIView) {
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         controller.presenter = self
         
