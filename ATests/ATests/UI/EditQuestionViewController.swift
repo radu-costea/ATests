@@ -36,8 +36,12 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
         
         if let _ = question { }
         else {
-            let answer = LiteAnswer(content: LiteVariantsAnswerContent(identifier: NSUUID().UUIDString, variants: []))
-            question = LiteQuestion(content: nil, answer: answer, evaluator: nil)
+            let answerContent = LiteVariantsAnswerContent.new([
+                "identifier": NSUUID().UUIDString,
+                "variants": NSSet()
+            ]) as! LiteVariantsAnswerContent
+            let answer = LiteAnswer.new(["content": answerContent]) as! LiteAnswer
+            question = LiteQuestion.new(["answer": answer]) as? LiteQuestion
         }
 
         // Do any additional setup after loading the view.
@@ -69,6 +73,7 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
         if controller === editContentController {
             question?.content = controller.content
+            question?.tryPersit()
         }
     }
 }

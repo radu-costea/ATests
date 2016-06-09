@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol QuestionModel {
-    typealias ContentType: ContentModel
-    typealias AnswerType: AnswerModel
-    typealias EvaluatorType: AnswerEvaluatorModel
+protocol QuestionModel: class {
+    associatedtype ContentType: ContentModel
+    associatedtype AnswerType: AnswerModel
+    associatedtype EvaluatorType: AnswerEvaluatorModel
     
     var content: ContentType? { get set }
     var answer: AnswerType? { get set }
@@ -37,15 +37,15 @@ extension QuestionModel {
 
 
 protocol VariantsQuestion: QuestionModel {
-    typealias AnswerType: VariantsAnswer
+    associatedtype AnswerType: VariantsAnswer
 }
 
 protocol FreeAnswerQuestion: QuestionModel {
-    typealias AnswerType: PercentAnswer
+    associatedtype AnswerType: PercentAnswer
 }
 
 protocol TestQuestion {
-    typealias QuestionType: QuestionModel
+    associatedtype QuestionType: QuestionModel
     var question: QuestionType? { get set }
     var weight: Int { get set }
 }
@@ -63,6 +63,6 @@ extension TestQuestion {
 }
 
 protocol TestModel {
-    typealias QuestionType: TestQuestion
+    associatedtype QuestionType: TestQuestion
     var questions: [QuestionType] { get set }
 }

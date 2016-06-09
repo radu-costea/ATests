@@ -32,8 +32,13 @@ class EditTestViewController: UIViewController {
     }
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
-        let answer = LiteAnswer(content: LiteVariantsAnswerContent(identifier: NSUUID().UUIDString, variants: []))
-        let question = LiteQuestion(content: nil, answer: answer, evaluator: nil)
+        let answerContent = LiteVariantsAnswerContent.new([
+            "identifier": NSUUID().UUIDString,
+            "variants": []
+        ]) as! LiteVariantsAnswerContent
+        
+        let answer = LiteAnswer.new(["content": answerContent]) as! LiteAnswer
+        let question = LiteQuestion.new(["answer": answer]) as! LiteQuestion
         addQuestion(question, atIndex: questions.count)
         questions.append(question)
     }

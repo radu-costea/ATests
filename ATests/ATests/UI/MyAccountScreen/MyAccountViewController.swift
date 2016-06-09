@@ -16,6 +16,9 @@ class MyAccountViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print("received user: \(user)")
+        do {
+            print("questions: \(try LiteQuestion.all())")
+        } catch {}
     }
 
     override func didReceiveMemoryWarning() {

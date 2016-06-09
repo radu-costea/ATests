@@ -10,7 +10,7 @@ import Foundation
 
 protocol AnswerVariant {
 //    typealias ContentType: ContentModel
-    var index: UInt { get set }
+    var index: Int32 { get set }
     var correct: Bool { get set }
     var content: ContentModel? { get set }
 }
@@ -23,7 +23,7 @@ extension AnswerVariant {
 }
 
 protocol VariantsAnswerContent: ContentModel {
-    typealias VariantType: AnswerVariant, Equatable
+    associatedtype VariantType: AnswerVariant, Equatable
     var variants: [VariantType]? { get set }
 }
 
@@ -35,7 +35,7 @@ extension VariantsAnswerContent {
 }
 
 protocol VariantsAnswer: AnswerModel {
-    typealias ContentType: VariantsAnswerContent, Equatable
+    associatedtype ContentType: VariantsAnswerContent, Equatable
 }
 
 

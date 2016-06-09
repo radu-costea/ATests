@@ -26,6 +26,6 @@ protocol ContentProviderDelegate: class {
 }
 
 protocol ContentProvider {
-    typealias ContentType: RawContent
+    associatedtype ContentType: RawContent
     func loadWith(content: ContentType?) -> Void
 }

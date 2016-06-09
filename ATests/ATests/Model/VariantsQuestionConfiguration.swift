@@ -42,7 +42,7 @@ enum ContentTypeEnum {
 }
 
 protocol QuestionConfiguration {
-    typealias T: QuestionModel
+    associatedtype T: QuestionModel
     func makeQuestion() -> T?
 }
 

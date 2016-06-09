@@ -14,7 +14,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     var allowedTypes: [LiteContentType] = [.Text, .Image]
     
     var content: LiteVariantsAnswerContent?
-    var variants: [LiteAnswerVariant] { return content?.variants.sort{ $0.index < $1.index } ?? [] }
+    var variants: [LiteAnswerVariant] { return content?.sortedVariants ?? [] }
     
     override class var storyboardName: String { return "EditQuestionStoryboard" }
     override class var storyboardId: String { return "editAnswer" }
@@ -55,7 +55,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
         showSelectContentType {  [unowned self] type in
-            let variant = LiteAnswerVariant(content: type.createNewContent(NSUUID().UUIDString))
+            let variant = LiteAnswerVariant.new(["content": type.createNewContent(NSUUID().UUIDString)]) as! LiteAnswerVariant
             let controller = self.addVariant(variant)
             controller?.startEditing()
         }

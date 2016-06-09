@@ -1,58 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1713" minimumToolsVersion="Xcode 7.0">
-    <entity name="AnswerVariantObject" representedClassName=".AnswerVariantObject" isAbstract="YES" syncable="YES">
-        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="orderIdx" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="ContentObject" representedClassName=".ContentObject" isAbstract="YES" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Image" representedClassName=".Image" isAbstract="YES" syncable="YES">
         <attribute name="base64String" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ImageContentObject" representedClassName=".ImageContentObject" parentEntity="ContentObject" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="LiteAnswer" representedClassName="LiteAnswer" syncable="YES">
+        <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
     </entity>
-    <entity name="ImageVariantObject" representedClassName=".ImageVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentObject" syncable="YES"/>
+    <entity name="LiteAnswerVariant" representedClassName="LiteAnswerVariant" syncable="YES">
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="variantIndex" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
     </entity>
-    <entity name="ImageVariantsAnswerContentObject" representedClassName=".ImageVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
-        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageVariantObject" syncable="YES"/>
+    <entity name="LiteContent" representedClassName="LiteContent" isAbstract="YES" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ImageVariantsAnswerObject" representedClassName=".ImageVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageVariantsAnswerContentObject" syncable="YES"/>
+    <entity name="LiteEvaluator" representedClassName="LiteEvaluator" syncable="YES">
+        <relationship name="referenceObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteAnswer" syncable="YES"/>
     </entity>
-    <entity name="MixedContentObject" representedClassName=".MixedContentObject" parentEntity="ContentObject" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="LiteImageContent" representedClassName="LiteImageContent" parentEntity="LiteContent" syncable="YES">
+        <attribute name="base64Image" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="MixedVariantObject" representedClassName=".MixedVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedContentObject" syncable="YES"/>
+    <entity name="LiteQuestion" representedClassName="LiteQuestion" syncable="YES">
+        <relationship name="answerObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteAnswer" syncable="YES"/>
+        <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
+        <relationship name="evaluatorObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteEvaluator" syncable="YES"/>
     </entity>
-    <entity name="MixedVariantsAnswerContentObject" representedClassName=".MixedVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
-        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MixedVariantObject" syncable="YES"/>
+    <entity name="LiteTextContent" representedClassName="LiteTextContent" parentEntity="LiteContent" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="MixedVariantsAnswerObject" representedClassName=".MixedVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedVariantsAnswerContentObject" syncable="YES"/>
-    </entity>
-    <entity name="QuestionObject" representedClassName=".QuestionObject" isAbstract="YES" syncable="YES">
-        <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Test" inverseName="questions" inverseEntity="Test" syncable="YES"/>
+    <entity name="LiteVariantsAnswerContent" representedClassName="LiteVariantsAnswerContent" parentEntity="LiteContent" syncable="YES">
+        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteAnswerVariant" syncable="YES"/>
     </entity>
     <entity name="Test" representedClassName=".Test" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tests" inverseEntity="User" syncable="YES"/>
-        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionObject" inverseName="test" inverseEntity="QuestionObject" syncable="YES"/>
-    </entity>
-    <entity name="TextContentObject" representedClassName=".TextContentObject" parentEntity="ContentObject" syncable="YES">
-        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="TextVariantObject" representedClassName=".TextVariantObject" parentEntity="AnswerVariantObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentObject" syncable="YES"/>
-    </entity>
-    <entity name="TextVariantsAnswerContentObject" representedClassName=".TextVariantsAnswerContentObject" parentEntity="VariantsAnswerContentObject" syncable="YES">
-        <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TextVariantObject" syncable="YES"/>
-    </entity>
-    <entity name="TextVariantsAnswerObject" representedClassName=".TextVariantsAnswerObject" parentEntity="VariantsAnswerObject" syncable="YES">
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextVariantsAnswerContentObject" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,74 +48,18 @@
     <entity name="UserAvatar" representedClassName=".UserAvatar" parentEntity="Image" syncable="YES">
         <relationship name="user" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="User" inverseName="avatar" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="VariantsAnswerContentObject" representedClassName=".VariantsAnswerContentObject" isAbstract="YES" syncable="YES"/>
-    <entity name="VariantsAnswerObject" representedClassName=".VariantsAnswerObject" isAbstract="YES" syncable="YES"/>
-    <entity name="VariantsQuestionImageImage" representedClassName=".VariantsQuestionImageImage" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionImageMixed" representedClassName=".VariantsQuestionImageMixed" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionImageText" representedClassName=".VariantsQuestionImageText" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionMixedImage" representedClassName=".VariantsQuestionMixedImage" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionMixedMixed" representedClassName=".VariantsQuestionMixedMixed" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionMixedText" representedClassName=".VariantsQuestionMixedText" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionTextImage" representedClassName=".VariantsQuestionTextImage" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionTextMixed" representedClassName=".VariantsQuestionTextMixed" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MixedVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentObject" syncable="YES"/>
-    </entity>
-    <entity name="VariantsQuestionTextText" representedClassName=".VariantsQuestionTextText" parentEntity="QuestionObject" syncable="YES">
-        <relationship name="answerObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextVariantsAnswerObject" syncable="YES"/>
-        <relationship name="contentObj" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentObject" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="AnswerVariantObject" positionX="0" positionY="54" width="128" height="75"/>
-        <element name="ContentObject" positionX="0" positionY="63" width="128" height="43"/>
         <element name="Image" positionX="9" positionY="27" width="128" height="75"/>
-        <element name="ImageContentObject" positionX="-54" positionY="0" width="128" height="60"/>
-        <element name="ImageVariantObject" positionX="-9" positionY="45" width="128" height="60"/>
-        <element name="ImageVariantsAnswerContentObject" positionX="27" positionY="90" width="128" height="60"/>
-        <element name="ImageVariantsAnswerObject" positionX="18" positionY="72" width="128" height="60"/>
-        <element name="MixedContentObject" positionX="-36" positionY="18" width="128" height="75"/>
-        <element name="MixedVariantObject" positionX="36" positionY="99" width="128" height="60"/>
-        <element name="MixedVariantsAnswerContentObject" positionX="36" positionY="99" width="128" height="60"/>
-        <element name="MixedVariantsAnswerObject" positionX="27" positionY="81" width="128" height="60"/>
-        <element name="QuestionObject" positionX="0" positionY="54" width="128" height="60"/>
-        <element name="TextContentObject" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="TextVariantObject" positionX="18" positionY="81" width="128" height="60"/>
-        <element name="TextVariantsAnswerContentObject" positionX="18" positionY="81" width="128" height="60"/>
-        <element name="TextVariantsAnswerObject" positionX="9" positionY="63" width="128" height="60"/>
+        <element name="Test" positionX="0" positionY="18" width="128" height="90"/>
         <element name="User" positionX="18" positionY="36" width="128" height="135"/>
         <element name="UserAvatar" positionX="36" positionY="54" width="128" height="60"/>
-        <element name="VariantsAnswerContentObject" positionX="9" positionY="72" width="128" height="43"/>
-        <element name="VariantsAnswerObject" positionX="0" positionY="54" width="128" height="43"/>
-        <element name="VariantsQuestionImageImage" positionX="-38" positionY="-124" width="128" height="73"/>
-        <element name="VariantsQuestionImageMixed" positionX="27" positionY="81" width="128" height="73"/>
-        <element name="VariantsQuestionImageText" positionX="18" positionY="72" width="128" height="73"/>
-        <element name="VariantsQuestionMixedImage" positionX="0" positionY="54" width="128" height="73"/>
-        <element name="VariantsQuestionMixedMixed" positionX="18" positionY="72" width="128" height="73"/>
-        <element name="VariantsQuestionMixedText" positionX="9" positionY="63" width="128" height="73"/>
-        <element name="VariantsQuestionTextImage" positionX="36" positionY="90" width="128" height="73"/>
-        <element name="VariantsQuestionTextMixed" positionX="54" positionY="108" width="128" height="73"/>
-        <element name="VariantsQuestionTextText" positionX="45" positionY="99" width="128" height="73"/>
-        <element name="Test" positionX="0" positionY="18" width="128" height="90"/>
+        <element name="LiteContent" positionX="0" positionY="18" width="128" height="60"/>
+        <element name="LiteTextContent" positionX="9" positionY="27" width="128" height="60"/>
+        <element name="LiteImageContent" positionX="18" positionY="36" width="128" height="60"/>
+        <element name="LiteAnswerVariant" positionX="27" positionY="45" width="128" height="90"/>
+        <element name="LiteVariantsAnswerContent" positionX="36" positionY="54" width="128" height="60"/>
+        <element name="LiteAnswer" positionX="45" positionY="63" width="128" height="60"/>
+        <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="90"/>
+        <element name="LiteEvaluator" positionX="9" positionY="27" width="128" height="60"/>
     </elements>
 </model>
