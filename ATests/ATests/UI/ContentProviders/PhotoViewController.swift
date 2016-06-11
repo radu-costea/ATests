@@ -34,18 +34,16 @@ class PhotoViewController: UIViewController, ContentProvider, UIImagePickerContr
         provider?.loadWith(image)
         return provider
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         displayImage(self.content)
     }
     
     func displayImage(image: UIImage?) {
         self.content = image
         if let img = image {
-            imageView.image = img
+            imageView?.image = img
         }
     }
     

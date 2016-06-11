@@ -23,19 +23,23 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
         contentProvider.delegate = self
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadText()
+    }
+    
     func loadText() {
         if let txt = content?.text {
             text = txt
-            contentProvider.loadWith(txt)
+            contentProvider?.loadWith(txt)
+            textView?.text = txt
         }
     }
     
     override func loadWith<T : LiteContent>(content: T?) {
         if let txt = content as? LiteTextContent {
             self.content = txt
-            let str = txt.text ?? ""
-            textView?.text = str
-            contentProvider?.loadWith(str)
+            loadText()
         }
     }
     

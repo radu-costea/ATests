@@ -13,14 +13,14 @@ extension NSFetchRequest {
     convenience init(entityName: String, with predicateFormat: String?, limit: NSInteger?, sortBy: [SortCriteria]?) {
         self.init(entityName: entityName)
         if let format = predicateFormat {
-            self.predicate = NSPredicate(format: format)
+            predicate = NSPredicate(format: format)
         }
         if let sort = sortBy {
             let descriptors = sort.map{ $0.descriptor() }
-            self.sortDescriptors = descriptors
+            sortDescriptors = descriptors
         }
         if let recordsLimit = limit {
-            self.fetchLimit = recordsLimit
+            fetchLimit = recordsLimit
         }
     }
 }

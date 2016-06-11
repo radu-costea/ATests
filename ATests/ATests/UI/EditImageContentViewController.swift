@@ -11,7 +11,7 @@ import UIKit
 class EditImageContentViewController: EditContentController, ContentProviderDelegate {
     var content: LiteImageContent?
     var image: UIImage?
-    var contentProvider: PhotoViewController!
+    var contentProvider = PhotoViewController.photoProvider(nil)!
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var ratioConstraint: NSLayoutConstraint!
@@ -20,8 +20,12 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        contentProvider = PhotoViewController.photoProvider(nil)
         contentProvider.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadImage()
     }
     
     override func loadWith<T : LiteContent>(content: T?) {
@@ -36,6 +40,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
         if let data = content?.base64Image?.toBase64Data(),
             let img = UIImage(data: data) {
                 image = img
+                imageView?.image = img
                 contentProvider.loadWith(img)
         }
         
@@ -67,6 +72,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
             let img = content as? UIImage {
                 imageView.image = img
                 self.content?.base64Image = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
+                self.content?.tryPersit()
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 correctRatio()
         

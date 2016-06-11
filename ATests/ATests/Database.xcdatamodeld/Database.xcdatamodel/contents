@@ -22,9 +22,14 @@
         <attribute name="base64Image" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LiteQuestion" representedClassName="LiteQuestion" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="answerObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteAnswer" syncable="YES"/>
         <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
         <relationship name="evaluatorObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteEvaluator" syncable="YES"/>
+    </entity>
+    <entity name="LiteTest" representedClassName=".LiteTest" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" syncable="YES"/>
     </entity>
     <entity name="LiteTextContent" representedClassName="LiteTextContent" parentEntity="LiteContent" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,16 +55,17 @@
     </entity>
     <elements>
         <element name="Image" positionX="9" positionY="27" width="128" height="75"/>
+        <element name="LiteAnswer" positionX="45" positionY="63" width="128" height="60"/>
+        <element name="LiteAnswerVariant" positionX="27" positionY="45" width="128" height="90"/>
+        <element name="LiteContent" positionX="0" positionY="18" width="128" height="60"/>
+        <element name="LiteEvaluator" positionX="9" positionY="27" width="128" height="60"/>
+        <element name="LiteImageContent" positionX="18" positionY="36" width="128" height="60"/>
+        <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="105"/>
+        <element name="LiteTextContent" positionX="9" positionY="27" width="128" height="60"/>
+        <element name="LiteVariantsAnswerContent" positionX="36" positionY="54" width="128" height="60"/>
         <element name="Test" positionX="0" positionY="18" width="128" height="90"/>
         <element name="User" positionX="18" positionY="36" width="128" height="135"/>
         <element name="UserAvatar" positionX="36" positionY="54" width="128" height="60"/>
-        <element name="LiteContent" positionX="0" positionY="18" width="128" height="60"/>
-        <element name="LiteTextContent" positionX="9" positionY="27" width="128" height="60"/>
-        <element name="LiteImageContent" positionX="18" positionY="36" width="128" height="60"/>
-        <element name="LiteAnswerVariant" positionX="27" positionY="45" width="128" height="90"/>
-        <element name="LiteVariantsAnswerContent" positionX="36" positionY="54" width="128" height="60"/>
-        <element name="LiteAnswer" positionX="45" positionY="63" width="128" height="60"/>
-        <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="90"/>
-        <element name="LiteEvaluator" positionX="9" positionY="27" width="128" height="60"/>
+        <element name="LiteTest" positionX="27" positionY="81" width="128" height="75"/>
     </elements>
 </model>

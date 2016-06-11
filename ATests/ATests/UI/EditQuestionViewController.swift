@@ -12,7 +12,7 @@ protocol ContainedController {
     var presenter: UIViewController? { get set }
 }
 
-class EditQuestionViewController: ContainedViewController, EditContentViewControllerDelegate {
+class EditQuestionViewController: UIViewController, EditContentViewControllerDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var questionContentView: UIView!
     @IBOutlet var questionAnswerView: UIView!
@@ -23,10 +23,10 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
     /// MARK: -
     /// MARK: Class
     
-    override static var storyboardName: String { return "EditQuestionStoryboard" }
-    override static var storyboardId: String { return "editQuestion" }
-    override class func controller() -> EditQuestionViewController? {
-        return super.controller() as? EditQuestionViewController
+    static var storyboardName: String { return "EditQuestionStoryboard" }
+    static var storyboardId: String { return "editQuestion" }
+    class func controller() -> EditQuestionViewController? {
+        return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditQuestionViewController
     }
     
     var question: LiteQuestion?
@@ -38,7 +38,7 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
         else {
             let answerContent = LiteVariantsAnswerContent(with: [
                 "identifier": NSUUID().UUIDString,
-                "variants": NSSet()
+                "variants": []
             ])!
             let answer = LiteAnswer(with: ["content": answerContent])!
             question = LiteQuestion(with: ["answer": answer])!
@@ -61,15 +61,15 @@ class EditQuestionViewController: ContainedViewController, EditContentViewContro
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         controller.presenter = self
         
+        addChildViewController(controller)
         view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        
         NSLayoutConstraint.activateConstraints([
             controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
             controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor),
             controller.view.topAnchor.constraintEqualToAnchor(view.topAnchor),
             controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor)
         ])
+        controller.didMoveToParentViewController(self)
     }
     
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {

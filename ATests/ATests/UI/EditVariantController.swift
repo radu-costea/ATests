@@ -46,16 +46,16 @@ class EditVariantController: ContainedViewController {
     func addController(controller: EditContentController) {
         let subview = controller.view
         subview.translatesAutoresizingMaskIntoConstraints = false
+        addChildViewController(controller)
         contentView.addSubview(subview)
-        controller.didMoveToParentViewController(self)
-        controller.presenter = self
-        
         NSLayoutConstraint.activateConstraints([
             contentView.leadingAnchor.constraintEqualToAnchor(subview.leadingAnchor),
             contentView.trailingAnchor.constraintEqualToAnchor(subview.trailingAnchor),
             contentView.topAnchor.constraintEqualToAnchor(subview.topAnchor),
             contentView.bottomAnchor.constraintEqualToAnchor(subview.bottomAnchor)
         ])
+        controller.didMoveToParentViewController(self)
+        controller.presenter = self
     }
     
     func startEditing() {

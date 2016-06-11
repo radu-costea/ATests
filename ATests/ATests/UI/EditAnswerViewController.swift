@@ -46,8 +46,8 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     
     func setupVariantController(controller: EditVariantController) {
         controller.view.translatesAutoresizingMaskIntoConstraints = false
+        addChildViewController(controller)
         stackView.insertArrangedSubview(controller.view, atIndex: stackView.arrangedSubviews.count - 1) ///insertSubview(controller.view, aboveSubview: addAnswerView)
-        self.addChildViewController(controller)
         controller.didMoveToParentViewController(self)
         controller.delegate = self
         controller.presenter = self

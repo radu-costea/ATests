@@ -70,13 +70,13 @@ class EditContentViewController: ContainedViewController {
         }
         addChildViewController(controller)
         container.addSubview(editView)
-        controller.didMoveToParentViewController(self)
         NSLayoutConstraint.activateConstraints([
             editView.leadingAnchor.constraintEqualToAnchor(container.leadingAnchor),
             editView.trailingAnchor.constraintEqualToAnchor(container.trailingAnchor),
             editView.topAnchor.constraintEqualToAnchor(container.topAnchor),
             editView.bottomAnchor.constraintEqualToAnchor(container.bottomAnchor)
         ])
+        controller.didMoveToParentViewController(self)
     }
 
     /// MARK: -

@@ -1,5 +1,5 @@
 //
-//  LiteQuestion+CoreDataProperties.swift
+//  LiteTest+CoreDataProperties.swift
 //  ATests
 //
 //  Created by Radu Costea on 11/06/16.
@@ -12,11 +12,9 @@
 import Foundation
 import CoreData
 
-extension LiteQuestion {
+extension LiteTest {
 
-    @NSManaged var creationDate: NSTimeInterval
-    @NSManaged var answerObject: LiteAnswer?
-    @NSManaged var contentObject: LiteContent?
-    @NSManaged var evaluatorObject: LiteEvaluator?
+    @NSManaged var title: String?
+    @NSManaged var questions: NSSet?
 
 }

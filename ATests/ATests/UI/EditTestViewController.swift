@@ -26,7 +26,7 @@ class EditTestViewController: UIViewController {
         addChildViewController(editController)
         editController.question = question
         editController.view.translatesAutoresizingMaskIntoConstraints = false
-        editController.presenter = self
+//        editController.presenter = self
         stackView.insertArrangedSubview(editController.view, atIndex: atIndex)
         editController.didMoveToParentViewController(self)
     }
