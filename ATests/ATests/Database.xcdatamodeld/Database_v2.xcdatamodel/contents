@@ -12,6 +12,16 @@
         <attribute name="variantIndex" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
     </entity>
+    <entity name="LiteClientQuestion" syncable="YES">
+        <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteAnswer" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteSimulationQuestion" syncable="YES"/>
+        <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteClientTest" syncable="YES"/>
+    </entity>
+    <entity name="LiteClientTest" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="takenTests" inverseEntity="User" syncable="YES"/>
+        <relationship name="simulationTest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteSimulationTest" inverseName="clientsTests" inverseEntity="LiteSimulationTest" syncable="YES"/>
+    </entity>
     <entity name="LiteContent" representedClassName="LiteContent" isAbstract="YES" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -26,13 +36,23 @@
         <relationship name="answerObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteAnswer" syncable="YES"/>
         <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
         <relationship name="evaluatorObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteEvaluator" syncable="YES"/>
+        <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteTest" inverseName="questions" inverseEntity="LiteTest" syncable="YES"/>
     </entity>
-    <entity name="LiteSimulationQuestion" representedClassName=".LiteSimulationQuestion" parentEntity="LiteQuestion" syncable="YES">
-        <relationship name="simulatedAnswerObject" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="LiteAnswer" syncable="YES"/>
+    <entity name="LiteSimulationQuestion" parentEntity="LiteQuestion" syncable="YES">
+        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="LiteSimulationTest" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="clientsTests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteClientTest" inverseName="simulationTest" inverseEntity="LiteClientTest" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteSimulationQuestion" syncable="YES"/>
     </entity>
     <entity name="LiteTest" representedClassName=".LiteTest" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tests" inverseEntity="User" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" inverseName="test" inverseEntity="LiteQuestion" syncable="YES"/>
     </entity>
     <entity name="LiteTextContent" representedClassName="LiteTextContent" parentEntity="LiteContent" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,18 +60,14 @@
     <entity name="LiteVariantsAnswerContent" representedClassName="LiteVariantsAnswerContent" parentEntity="LiteContent" syncable="YES">
         <relationship name="variantsObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteAnswerVariant" syncable="YES"/>
     </entity>
-    <entity name="Test" representedClassName=".Test" syncable="YES">
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tests" inverseEntity="User" syncable="YES"/>
-        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" syncable="YES"/>
-    </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="avatar" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="UserAvatar" inverseName="user" inverseEntity="UserAvatar" syncable="YES"/>
-        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Test" inverseName="owner" inverseEntity="Test" syncable="YES"/>
+        <relationship name="takenTests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteClientTest" inverseName="client" inverseEntity="LiteClientTest" syncable="YES"/>
+        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteTest" inverseName="owner" inverseEntity="LiteTest" syncable="YES"/>
     </entity>
     <entity name="UserAvatar" representedClassName=".UserAvatar" parentEntity="Image" syncable="YES">
         <relationship name="user" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="User" inverseName="avatar" inverseEntity="User" syncable="YES"/>
@@ -63,13 +79,15 @@
         <element name="LiteContent" positionX="0" positionY="18" width="128" height="60"/>
         <element name="LiteEvaluator" positionX="9" positionY="27" width="128" height="60"/>
         <element name="LiteImageContent" positionX="18" positionY="36" width="128" height="60"/>
-        <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="105"/>
-        <element name="LiteTest" positionX="27" positionY="81" width="128" height="75"/>
+        <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="120"/>
+        <element name="LiteTest" positionX="27" positionY="81" width="128" height="90"/>
         <element name="LiteTextContent" positionX="9" positionY="27" width="128" height="60"/>
         <element name="LiteVariantsAnswerContent" positionX="36" positionY="54" width="128" height="60"/>
-        <element name="Test" positionX="0" positionY="18" width="128" height="90"/>
-        <element name="User" positionX="18" positionY="36" width="128" height="135"/>
+        <element name="User" positionX="18" positionY="36" width="128" height="150"/>
         <element name="UserAvatar" positionX="36" positionY="54" width="128" height="60"/>
         <element name="LiteSimulationQuestion" positionX="27" positionY="81" width="128" height="60"/>
+        <element name="LiteClientQuestion" positionX="45" positionY="99" width="128" height="90"/>
+        <element name="LiteClientTest" positionX="54" positionY="117" width="128" height="90"/>
+        <element name="LiteSimulationTest" positionX="72" positionY="126" width="128" height="135"/>
     </elements>
 </model>
