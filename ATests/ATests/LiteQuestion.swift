@@ -29,4 +29,9 @@ extension LiteQuestion: QuestionModel {
         get { return evaluatorObject }
         set { evaluatorObject = newValue }
     }
+    
+    func isValid() -> Bool {
+        return  (content?.isValid() ?? false) &&
+                (answer?.isValid() ?? false)
+    }
 }

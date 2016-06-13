@@ -15,6 +15,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var ratioConstraint: NSLayoutConstraint!
+    @IBOutlet var errorView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadImage()
+        errorView.hidden = content?.isValid() ?? false
     }
     
     override func loadWith<T : LiteContent>(content: T?) {
@@ -75,7 +77,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
                 self.content?.tryPersit()
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 correctRatio()
-        
+                self.errorView.hidden = self.content?.isValid() ?? false
         }
     }
     

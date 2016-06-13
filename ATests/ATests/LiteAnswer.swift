@@ -13,14 +13,16 @@ import CoreData
 class LiteAnswer: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-    func isValid() -> Bool {
-        return content?.isValid() ?? false
-    }
+
 }
 
 extension LiteAnswer: AnswerModel {
     var content: LiteContent? {
         get { return contentObject }
         set { contentObject = newValue }
+    }
+    
+    func isValid() -> Bool {
+        return content?.isValid() ?? false
     }
 }

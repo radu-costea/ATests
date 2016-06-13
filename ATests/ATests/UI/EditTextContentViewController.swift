@@ -14,6 +14,7 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     var contentProvider: TextProviderViewController!
 
     @IBOutlet var textView: UILabel!
+    @IBOutlet var errorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadText()
+        errorView.hidden = content?.isValid() ?? false
     }
     
     func loadText() {
@@ -69,6 +71,7 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
                 textView.text = txt
                 self.content?.text = txt
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.errorView.hidden = self.content?.isValid() ?? false
         }
     }
 }

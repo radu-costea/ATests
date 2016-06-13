@@ -16,6 +16,8 @@ protocol QuestionModel: class {
     var content: ContentType? { get set }
     var answer: AnswerType? { get set }
     var evaluator: EvaluatorType? { get set }
+    
+    func isValid() -> Bool
 }
 
 protocol SimulationQuestionModel: QuestionModel {
