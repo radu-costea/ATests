@@ -51,6 +51,8 @@
 		33B3A3C61CEE61DE00BEC8E9 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3A3C51CEE61DE00BEC8E9 /* ContentProvider.swift */; };
 		33B3A3C81CEE65FC00BEC8E9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3A3C71CEE65FC00BEC8E9 /* PhotoViewController.swift */; };
 		33B3A3CA1CEE744A00BEC8E9 /* TextProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3A3C91CEE744A00BEC8E9 /* TextProviderViewController.swift */; };
+		33BE46071D0E199A005139F2 /* LiteSimulationQuestion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE46051D0E199A005139F2 /* LiteSimulationQuestion+CoreDataProperties.swift */; };
+		33BE46081D0E199A005139F2 /* LiteSimulationQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE46061D0E199A005139F2 /* LiteSimulationQuestion.swift */; };
 		33E22C1F1CF7A01600E3F07E /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E22C1E1CF7A01600E3F07E /* EditQuestionViewController.swift */; };
 		33E609621CEBB4E500C1B32C /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6095D1CEBB4E500C1B32C /* User+CoreDataProperties.swift */; };
 		33E609631CEBB4E500C1B32C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6095E1CEBB4E500C1B32C /* User.swift */; };
@@ -246,6 +248,8 @@
 		33B3A3C51CEE61DE00BEC8E9 /* ContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
 		33B3A3C71CEE65FC00BEC8E9 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		33B3A3C91CEE744A00BEC8E9 /* TextProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProviderViewController.swift; sourceTree = "<group>"; };
+		33BE46051D0E199A005139F2 /* LiteSimulationQuestion+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiteSimulationQuestion+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		33BE46061D0E199A005139F2 /* LiteSimulationQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteSimulationQuestion.swift; sourceTree = "<group>"; };
 		33E22C1E1CF7A01600E3F07E /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		33E6095D1CEBB4E500C1B32C /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		33E6095E1CEBB4E500C1B32C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -419,6 +423,8 @@
 				33A0F0D91D08E5D40068CD96 /* LiteContentType.swift */,
 				3317BC2E1D0B6E2D00E9CC79 /* LiteTest+CoreDataProperties.swift */,
 				3317BC2F1D0B6E2D00E9CC79 /* LiteTest.swift */,
+				33BE46051D0E199A005139F2 /* LiteSimulationQuestion+CoreDataProperties.swift */,
+				33BE46061D0E199A005139F2 /* LiteSimulationQuestion.swift */,
 			);
 			name = CoreData;
 			path = ..;
@@ -869,6 +875,7 @@
 				623415391CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
 				33E22C1F1CF7A01600E3F07E /* EditQuestionViewController.swift in Sources */,
 				33A0F0CC1D08E0A60068CD96 /* LiteAnswerVariant.swift in Sources */,
+				33BE46081D0E199A005139F2 /* LiteSimulationQuestion.swift in Sources */,
 				33A0F0CE1D08E0A60068CD96 /* LiteTextContent.swift in Sources */,
 				624A27E41CD0E31700EC6B16 /* VariantsAnswer.swift in Sources */,
 				3357835D1CDB3CC70054F0C5 /* Database.xcdatamodeld in Sources */,
@@ -888,6 +895,7 @@
 				6240843A1CB50D44008C78C1 /* AppDelegate.swift in Sources */,
 				625C5A051CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
 				33B3A3CA1CEE744A00BEC8E9 /* TextProviderViewController.swift in Sources */,
+				33BE46071D0E199A005139F2 /* LiteSimulationQuestion+CoreDataProperties.swift in Sources */,
 				62BA4F941CCE63A40016AC34 /* AnswerModel.swift in Sources */,
 				62BA4F981CCE63E10016AC34 /* QuestionModel.swift in Sources */,
 				33E609691CEBB55900C1B32C /* UserAvatar.swift in Sources */,

@@ -13,6 +13,14 @@ import CoreData
 class LiteVariantsAnswerContent: LiteContent {
 
 // Insert code here to add functionality to your managed object subclass
+    override func isValid() -> Bool {
+        guard let v = variants where v.count > 0 else {
+            return false
+        }
+        let allValid = v.reduce(true) { $0 && $1.isValid() }
+        let oneSelected = v.reduce(false) { $0 && $1.correct }
+        return allValid && oneSelected
+    }
 
 }
 

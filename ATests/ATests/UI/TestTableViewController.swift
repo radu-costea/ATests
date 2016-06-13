@@ -19,14 +19,14 @@ class TestTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if test == nil {
-            test = LiteTest(with: ["title" : "My Test", "sortetQuestions" : []])
+            test = LiteTest(with: ["title" : "My Test", "sortedQuestions" : []])
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        questions = test.sortetQuestions ?? []
+        questions = test.sortedQuestions ?? []
         keyboardAvoider = ScrollViewKeyboardAvoider(scrollView: tableView)
     }
     
@@ -102,7 +102,7 @@ class TestTableViewController: UITableViewController {
         let idx = questions.count
         
         questions.append(question)
-        test.sortetQuestions = questions
+        test.sortedQuestions = questions
         
         selectedIndex = idx
         tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)

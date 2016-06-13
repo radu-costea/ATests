@@ -17,7 +17,7 @@ class LiteTest: NSManagedObject {
 }
 
 extension LiteTest {
-    var sortetQuestions: [LiteQuestion]? {
+    var sortedQuestions: [LiteQuestion]? {
         get { return questions?.allObjects.flatMap{ $0 as? LiteQuestion }.sort{ $0.creationDate < $1.creationDate } }
         set { questions = NSSet(array: newValue ?? []) }
     }

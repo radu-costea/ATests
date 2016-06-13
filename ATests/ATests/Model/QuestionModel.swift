@@ -18,6 +18,10 @@ protocol QuestionModel: class {
     var evaluator: EvaluatorType? { get set }
 }
 
+protocol SimulationQuestionModel: QuestionModel {
+    var simulationAnswer: AnswerType? { get set }
+}
+
 extension QuestionModel {
     var content: ContentType? {
         get { return nil }

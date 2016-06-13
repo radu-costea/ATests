@@ -11,6 +11,7 @@ import Foundation
 protocol AnswerModel {
 //    typealias ContentType: ContentModel
     var content: ContentModel? { get set }
+    func isValid() -> Bool
 }
 
 extension AnswerModel {

@@ -10,6 +10,7 @@ import UIKit
 
 class TestsTableViewController: UITableViewController {
     var tests: [LiteTest] = []
+    var selectedIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +24,17 @@ class TestsTableViewController: UITableViewController {
             tests = try LiteTest.all().flatMap{ $0 as? LiteTest }
         } catch {}
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let idx = selectedIndex {
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
+        }
     }
 
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tests.count
     }
 
@@ -40,44 +42,27 @@ class TestsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
         let test = tests[indexPath.row]
         cell.textLabel?.text = test.title ?? ""
-        cell.detailTextLabel?.text = "\(test.sortetQuestions?.count) Questions"
+        cell.detailTextLabel?.text = "\(test.sortedQuestions?.count ?? 0) Questions"
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+        performSegueWithIdentifier("goToEditTest", sender: self)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    /// MARK: -
+    /// MARK: Actions
+    
+    @IBAction func didTapCreateTest() {
+        if let test = LiteTest(with: ["title" : "New Test"]) {
+            selectedIndex = tests.count
+            tests.append(test)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: selectedIndex!, inSection: 0)], withRowAnimation: .Automatic)
+            test.tryPersit()
+            performSegueWithIdentifier("goToEditTest", sender: self)
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
@@ -85,9 +70,10 @@ class TestsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let indexPath = tableView.indexPathForSelectedRow,
-            let destination = segue.destinationViewController as? TestTableViewController {
-            destination.test = tests[indexPath.row]
+        if let identifier = segue.identifier,
+            let idx = selectedIndex,
+            let destination = segue.destinationViewController as? TestTableViewController where identifier == "goToEditTest" {
+            destination.test = tests[idx]
         }
     }
 

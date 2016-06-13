@@ -27,6 +27,9 @@
         <relationship name="contentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteContent" syncable="YES"/>
         <relationship name="evaluatorObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LiteEvaluator" syncable="YES"/>
     </entity>
+    <entity name="LiteSimulationQuestion" representedClassName=".LiteSimulationQuestion" parentEntity="LiteQuestion" syncable="YES">
+        <relationship name="simulatedAnswerObject" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="LiteAnswer" syncable="YES"/>
+    </entity>
     <entity name="LiteTest" representedClassName=".LiteTest" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteQuestion" syncable="YES"/>
@@ -61,11 +64,12 @@
         <element name="LiteEvaluator" positionX="9" positionY="27" width="128" height="60"/>
         <element name="LiteImageContent" positionX="18" positionY="36" width="128" height="60"/>
         <element name="LiteQuestion" positionX="54" positionY="72" width="128" height="105"/>
+        <element name="LiteTest" positionX="27" positionY="81" width="128" height="75"/>
         <element name="LiteTextContent" positionX="9" positionY="27" width="128" height="60"/>
         <element name="LiteVariantsAnswerContent" positionX="36" positionY="54" width="128" height="60"/>
         <element name="Test" positionX="0" positionY="18" width="128" height="90"/>
         <element name="User" positionX="18" positionY="36" width="128" height="135"/>
         <element name="UserAvatar" positionX="36" positionY="54" width="128" height="60"/>
-        <element name="LiteTest" positionX="27" positionY="81" width="128" height="75"/>
+        <element name="LiteSimulationQuestion" positionX="27" positionY="81" width="128" height="60"/>
     </elements>
 </model>

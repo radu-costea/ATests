@@ -14,6 +14,7 @@ import UIKit
  */
 protocol ContentModel {
     var identifier: String? { get }
+    func isValid() -> Bool
 }
 
 /**

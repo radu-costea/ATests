@@ -13,5 +13,7 @@ import CoreData
 class LiteTextContent: LiteContent {
 
 // Insert code here to add functionality to your managed object subclass
-
+    override func isValid() -> Bool {
+        return text?.length > 0
+    }
 }
