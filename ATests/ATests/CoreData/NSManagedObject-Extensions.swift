@@ -21,6 +21,10 @@ protocol ActiveRecord: AnyObject {
  */
 extension NSManagedObject: ActiveRecord {
     
+    var hasDeepChanges: Bool {
+        return hasChanges
+    }
+    
     // MARK: -
     // MARK: Object creation
     
@@ -62,6 +66,10 @@ extension NSManagedObject: ActiveRecord {
     
     func persist() throws {
         try managedObjectContext?.save()
+    }
+    
+    func rollback() {
+        managedObjectContext?.rollback()
     }
     
     func tryPersit() {

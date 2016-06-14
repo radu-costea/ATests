@@ -25,6 +25,11 @@ class LiteVariantsAnswerContent: LiteContent {
 }
 
 extension LiteVariantsAnswerContent: VariantsAnswerContent {
+    override var hasDeepChanges: Bool {
+        return super.hasDeepChanges ||
+            (variants?.reduce(false){ $0 || $1.hasDeepChanges } ?? false)
+    }
+    
     var variants: [LiteAnswerVariant]? {
         get { return variantsObjects?.allObjects.flatMap{ $0 as? LiteAnswerVariant }}
         set { variantsObjects = NSSet(array: newValue ?? [])}

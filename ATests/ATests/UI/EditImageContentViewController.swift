@@ -73,7 +73,9 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
         if let currentProvider = provider as? PhotoViewController,
             let img = content as? UIImage {
                 imageView.image = img
-                self.content?.base64Image = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
+                let string = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
+                self.content?.base64Image = string
+                self.content?.imageHash = Int64(string?.hash ?? 0)
                 self.content?.tryPersit()
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 correctRatio()

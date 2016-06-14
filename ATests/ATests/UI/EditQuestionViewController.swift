@@ -16,6 +16,8 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var questionContentView: UIView!
     @IBOutlet var questionAnswerView: UIView!
+    @IBOutlet var discardButton: UIButton!
+    var saveOnExit: Bool = true
     
     var editContentController: EditContentViewController!
     var editTextController: ContainedViewController!
@@ -29,7 +31,11 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditQuestionViewController
     }
     
-    var question: LiteQuestion?
+    var question: LiteQuestion? {
+        didSet {
+            print("new question: \(question)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +61,12 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
         var answerController = EditContentFabric.editController((question?.answer?.content)!)
         addEditController(&answerController, toView: questionAnswerView)
         editTextController = answerController
+        discardButton.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        discardButton.hidden = !(question?.hasDeepChanges ?? false)
     }
     
     func addEditController<T: ContainedViewController>(inout controller: T, toView view: UIView) {
@@ -75,7 +87,37 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
         if controller === editContentController {
             question?.content = controller.content
-            question?.tryPersit()
         }
+    }
+    
+    /// MARK: -
+    /// MARK: Actions
+    
+    @IBAction func didTapDiscard() {
+        UIAlertController.showIn(self,
+            message: "Are you sure you want to discard changes?",
+            actions: [(
+                title: "Yes",
+                action: {[unowned self] _ in
+                    self.saveOnExit = false
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+            ],
+            cancelAction: (
+                title: "Cancel",
+                action: nil
+            )
+        )
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            if saveOnExit {
+                question?.tryPersit()
+            } else {
+                question?.rollback()
+            }
+        }
+        super.willMoveToParentViewController(parent)
     }
 }

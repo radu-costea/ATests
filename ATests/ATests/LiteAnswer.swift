@@ -17,6 +17,10 @@ class LiteAnswer: NSManagedObject {
 }
 
 extension LiteAnswer: AnswerModel {
+    override var hasDeepChanges: Bool {
+        return super.hasDeepChanges || (content?.hasDeepChanges ?? false)
+    }
+    
     var content: LiteContent? {
         get { return contentObject }
         set { contentObject = newValue }

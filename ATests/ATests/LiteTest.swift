@@ -22,3 +22,5 @@ extension LiteTest {
         set { questions = NSSet(array: newValue ?? []) }
     }
 }
+
+extension LiteTest: TimestampObject { }

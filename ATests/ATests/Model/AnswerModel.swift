@@ -9,13 +9,13 @@
 import Foundation
 
 protocol AnswerModel {
-//    typealias ContentType: ContentModel
-    var content: ContentModel? { get set }
+    associatedtype ContentType: ContentModel
+    var content: ContentType? { get set }
     func isValid() -> Bool
 }
 
 extension AnswerModel {
-    var content: ContentModel? {
+    var content: ContentType? {
         get { return nil }
         set { }
     }

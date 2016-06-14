@@ -14,6 +14,6 @@ class LiteImageContent: LiteContent {
 
 // Insert code here to add functionality to your managed object subclass
     override func isValid() -> Bool {
-        return base64Image?.length > 0
+        return imageHash != 0
     }
 }

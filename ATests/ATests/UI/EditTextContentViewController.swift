@@ -27,7 +27,9 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadText()
-        errorView.hidden = content?.isValid() ?? false
+        let contentValid = content?.isValid() ?? false
+        errorView.hidden = contentValid
+        textView.hidden = !contentValid
     }
     
     func loadText() {

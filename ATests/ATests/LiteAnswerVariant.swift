@@ -20,6 +20,10 @@ class LiteAnswerVariant: NSManagedObject {
 }
 
 extension LiteAnswerVariant: AnswerVariant {
+    override var hasDeepChanges: Bool {
+        return super.hasDeepChanges || (content?.hasDeepChanges ?? false)
+    }
+    
     var index: Int32 {
         get { return variantIndex }
         set { variantIndex = newValue }

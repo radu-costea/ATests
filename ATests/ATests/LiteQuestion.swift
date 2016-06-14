@@ -34,4 +34,10 @@ extension LiteQuestion: QuestionModel {
         return  (content?.isValid() ?? false) &&
                 (answer?.isValid() ?? false)
     }
+    
+    override var hasDeepChanges: Bool {
+        return  super.hasDeepChanges ||
+                (content?.hasDeepChanges ?? false) ||
+                (answer?.hasDeepChanges ?? false)
+    }
 }

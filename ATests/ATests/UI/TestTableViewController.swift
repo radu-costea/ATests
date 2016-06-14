@@ -38,12 +38,14 @@ class TestTableViewController: UITableViewController {
         if let idx = selectedIndex {
             tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
         }
+        observeTextChanges()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         test.tryPersit()
         keyboardAvoider.stopListeningForKeyboardNotifications()
+        stopObservingTextFieldChanges()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,6 +87,27 @@ class TestTableViewController: UITableViewController {
             }
         }
         view.endEditing(true)
+    }
+    
+    /// MARK: -
+    /// MARK: Text change
+    
+    func observeTextChanges() {
+        textFieldObserver = NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: titleTextField, queue: nil, usingBlock: { [unowned self] _ in
+            self.textFieldValueChanged()
+        })
+    }
+    
+    func stopObservingTextFieldChanges() {
+        guard let observer = textFieldObserver else {
+            return
+        }
+        NSNotificationCenter.defaultCenter().removeObserver(observer)
+    }
+    
+    var textFieldObserver: NSObjectProtocol?
+    func textFieldValueChanged() {
+        self.test.title = titleTextField.text
     }
     
     /// MARK: -

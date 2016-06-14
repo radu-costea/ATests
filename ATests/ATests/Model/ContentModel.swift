@@ -9,24 +9,15 @@
 import Foundation
 import UIKit
 
+
+@objc protocol TimestampObject: class {
+    var creationDate: NSTimeInterval { get set }
+}
+
 /**
  *  @brief <#Description#>
  */
 protocol ContentModel {
     var identifier: String? { get }
     func isValid() -> Bool
-}
-
-/**
- *  @brief <#Description#>
- */
-protocol TextContent: ContentModel {
-    var text: String? { get set }
-}
-
-/**
- *  @brief <#Description#>
- */
-protocol ImageContent: ContentModel {
-    var base64Image: String? { get set }
 }

@@ -16,6 +16,7 @@ class AppearenceCustomizer {
         RoundedButton.appearance().cornerRadius = 5.0
         OrangeButton.appearance().backgroundColor = UIColor(hex: "#D44400")
         BlueButton.appearance().backgroundColor = UIColor(hex: "#429DC0")
-        UINavigationBar.appearanceWhenContainedInInstancesOfClasses([OrangeNavigationController.self]).backgroundColor = UIColor(hex: "#333333")
+        UINavigationBar.appearanceWhenContainedInInstancesOfClasses([OrangeNavigationController.self]).tintColor = UIColor(hex: "#FFFFFF")
+        UINavigationBar.appearanceWhenContainedInInstancesOfClasses([OrangeNavigationController.self]).barTintColor = UIColor(hex: "#D44400")
     }
 }
