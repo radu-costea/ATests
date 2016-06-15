@@ -11,6 +11,18 @@ import CoreData
 
 @objc(LiteAnswerVariant)
 class LiteAnswerVariant: NSManagedObject {
+    
+    func createCopyParams() -> [String: AnyObject]? {
+        var params: [String: AnyObject] =  ["index": NSNumber(int: index), "correct" : NSNumber(bool: correct)]
+        if let contentClone = content?.makeCopy() {
+            params["content"] = contentClone
+        }
+        return params
+    }
+    
+    func makeCopy<T: LiteAnswerVariant>() -> T? {
+        return LiteAnswerVariant(with: createCopyParams()) as? T
+    }
 
 // Insert code here to add functionality to your managed object subclass
     func isValid() -> Bool {

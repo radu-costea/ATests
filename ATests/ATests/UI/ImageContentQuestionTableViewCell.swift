@@ -8,8 +8,27 @@
 
 import UIKit
 
-class ImageContentTableViewCell: UITableViewCell {
-    var getImageOperation: NSBlockOperation?
+class ImageContentQuestionTableViewCell: UITableViewCell {
+    @IBOutlet var questionImageView: UIImageView!
+    @IBOutlet var validIcon: UIImageView!
+
+    /// MARK: -
+    /// MARK: Overrides
+    
+    override func prepareForReuse() {
+        questionImageView?.image = nil
+        getImageOperation?.cancel()
+    }
+    
+    /// MARK: -
+    /// MARK: Image download
+    
+    var question: LiteQuestion? {
+        didSet {
+            content = question?.content as? LiteImageContent
+            refreshValidState()
+        }
+    }
     
     var content: LiteImageContent? {
         didSet {
@@ -17,6 +36,16 @@ class ImageContentTableViewCell: UITableViewCell {
         }
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        refreshValidState()
+    }
+    
+    func refreshValidState() {
+        validIcon?.image = (question?.isValid() ?? false) ? UIImage(named: "icon_correct") : UIImage(named: "icon_incorrect")
+    }
+    
+    var getImageOperation: NSBlockOperation?
     func getImage(content: LiteImageContent?) {
         getImageOperation?.cancel()
         questionImageView?.image = nil
@@ -40,13 +69,6 @@ class ImageContentTableViewCell: UITableViewCell {
         }
         getImageOperation = operation
         getImageOperation?.start()
-    }
-    
-    @IBOutlet var questionImageView: UIImageView?
-
-    override func prepareForReuse() {
-        questionImageView?.image = nil
-        getImageOperation?.cancel()
     }
 
 }

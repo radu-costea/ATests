@@ -71,15 +71,16 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void {
         if let currentProvider = provider as? PhotoViewController,
-            let img = content as? UIImage {
+            let img = content as? UIImage,
+            let imgContent = self.content {
                 imageView.image = img
                 let string = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
-                self.content?.base64Image = string
-                self.content?.imageHash = Int64(string?.hash ?? 0)
-                self.content?.tryPersit()
+                imgContent.base64Image = string
+                imgContent.size = Int64(string?.length ?? 0)
+                imgContent.tryPersit()
                 currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 correctRatio()
-                self.errorView.hidden = self.content?.isValid() ?? false
+                self.errorView.hidden = imgContent.isValid() ?? false
         }
     }
     

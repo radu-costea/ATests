@@ -96,6 +96,7 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     @IBAction func didTapDiscard() {
         UIAlertController.showIn(self,
             message: "Are you sure you want to discard changes?",
+            style: .Alert,
             actions: [(
                 title: "Yes",
                 action: {[unowned self] _ in

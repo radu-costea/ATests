@@ -30,7 +30,7 @@
     </entity>
     <entity name="LiteImageContent" representedClassName="LiteImageContent" parentEntity="LiteContent" syncable="YES">
         <attribute name="base64Image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageHash" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="LiteQuestion" representedClassName="LiteQuestion" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -44,8 +44,10 @@
     </entity>
     <entity name="LiteSimulationTest" representedClassName=".LiteSimulationTest" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="joinId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="testDuration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="clientsTests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteClientTest" inverseName="simulationTest" inverseEntity="LiteClientTest" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LiteSimulationQuestion" syncable="YES"/>
@@ -83,10 +85,10 @@
         <element name="LiteClientTest" positionX="450" positionY="351" width="128" height="88"/>
         <element name="LiteContent" positionX="270" positionY="579" width="128" height="60"/>
         <element name="LiteEvaluator" positionX="430" positionY="495" width="128" height="60"/>
-        <element name="LiteImageContent" positionX="214" positionY="702" width="128" height="73"/>
+        <element name="LiteImageContent" positionX="214" positionY="702" width="128" height="75"/>
         <element name="LiteQuestion" positionX="261" positionY="420" width="128" height="118"/>
         <element name="LiteSimulationQuestion" positionX="646" positionY="453" width="128" height="58"/>
-        <element name="LiteSimulationTest" positionX="439" positionY="171" width="128" height="133"/>
+        <element name="LiteSimulationTest" positionX="439" positionY="171" width="128" height="165"/>
         <element name="LiteTest" positionX="72" positionY="387" width="128" height="103"/>
         <element name="LiteTextContent" positionX="378" positionY="702" width="128" height="60"/>
         <element name="LiteVariantsAnswerContent" positionX="72" positionY="639" width="128" height="60"/>

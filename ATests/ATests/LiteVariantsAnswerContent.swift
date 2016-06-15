@@ -11,6 +11,22 @@ import CoreData
 
 @objc(LiteVariantsAnswerContent)
 class LiteVariantsAnswerContent: LiteContent {
+    
+    override func constructCopyParams() -> [String : AnyObject]? {
+        var params = [String : AnyObject]()
+        if let superParams = super.constructCopyParams() {
+            params = params.join(superParams)
+        }
+        if let variantsArr = variants {
+            let copy = variantsArr.flatMap{ $0.makeCopy() }
+            params["variants"] = copy
+        }
+        return params
+    }
+    
+    override func makeCopy<T : LiteContent>() -> T? {
+        return LiteVariantsAnswerContent(with: constructCopyParams()) as? T
+    }
 
 // Insert code here to add functionality to your managed object subclass
     override func isValid() -> Bool {
@@ -18,10 +34,9 @@ class LiteVariantsAnswerContent: LiteContent {
             return false
         }
         let allValid = v.reduce(true) { $0 && $1.isValid() }
-        let oneSelected = v.reduce(false) { $0 && $1.correct }
+        let oneSelected = v.reduce(false) { $0 || $1.correct }
         return allValid && oneSelected
     }
-
 }
 
 extension LiteVariantsAnswerContent: VariantsAnswerContent {

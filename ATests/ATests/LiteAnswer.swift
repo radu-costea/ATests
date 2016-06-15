@@ -14,6 +14,17 @@ class LiteAnswer: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    func constructCopyParams() -> [String: AnyObject]? {
+        var params = [String : AnyObject]()
+        if let cloneContent = content?.makeCopy() {
+            params["content"] = cloneContent
+        }
+        return params
+    }
+    
+    func makeCopy<T: LiteAnswer>() -> T? {
+        return LiteAnswer(with: constructCopyParams()) as? T
+    }
 }
 
 extension LiteAnswer: AnswerModel {

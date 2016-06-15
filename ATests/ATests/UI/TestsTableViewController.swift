@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TestsTableViewController: UITableViewController {
+class TestsTableViewController: UITableViewController, TestTableViewCellDelegate {
     var tests: [LiteTest] = []
     var selectedIndex: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +40,9 @@ class TestsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        let test = tests[indexPath.row]
-        cell.textLabel?.text = test.title ?? ""
-        cell.detailTextLabel?.text = "\(test.sortedQuestions?.count ?? 0) Questions"
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! TestTableViewCell
+        cell.test = tests[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -70,11 +70,35 @@ class TestsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "goToEditTest":
+                if let idx = selectedIndex,
+                    let destination = segue.destinationViewController as? TestTableViewController{
+                    destination.test = tests[idx]
+                }
+            case "goToCreateSimulation":
+                if let cell = sender as? TestTableViewCell,
+                    let destination = segue.destinationViewController as? CreateSimulationTableViewController {
+                    destination.test = cell.test
+                }
+            default:
+                break
+            }
+        }
+        
         if let identifier = segue.identifier,
             let idx = selectedIndex,
             let destination = segue.destinationViewController as? TestTableViewController where identifier == "goToEditTest" {
             destination.test = tests[idx]
         }
+    }
+    
+    /// MARK: -
+    /// MARK: TestQuestionTableViewCellDelegate
+    
+    func testCellDidSelectCreateTest(cell: TestTableViewCell) {
+        performSegueWithIdentifier("goToCreateSimulation", sender: cell)
     }
 
 }

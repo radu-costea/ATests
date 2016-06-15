@@ -10,8 +10,8 @@
 		330403981D0A0C2F007287D5 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330403971D0A0C2F007287D5 /* TestTableViewController.swift */; };
 		3317BC301D0B6E2D00E9CC79 /* LiteTest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC2E1D0B6E2D00E9CC79 /* LiteTest+CoreDataProperties.swift */; };
 		3317BC311D0B6E2D00E9CC79 /* LiteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC2F1D0B6E2D00E9CC79 /* LiteTest.swift */; };
-		3317BC331D0B6FFC00E9CC79 /* TextContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC321D0B6FFC00E9CC79 /* TextContentTableViewCell.swift */; };
-		3317BC351D0B700D00E9CC79 /* ImageContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC341D0B700D00E9CC79 /* ImageContentTableViewCell.swift */; };
+		3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC321D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift */; };
+		3317BC351D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */; };
 		3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */; };
 		332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F11CC047F9004F7602 /* BaseViewController.swift */; };
 		332B76F31CC047F9004F7602 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F11CC047F9004F7602 /* BaseViewController.swift */; };
@@ -73,6 +73,13 @@
 		33E6096F1CEBB6C600C1B32C /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E609601CEBB4E500C1B32C /* Test.swift */; };
 		33E609701CEBB6C900C1B32C /* Test+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6095F1CEBB4E500C1B32C /* Test+CoreDataProperties.swift */; };
 		33E609711CEBB6C900C1B32C /* Test+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6095F1CEBB4E500C1B32C /* Test+CoreDataProperties.swift */; };
+		33EAF36F1D114EF7001ABE17 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF36E1D114EF7001ABE17 /* TestTableViewCell.swift */; };
+		33EAF3721D119398001ABE17 /* SimulationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3711D119398001ABE17 /* SimulationQuestionTableViewCell.swift */; };
+		33EAF3741D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3731D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift */; };
+		33EAF3761D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3751D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift */; };
+		33EAF3781D11A723001ABE17 /* CreateSimulationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */; };
+		33EAF37A1D11B375001ABE17 /* SimulationQuestionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3791D11B375001ABE17 /* SimulationQuestionBuilder.swift */; };
+		33EAF37C1D11C97C001ABE17 /* QuizWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */; };
 		33F138721CE9079F00F8699A /* QuestionCreationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33F138711CE9079F00F8699A /* QuestionCreationStoryboard.storyboard */; };
 		6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
@@ -220,8 +227,8 @@
 		330403971D0A0C2F007287D5 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		3317BC2E1D0B6E2D00E9CC79 /* LiteTest+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiteTest+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3317BC2F1D0B6E2D00E9CC79 /* LiteTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiteTest.swift; sourceTree = "<group>"; };
-		3317BC321D0B6FFC00E9CC79 /* TextContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentTableViewCell.swift; sourceTree = "<group>"; };
-		3317BC341D0B700D00E9CC79 /* ImageContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentTableViewCell.swift; sourceTree = "<group>"; };
+		3317BC321D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsTableViewController.swift; sourceTree = "<group>"; };
 		332B76F11CC047F9004F7602 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		334AC04E1CFCD01D0079C089 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +281,13 @@
 		33E609671CEBB55900C1B32C /* UserAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatar.swift; sourceTree = "<group>"; };
 		33E6096A1CEBB5B800C1B32C /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		33E6096B1CEBB5B800C1B32C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		33EAF36E1D114EF7001ABE17 /* TestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		33EAF3711D119398001ABE17 /* SimulationQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		33EAF3731D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSimulationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		33EAF3751D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSimulationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSimulationTableViewController.swift; sourceTree = "<group>"; };
+		33EAF3791D11B375001ABE17 /* SimulationQuestionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationQuestionBuilder.swift; sourceTree = "<group>"; };
+		33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizWaitingViewController.swift; sourceTree = "<group>"; };
 		33F138711CE9079F00F8699A /* QuestionCreationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionCreationStoryboard.storyboard; sourceTree = "<group>"; };
 		6205EC8B1CBEB07600B9A9F1 /* Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
@@ -363,9 +377,10 @@
 			isa = PBXGroup;
 			children = (
 				330403971D0A0C2F007287D5 /* TestTableViewController.swift */,
-				3317BC321D0B6FFC00E9CC79 /* TextContentTableViewCell.swift */,
-				3317BC341D0B700D00E9CC79 /* ImageContentTableViewCell.swift */,
+				3317BC321D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift */,
+				3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */,
 				3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */,
+				33EAF36E1D114EF7001ABE17 /* TestTableViewCell.swift */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -446,6 +461,7 @@
 				335D74AD1D109F7100589248 /* LiteClientTest.swift */,
 				335D74AF1D109F7100589248 /* LiteSimulationTest.swift */,
 				335D74B11D109F7100589248 /* LiteClientQuestion.swift */,
+				33EAF3791D11B375001ABE17 /* SimulationQuestionBuilder.swift */,
 			);
 			name = CoreData;
 			path = ..;
@@ -461,11 +477,16 @@
 			path = ContentProviders;
 			sourceTree = "<group>";
 		};
-		33E6095B1CEBB40B00C1B32C /* Test */ = {
+		33EAF3701D11932C001ABE17 /* SImulation */ = {
 			isa = PBXGroup;
 			children = (
+				33EAF3711D119398001ABE17 /* SimulationQuestionTableViewCell.swift */,
+				33EAF3731D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift */,
+				33EAF3751D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift */,
+				33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */,
+				33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */,
 			);
-			name = Test;
+			name = SImulation;
 			sourceTree = "<group>";
 		};
 		6205EC8A1CBEB05A00B9A9F1 /* Encryption */ = {
@@ -585,7 +606,6 @@
 			isa = PBXGroup;
 			children = (
 				33A0F0B81D08E07B0068CD96 /* CoreData */,
-				33E6095B1CEBB40B00C1B32C /* Test */,
 				62BA4F9F1CCE697D0016AC34 /* PercentComparable.swift */,
 				62BA4FA71CCE6A1C0016AC34 /* Content */,
 				620A360A1CCFC539000799B4 /* Answer */,
@@ -645,6 +665,7 @@
 		62E4E6F61CB7F5BE003C6FB2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				33EAF3701D11932C001ABE17 /* SImulation */,
 				330403931D0A0898007287D5 /* Test */,
 				33B3A3C41CEE61B300BEC8E9 /* ContentProviders */,
 				62D403A41CBBDCC400C53316 /* CustomViews */,
@@ -851,7 +872,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				336FF6401D04D24B0068BF8B /* EditTestViewController.swift in Sources */,
-				3317BC331D0B6FFC00E9CC79 /* TextContentTableViewCell.swift in Sources */,
+				3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				335D74B51D109F7100589248 /* LiteClientTest.swift in Sources */,
@@ -861,6 +882,7 @@
 				33A0F0CF1D08E0A60068CD96 /* LiteAnswer+CoreDataProperties.swift in Sources */,
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
 				62D403931CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
+				33EAF37C1D11C97C001ABE17 /* QuizWaitingViewController.swift in Sources */,
 				33E609651CEBB4E500C1B32C /* Test.swift in Sources */,
 				335D74B61D109F7100589248 /* LiteSimulationTest+CoreDataProperties.swift in Sources */,
 				33A0F0D61D08E0A60068CD96 /* LiteVariantsAnswerContent.swift in Sources */,
@@ -879,9 +901,13 @@
 				62D403A61CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
 				336FF63E1D04BEAC0068BF8B /* EditContentViewController.swift in Sources */,
 				33A0F0D21D08E0A60068CD96 /* LiteEvaluator.swift in Sources */,
+				33EAF3781D11A723001ABE17 /* CreateSimulationTableViewController.swift in Sources */,
+				33EAF3761D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift in Sources */,
 				6234153D1CB6C61300031EBB /* NSFetchRequest-Extensions.swift in Sources */,
 				62D4039D1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
 				3317BC301D0B6E2D00E9CC79 /* LiteTest+CoreDataProperties.swift in Sources */,
+				33EAF3721D119398001ABE17 /* SimulationQuestionTableViewCell.swift in Sources */,
+				33EAF3741D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift in Sources */,
 				62BA4FA01CCE697D0016AC34 /* PercentComparable.swift in Sources */,
 				33E6096C1CEBB5B800C1B32C /* Image+CoreDataProperties.swift in Sources */,
 				335D74B71D109F7100589248 /* LiteSimulationTest.swift in Sources */,
@@ -891,6 +917,7 @@
 				334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */,
 				625C59A21CBCD87400B155A7 /* ContextManager.swift in Sources */,
 				62C044461CBE400B00682E77 /* Buttons.swift in Sources */,
+				33EAF36F1D114EF7001ABE17 /* TestTableViewCell.swift in Sources */,
 				334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */,
 				33A0F0E01D08ED6B0068CD96 /* LiteQuestion+CoreDataProperties.swift in Sources */,
@@ -898,6 +925,7 @@
 				33A0F0CA1D08E0A60068CD96 /* LiteContent.swift in Sources */,
 				62E4E6FC1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
 				623415391CB6BA8A00031EBB /* NSManagedObjectContext-Extensions.swift in Sources */,
+				33EAF37A1D11B375001ABE17 /* SimulationQuestionBuilder.swift in Sources */,
 				33E22C1F1CF7A01600E3F07E /* EditQuestionViewController.swift in Sources */,
 				33A0F0CC1D08E0A60068CD96 /* LiteAnswerVariant.swift in Sources */,
 				33BE46081D0E199A005139F2 /* LiteSimulationQuestion.swift in Sources */,
@@ -931,7 +959,7 @@
 				334AC04F1CFCD01D0079C089 /* EditAnswerViewController.swift in Sources */,
 				33A0F0D01D08E0A60068CD96 /* LiteAnswer.swift in Sources */,
 				335D74BB1D10AA3D00589248 /* UIAlertController-Additions.swift in Sources */,
-				3317BC351D0B700D00E9CC79 /* ImageContentTableViewCell.swift in Sources */,
+				3317BC351D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift in Sources */,
 				6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
 				33A0F0D11D08E0A60068CD96 /* LiteEvaluator+CoreDataProperties.swift in Sources */,

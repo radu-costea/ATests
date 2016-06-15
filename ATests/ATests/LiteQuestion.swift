@@ -13,7 +13,20 @@ import CoreData
 class LiteQuestion: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-
+    func constructCopyParams() -> [String: AnyObject]? {
+        var params = [String : AnyObject]()
+        if let questionContent = content {
+            params["content"] = questionContent.makeCopy()!
+        }
+        if let cloneAnswer = answer?.makeCopy() {
+            params["answer"] = cloneAnswer
+        }
+        return params
+    }
+    
+    func makeCopy<T: LiteQuestion>() -> T? {
+        return LiteQuestion(with: constructCopyParams()) as? T
+    }
 }
 
 extension LiteQuestion: QuestionModel {

@@ -13,6 +13,9 @@ import CoreData
 class LiteSimulationTest: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+    override func awakeFromInsert() {
+        creationDate = NSDate().timeIntervalSinceReferenceDate
+    }
 
 }
 

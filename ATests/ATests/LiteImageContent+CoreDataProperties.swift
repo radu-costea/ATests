@@ -15,6 +15,6 @@ import CoreData
 extension LiteImageContent {
 
     @NSManaged var base64Image: String?
-    @NSManaged var imageHash: Int64
+    @NSManaged var size: Int64
 
 }

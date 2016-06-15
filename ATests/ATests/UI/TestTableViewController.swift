@@ -58,16 +58,16 @@ class TestTableViewController: UITableViewController {
             return tableView.dequeueReusableCellWithIdentifier("undefined")!
         }
         
-        if let imageContent = content as? LiteImageContent {
-            if let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as? ImageContentTableViewCell {
-                cell.content = imageContent
+        if let _ = content as? LiteImageContent {
+            if let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as? ImageContentQuestionTableViewCell {
+                cell.question = question
                 return cell
             }
         }
         
-        if let textContent = content as? LiteTextContent {
-            if let cell = tableView.dequeueReusableCellWithIdentifier("textCell") as? TextContentTableViewCell {
-                cell.content = textContent
+        if let _ = content as? LiteTextContent {
+            if let cell = tableView.dequeueReusableCellWithIdentifier("textCell") as? TextContentQuestionTableViewCell {
+                cell.question = question
                 return cell
             }
         }

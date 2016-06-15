@@ -13,8 +13,17 @@ import CoreData
 
 class LiteContent: NSManagedObject {
 
+    func constructCopyParams() -> [String: AnyObject]? {
+        guard let id = identifier else {
+            return nil
+        }
+        return ["identifier" : id]
+    }
+    
 // Insert code here to add functionality to your managed object subclass
-
+    func makeCopy<T: LiteContent>() -> T? {
+        return LiteContent(with: self.constructCopyParams()) as? T
+    }
 }
 
 extension LiteContent: ContentModel {
