@@ -9,7 +9,7 @@
 import UIKit
 
 class MyAccountViewController: UIViewController {
-    var user: User!
+    var user: ParseUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()

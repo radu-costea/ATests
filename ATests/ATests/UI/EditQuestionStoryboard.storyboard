@@ -22,8 +22,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Rr-hB-sYj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kc9-Vi-aRk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kc9-Vi-aRk">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Aod-kw-FLt">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
@@ -92,32 +92,6 @@
                                             <constraint firstItem="Aod-kw-FLt" firstAttribute="leading" secondItem="Kc9-Vi-aRk" secondAttribute="leading" id="wCX-rW-y7h"/>
                                         </constraints>
                                     </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NzH-Gh-pgW">
-                                        <rect key="frame" x="0.0" y="460" width="320" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GJ-TL-kKf" userLabel="Discard">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                <color key="backgroundColor" white="0.9629010308" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="dGh-F6-5Km"/>
-                                                </constraints>
-                                                <state key="normal" title="Discard">
-                                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="didTapDiscard" destination="uCd-Hy-Kvk" eventType="touchUpInside" id="0NK-PZ-y3b"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -130,11 +104,24 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Edit Question" id="Tsz-W8-bcZ"/>
+                    <navigationItem key="navigationItem" title="Edit Question" id="Tsz-W8-bcZ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="0dX-FU-Bz5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hqn-YN-XJZ" customClass="RoundedButton" customModule="ATests" customModuleProvider="target">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.93883792050000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.066666666669999999" green="0.73333333329999995" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapSave:" destination="uCd-Hy-Kvk" eventType="touchUpInside" id="94k-k1-sUQ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="discardButton" destination="7GJ-TL-kKf" id="O1X-GP-vq3"/>
                         <outlet property="questionAnswerView" destination="kaQ-zg-YbS" id="Xdd-tY-9Hi"/>
                         <outlet property="questionContentView" destination="yai-fU-h8v" id="nxX-u8-Jf5"/>
                         <outlet property="stackView" destination="Aod-kw-FLt" id="MDe-Ew-nNr"/>

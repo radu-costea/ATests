@@ -11,13 +11,17 @@ import Foundation
 protocol QuestionModel: class {
     associatedtype ContentType: ContentModel
     associatedtype AnswerType: AnswerModel
-    associatedtype EvaluatorType: AnswerEvaluatorModel
+//    associatedtype EvaluatorType: AnswerEvaluatorModel
     
     var content: ContentType? { get set }
     var answer: AnswerType? { get set }
-    var evaluator: EvaluatorType? { get set }
     
+    var dirty: Bool { get }
     func isValid() -> Bool
+}
+
+extension QuestionModel {
+    var dirty: Bool { return false }
 }
 
 protocol SimulationQuestionModel: QuestionModel {
@@ -35,10 +39,10 @@ extension QuestionModel {
         set { }
     }
     
-    var evaluator: EvaluatorType? {
-        get { return nil}
-        set { }
-    }
+//    var evaluator: EvaluatorType? {
+//        get { return nil}
+//        set { }
+//    }
 }
 
 
@@ -48,6 +52,12 @@ protocol VariantsQuestion: QuestionModel {
 
 protocol FreeAnswerQuestion: QuestionModel {
     associatedtype AnswerType: PercentAnswer
+}
+
+protocol Domain {
+    associatedtype QuestionType: QuestionModel
+    var title: String? { get set }
+    var questions: [QuestionType]? { get set }
 }
 
 protocol TestQuestion {

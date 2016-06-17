@@ -17,22 +17,26 @@ class ImageContentQuestionTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         questionImageView?.image = nil
-        getImageOperation?.cancel()
     }
     
     /// MARK: -
     /// MARK: Image download
     
-    var question: LiteQuestion? {
+    var question: ParseQuestion? {
         didSet {
-            content = question?.content as? LiteImageContent
+            content = question?.content as? ImageContent
             refreshValidState()
         }
     }
     
-    var content: LiteImageContent? {
+    var content: ImageContent? {
         didSet {
-            getImage(content)
+            let current = content
+            current?.getImageInBackgroundWithBlock{ [unowned self] (image, error) in
+                if let img = image where error == nil && current?.objectId == self.content?.objectId {
+                    self.questionImageView?.image = img
+                }
+            }
         }
     }
     
@@ -44,31 +48,4 @@ class ImageContentQuestionTableViewCell: UITableViewCell {
     func refreshValidState() {
         validIcon?.image = (question?.isValid() ?? false) ? UIImage(named: "icon_correct") : UIImage(named: "icon_incorrect")
     }
-    
-    var getImageOperation: NSBlockOperation?
-    func getImage(content: LiteImageContent?) {
-        getImageOperation?.cancel()
-        questionImageView?.image = nil
-        guard let currentContent = content else {
-            return;
-        }
-        
-        var img: UIImage?
-        let operation = NSBlockOperation{ _ in
-            let data = currentContent.base64Image?.toBase64Data()
-            if let loadedData = data {
-                img = UIImage(data: loadedData)
-            }
-        }
-        operation.completionBlock = { [weak operation, unowned self] _ in
-            if let finishContent = self.content,
-                let isCancelled = operation?.cancelled
-                where finishContent == currentContent && !isCancelled {
-                self.questionImageView?.image = img
-            }
-        }
-        getImageOperation = operation
-        getImageOperation?.start()
-    }
-
 }

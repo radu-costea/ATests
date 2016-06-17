@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol TestTableViewCellDelegate: class {
-    func testCellDidSelectCreateTest(cell: TestTableViewCell)
+    func testCellDidSelectCreateTest(cell: UITableViewCell)
 }
 
 class TestTableViewCell: UITableViewCell {
@@ -24,7 +24,7 @@ class TestTableViewCell: UITableViewCell {
         createSimulation.addTarget(self, action: #selector(TestTableViewCell.didTapCreateSimulation(_:)), forControlEvents: .TouchUpInside)
     }
     
-    var test: LiteTest? {
+    var test: ParseDomain? {
         didSet {
             refresh()
         }
@@ -32,7 +32,7 @@ class TestTableViewCell: UITableViewCell {
     
     func refresh() {
         labelTitle.text = test?.title
-        let count = test?.sortedQuestions?.count ?? 0
+        let count = test?.questions?.count ?? 0
         labelSubtitle.text = "\(count) Question\(count != 1 ? "s" : "")"
     }
     

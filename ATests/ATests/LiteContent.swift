@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Parse
 
 @objc(LiteContent)
 
@@ -29,6 +30,15 @@ class LiteContent: NSManagedObject {
 extension LiteContent: ContentModel {
     func isValid() -> Bool {
         return true
+    }
+    
+    func saveInBackgroundWithBlock(block: ((Bool, NSError?) -> Void)?) {
+        tryPersit()
+        block?(true, nil)
+    }
+    
+    func fetchIfNeededInBackgroundWithBlock(block: PFObjectResultBlock?) throws {
+        
     }
 }
 

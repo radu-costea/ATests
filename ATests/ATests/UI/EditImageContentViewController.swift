@@ -9,7 +9,7 @@
 import UIKit
 
 class EditImageContentViewController: EditContentController, ContentProviderDelegate {
-    var content: LiteImageContent?
+    var content: ImageContent?
     var image: UIImage?
     var contentProvider = PhotoViewController.photoProvider(nil)!
     
@@ -26,12 +26,12 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        loadImage()
         errorView.hidden = content?.isValid() ?? false
+        loadImage()
     }
     
-    override func loadWith<T : LiteContent>(content: T?) {
-        guard let img = content as? LiteImageContent else {
+    override func loadWith(content: ContentModel?) {
+        guard let img = content as? ImageContent else {
             return
         }
         self.content = img
@@ -39,14 +39,12 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     }
 
     func loadImage() {
-        if let data = content?.base64Image?.toBase64Data(),
-            let img = UIImage(data: data) {
-                image = img
-                imageView?.image = img
-                contentProvider.loadWith(img)
+        content?.getImageInBackgroundWithBlock{ [weak self] (img, error) in
+            self?.image = img
+            self?.imageView?.image = img
+            self?.contentProvider.loadWith(img)
+            self?.correctRatio()
         }
-        
-        correctRatio()
     }
     
     /// MARK: -
@@ -74,13 +72,14 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
             let img = content as? UIImage,
             let imgContent = self.content {
                 imageView.image = img
-                let string = UIImageJPEGRepresentation(img, 0.8)?.toBase64String()
-                imgContent.base64Image = string
-                imgContent.size = Int64(string?.length ?? 0)
-                imgContent.tryPersit()
-                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 correctRatio()
-                self.errorView.hidden = imgContent.isValid() ?? false
+            
+                AnimatingViewController.showInController(currentProvider, status: "Preparing image..")
+                imgContent.updateWithImage(img, inBackgroundWithBlock: { (sucess, error) in
+                    AnimatingViewController.hide()
+                    currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.errorView.hidden = imgContent.isValid() ?? false
+                })
         }
     }
     
@@ -93,7 +92,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
 }
 
 extension EditContentFabric {
-    class func imageController(image: LiteImageContent?) -> EditImageContentViewController? {
+    class func imageController(image: ImageContent?) -> EditImageContentViewController? {
         return EditImageContentViewController.editController(image) as? EditImageContentViewController
     }
 }

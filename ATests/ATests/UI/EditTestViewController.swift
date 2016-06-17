@@ -10,7 +10,7 @@ import UIKit
 
 class EditTestViewController: UIViewController {
     @IBOutlet var stackView: UIStackView!
-    var questions: [LiteQuestion] = []
+    var questions: [ParseQuestion] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class EditTestViewController: UIViewController {
         (0..<questions.count).forEach { addQuestion(questions[$0], atIndex: $0) }
     }
     
-    func addQuestion(question: LiteQuestion, atIndex: Int) {
+    func addQuestion(question: ParseQuestion, atIndex: Int) {
         guard let editController = EditQuestionViewController.controller() else {
             return
         }
@@ -32,14 +32,13 @@ class EditTestViewController: UIViewController {
     }
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
-        let answerContent = LiteVariantsAnswerContent(with: [
-            "identifier": NSUUID().UUIDString,
-            "variants": []
-        ])!
-        
-        let answer = LiteAnswer(with: ["content": answerContent])!
-        let question = LiteQuestion(with: ["answer": answer])!
+        let answerContent = ParseVariantsAnswerContent()
+        let answer = ParseAnswer()
+        answer.content = answerContent
+        let question = ParseQuestion()
+        question.answer = answer
         addQuestion(question, atIndex: questions.count)
+        
         questions.append(question)
     }
 }

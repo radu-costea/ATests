@@ -7,26 +7,37 @@
 //
 
 import UIKit
+import Parse
 
 class TestTableViewController: UITableViewController {
-    var test: LiteTest!
+    var test: ParseDomain!
     var keyboardAvoider: ScrollViewKeyboardAvoider!
     @IBOutlet var titleTextField: UITextField!
-    var questions: [LiteQuestion] = []
+    var questions: [ParseQuestion] = []
     var selectedIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if test == nil {
-            test = LiteTest(with: ["title" : "My Test", "sortedQuestions" : []])
-        }
+//        if test == nil {
+//            test = LiteTest(with: ["title" : "My Test", "sortedQuestions" : []])
+//        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        questions = test.sortedQuestions ?? []
+        
+        let query = PFQuery(className: "ParseQuestion")
+        query.whereKey("domain", equalTo: test)
+        
+        query.findObjectsInBackgroundWithBlock({ (objects, error) in
+            if let q = objects {
+                self.questions = q.flatMap{ $0 as? ParseQuestion }
+                print("questions: \(objects)")
+                self.tableView.reloadData()
+            }
+        })
         keyboardAvoider = ScrollViewKeyboardAvoider(scrollView: tableView)
     }
     
@@ -43,7 +54,6 @@ class TestTableViewController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        test.tryPersit()
         keyboardAvoider.stopListeningForKeyboardNotifications()
         stopObservingTextFieldChanges()
     }
@@ -54,18 +64,26 @@ class TestTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let question = questions[indexPath.row]
+        do {
+            try question.fetchIfNeeded()
+        } catch { }
+        
         guard let content = question.content else {
             return tableView.dequeueReusableCellWithIdentifier("undefined")!
         }
         
-        if let _ = content as? LiteImageContent {
+        do {
+            try content.fetchIfNeeded()
+        } catch { }
+        
+        if let _ = content as? ImageContent {
             if let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as? ImageContentQuestionTableViewCell {
                 cell.question = question
                 return cell
             }
         }
         
-        if let _ = content as? LiteTextContent {
+        if let _ = content as? TextContent {
             if let cell = tableView.dequeueReusableCellWithIdentifier("textCell") as? TextContentQuestionTableViewCell {
                 cell.question = question
                 return cell
@@ -114,22 +132,33 @@ class TestTableViewController: UITableViewController {
     /// MARK: Add Question
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
-        let answerContent = LiteVariantsAnswerContent(with: [
-            "identifier": NSUUID().UUIDString,
-            "variants": []
-        ])!
+        AnimatingViewController.showInController(self, status: "Preparing question..")
+        let answerContent = ParseVariantsAnswerContent(className: ParseVariantsAnswerContent.parseClassName())
+        let answer = ParseAnswer(className: ParseAnswer.parseClassName())
         
-        let answer = LiteAnswer(with: ["content": answerContent])!
-        let question = LiteQuestion(with: ["answer": answer])!
-        question.creationDate = NSDate().timeIntervalSinceReferenceDate
-        let idx = questions.count
-        
-        questions.append(question)
-        test.sortedQuestions = questions
-        
-        selectedIndex = idx
-        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
-        performSegueWithIdentifier("goToEditQuestion", sender: self)
+        AnimatingViewController.setStatus("Preparing answer ..")
+        answerContent.saveEventually { (succes, error) in
+            answer.content = answerContent
+            answer.saveInBackgroundWithBlock({ (success2, error2) in
+                AnimatingViewController.setStatus("Saving answer ..")
+                let question = ParseQuestion()
+                question.answer = answer
+                let idx = self.questions.count
+                self.questions.append(question)
+                
+                question.domain = self.test
+                
+                AnimatingViewController.setStatus("Saving question ..")
+                question.saveInBackgroundWithBlock { (success, error) in
+                    self.test.saveInBackgroundWithBlock({ (success2, err2) in
+                        AnimatingViewController.hide()
+                        self.selectedIndex = idx
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
+                        self.performSegueWithIdentifier("goToEditQuestion", sender: self)
+                    })
+                }
+            })
+        }
     }
     
 }

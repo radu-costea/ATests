@@ -14,14 +14,19 @@ class LiteAnswerVariant: NSManagedObject {
     
     func createCopyParams() -> [String: AnyObject]? {
         var params: [String: AnyObject] =  ["index": NSNumber(int: index), "correct" : NSNumber(bool: correct)]
-        if let contentClone = content?.makeCopy() {
-            params["content"] = contentClone
-        }
+//        if let contentClone = content?.makeCopy() {
+//            params["content"] = contentClone
+//        }
         return params
     }
     
     func makeCopy<T: LiteAnswerVariant>() -> T? {
         return LiteAnswerVariant(with: createCopyParams()) as? T
+    }
+    
+    var answerContent: NewVariantsAnswerContent? {
+        get { return nil }
+        set { }
     }
 
 // Insert code here to add functionality to your managed object subclass
@@ -32,8 +37,10 @@ class LiteAnswerVariant: NSManagedObject {
 }
 
 extension LiteAnswerVariant: AnswerVariant {
+    
     override var hasDeepChanges: Bool {
-        return super.hasDeepChanges || (content?.hasDeepChanges ?? false)
+        return false;
+//        return super.hasDeepChanges || (content?.hasDeepChanges ?? false)
     }
     
     var index: Int32 {
@@ -46,14 +53,14 @@ extension LiteAnswerVariant: AnswerVariant {
         set { isCorrect = newValue }
     }
     
-    var content: LiteContent? {
-        get { return contentObject }
-        set { contentObject = newValue }
+    var content: ContentModel? {
+        get { return contentObject as? ContentModel }
+        set { contentObject = newValue as? LiteContent }
     }
 }
 
 
 //extension LiteAnswerVariant: Equatable { }
 func ==<T: LiteAnswerVariant>(lhs: T, rhs: T) -> Bool {
-    return lhs.content == rhs.content && rhs.correct == lhs.correct
+    return lhs.content?.objectId == rhs.content?.objectId && rhs.correct == lhs.correct
 }

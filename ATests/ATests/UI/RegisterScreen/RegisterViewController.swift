@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import Parse
 
 protocol ImagePickerDelegate: UINavigationControllerDelegate, UIImagePickerControllerDelegate {}
 
@@ -72,29 +73,55 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
     
     // MARK: - Actions
     var image: UIImage?
-    var user: User!
+    var user: ParseUser!
     
     @IBAction func register(sender: UIButton?) -> Void {
-        guard User.count(with: "email ==\"\(emailVM.text!)\"") == 0 else {
-            return
-        }
-        guard let password = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword") else {
-            return
-        }
-        let userInfo: [String: AnyObject] = [
-            "email" : emailVM.text!,
-            "password" : password,
-            "firstName" : firstNameVM.text!,
-            "lastName" : lastNameVM.text!,
-            "avatar" : UserAvatar(with: image?.base64String.map{["base64String" : $0]} ?? [:])!
-        ]
+        let usr = ParseUser.object()
+        usr.password = passwordVM.text!
+        usr.username = emailVM.text!
+        usr.firstName = firstNameVM.text
+        usr.lastName = lastNameVM.text
+        usr.email = emailVM.text!
         
-        guard let created = User(with: userInfo) else {
+        if let img = image,
+            let imageFile = PFFile(image: img) {
+            AnimatingViewController.showInController(self, status: "Preparing image ..")
+            imageFile.saveInBackgroundWithBlock({ (success, error) in
+                if let err = error {
+                    self.registerEncounteredAnError(err)
+                    return
+                }
+                usr.avatar = imageFile
+                self.completeSignUp(usr)
+            }, progressBlock: { (progress) in
+                AnimatingViewController.setStatus("Uploading image..\(progress)%")
+            })
             return
         }
-        user = created
-        user.tryPersit()
-        performSegueWithIdentifier("toMyAccount", sender: nil)
+        
+        completeSignUp(usr)
+    }
+    
+    func completeSignUp(user: ParseUser) {
+        AnimatingViewController.showInController(self, status: "Registering user ..")
+        user.signUpInBackgroundWithBlock{ [unowned self] (success, error) in
+            if let err = error {
+                self.registerEncounteredAnError(err)
+                return
+            }
+            
+            self.user = user
+            AnimatingViewController.setStatus("Success!!!")
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { [unowned self] in
+                AnimatingViewController.hide()
+                self.performSegueWithIdentifier("toMyAccount", sender: nil)
+            })
+        }
+    }
+    
+    func registerEncounteredAnError(error: NSError) {
+        AnimatingViewController.hide()
+        UIAlertController.showIn(self, message: "An error occured while trying to register: \(error.localizedDescription)", actions: [], cancelAction: (title: "Ok", action: nil))
     }
     
     /// MARK: -

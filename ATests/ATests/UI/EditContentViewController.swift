@@ -18,14 +18,15 @@ class EditContentViewController: ContainedViewController {
     
     weak var delegate: EditContentViewControllerDelegate? = nil
     private var editController: EditContentController?
+    var contentLoaded: Bool = false
     
-    var content: LiteContent? {
+    var content: ContentModel? {
         didSet {
             refresh()
             delegate?.editContentViewControllerDidUpdateContent(self)
         }
     }
-    var allowedTypes: [LiteContentType] = [.Text, .Image]
+    var allowedTypes: [ContentType] = [.Text, .Image]
     
     /// MARK: -
     /// MARK: Class
@@ -43,7 +44,30 @@ class EditContentViewController: ContainedViewController {
         refresh()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard contentLoaded else {
+            if let currentContent = content {
+                do {
+                    try currentContent.fetchIfNeededInBackgroundWithBlock{ _, _ in
+                        self.contentLoaded = true
+                        self.refresh()
+                    }
+                } catch { contentLoaded = true }
+            } else {
+                contentLoaded = true
+            }
+            return
+        }
+        refresh()
+    }
+    
     func refresh() {
+        guard contentLoaded else {
+            return
+        }
+        
         let weHaveContent: Bool
         defer {
             contentView?.hidden = !weHaveContent
@@ -86,7 +110,7 @@ class EditContentViewController: ContainedViewController {
         let alert = UIAlertController(title: nil, message: "Please select content type", preferredStyle: .ActionSheet)
         var actions = allowedTypes.map { type in
             return UIAlertAction(title: type.name(), style: .Default, handler: { [unowned self] _ in
-                self.content = type.createNewContent(NSUUID().UUIDString)
+                self.content = type.createNewParseContent()
                 self.editController?.startEditing()
             })
         }

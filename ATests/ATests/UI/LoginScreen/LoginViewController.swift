@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: ValidationFormViewController {
     lazy var passwordVM: FieldValidationViewModel = WordLengthValidationFieldViewModel(length: 6)
     lazy var emailVM: FieldValidationViewModel = ValidationFieldViewModel(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")
-    var user: User?
+    var user: ParseUser?
     
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var passwordField: ValidationTextField!
@@ -50,28 +51,55 @@ class LoginViewController: ValidationFormViewController {
     // MARK: - Actions
     
     @IBAction func login(sender: UIButton?) {
-        do {
-            self.view.endEditing(true)
-            let encryptedPassword = passwordVM.text?.sign(with: .MD5, key: "MyAwsomePassword")
-            if let usr = try User.find(with: "email == \"\(emailVM.text!)\" AND password == \"\(encryptedPassword!)\"") as? User {
-                user = usr
-                // do login
-                self.view.endEditing(true)
-                if let imgData = user?.avatar?.base64String?.toBase64Data() {
-                    UIView.animateWithDuration(0.5, animations: { [unowned self] _ in
-                        self.avatarContainer.hidden = false
-                        self.imageView.image = UIImage(data: imgData)
-                        self.view.layoutIfNeeded()
-                    })
-                }
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [unowned self] _ in
-                    self.performSegueWithIdentifier("toMyAccount", sender: nil)
-                }
+        self.view.endEditing(true)
+        AnimatingViewController.showInController(self, status: "Logging in ..")
+        ParseUser.logInWithUsernameInBackground(emailVM.text!, password: passwordVM.text!) { [unowned self] currentUser, error in
+            if let usr = currentUser as? ParseUser {
+                self.loginSuccedeedWithUser(usr)
+                return
             }
-        } catch {
-            print("exception")
+            self.loginEncounteredAnError(error!)
         }
+    }
+    
+    func loginSuccedeedWithUser(user: ParseUser) {
+        self.user = user
+        
+        if let avatar = self.user?.avatar {
+            avatar.getImageInBackgroundWithBlock{ [unowned self] (image, error) in
+                AnimatingViewController.hide()
+                self.animateAvatarAndProceed(image)
+            }
+            return
+        }
+        
+        AnimatingViewController.hide()
+        animateAvatarAndProceed(nil)
+    }
+    
+    func animateAvatarAndProceed(image: UIImage?) {
+        guard let img = image else {
+            self.performSegueWithIdentifier("toMyAccount", sender: nil)
+            return
+        }
+
+        UIView.animateWithDuration(0.5,
+        animations: { [unowned self] _ in
+            self.avatarContainer.hidden = false
+            self.imageView.image = img
+            self.view.layoutIfNeeded()
+        },
+        completion: { success in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                self.performSegueWithIdentifier("toMyAccount", sender: nil)
+            })
+        })
+    }
+    
+    
+    func loginEncounteredAnError(error: NSError) {
+        AnimatingViewController.hide()
+        UIAlertController.showIn(self, message: "An error occured while trying to login: \(error.localizedDescription)", actions: [], cancelAction: (title: "Ok", action: nil))
     }
     
     // MARK: - Navigation

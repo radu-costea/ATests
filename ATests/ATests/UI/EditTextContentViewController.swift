@@ -9,9 +9,11 @@
 import UIKit
 
 class EditTextContentViewController: EditContentController, ContentProviderDelegate {
-    var content: LiteTextContent?
+    var content: TextContent?
     var text: String?
     var contentProvider: TextProviderViewController!
+    
+    override func getContent() -> ContentModel? { return content }
 
     @IBOutlet var textView: UILabel!
     @IBOutlet var errorView: UIView!
@@ -40,8 +42,8 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
         }
     }
     
-    override func loadWith<T : LiteContent>(content: T?) {
-        if let txt = content as? LiteTextContent {
+    override func loadWith(content: ContentModel?) {
+        if let txt = content as? TextContent {
             self.content = txt
             loadText()
         }
@@ -70,16 +72,22 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     func contentProvider<Provider: ContentProvider>(provider: Provider, finishedLoadingWith content: Provider.ContentType?) -> Void {
         if let currentProvider = provider as? TextProviderViewController,
             let txt = content as? String {
-                textView.text = txt
-                self.content?.text = txt
-                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                self.errorView.hidden = self.content?.isValid() ?? false
+            textView.text = txt
+            self.content?.text = txt
+            
+            AnimatingViewController.showInController(currentProvider, status: "Saving changes..")
+            self.content?.saveInBackgroundWithBlock({ (success, err) in
+                AnimatingViewController.hide { 
+                    currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.errorView.hidden = self.content?.isValid() ?? false
+                }
+            })
         }
     }
 }
 
 extension EditContentFabric {
-    class func textController(text: LiteTextContent?) -> EditTextContentViewController? {
+    class func textController(text: TextContent?) -> EditTextContentViewController? {
         return EditTextContentViewController.editController(text) as? EditTextContentViewController
     }
 }

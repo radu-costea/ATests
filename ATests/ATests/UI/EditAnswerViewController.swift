@@ -7,41 +7,44 @@
 //
 
 import UIKit
+import Parse
 
 class EditAnswerViewController: EditContentController, EditVariantControllerDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var addAnswerView: UIView!
-    var allowedTypes: [LiteContentType] = [.Text, .Image]
+    var allowedTypes: [ContentType] = [.Text, .Image]
     
-    var content: LiteVariantsAnswerContent?
-    var variants: [LiteAnswerVariant] { return content?.sortedVariants ?? [] }
+    var content: NewVariantsAnswerContent?
+    var variants: [AnswerVariant] = []
     
     override class var storyboardName: String { return "EditQuestionStoryboard" }
     override class var storyboardId: String { return "editAnswer" }
     
-    class func controllerWithContent(content: LiteVariantsAnswerContent?) -> EditAnswerViewController? {
+    class func controllerWithContent(content: NewVariantsAnswerContent?) -> EditAnswerViewController? {
         let controller = self.controller() as? EditAnswerViewController
         controller?.content = content
         return controller
     }
     
-    override func loadWith<T: LiteContent>(content: T?) {
-        if let content = content as? LiteVariantsAnswerContent {
+    override func loadWith(content: ContentModel?) {
+        if let content = content as? NewVariantsAnswerContent {
             self.content = content
         }
     }
     
-    override func startEditing() {
-        // STUB
-    }
+    override func startEditing() { /* STUB */ }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
-        controllers.forEach { setupVariantController($0) }
+        /// Load variants
+        content?.loadVariantsInBackgroundWithBlock{ (objects, error) in
+            if let v = objects {
+                self.variants = v.flatMap{ $0 as? AnswerVariant }
+                let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
+                controllers.forEach { self.setupVariantController($0) }
+            }
+        }
     }
     
     func setupVariantController(controller: EditVariantController) {
@@ -55,16 +58,25 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
         showSelectContentType {  [unowned self] type in
-            let variant = LiteAnswerVariant(with: [
-                "content": type.createNewContent(NSUUID().UUIDString),
-                "index": self.variants.count
-            ])! //as! LiteAnswerVariant
-            let controller = self.addVariant(variant)
-            controller?.startEditing()
+            let variant = ParseAnswerVariant()
+            variant.index = Int32(self.variants.count)
+            let variantContent = type.createNewParseContent()
+            variant.content = variantContent
+            
+            print("variant content: \(variant.content)")
+            variant.answerContent = self.content
+            
+            AnimatingViewController.showInController(self, status: "Preparing new variant..")
+            variant.saveInBackgroundWithBlock({ (success, error) in
+                AnimatingViewController.hide({
+                    let controller = self.addVariant(variant)
+                    controller?.startEditing()
+                })
+            })
         }
     }
     
-    func showSelectContentType(completion: (type: LiteContentType) -> Void) {
+    func showSelectContentType(completion: (type: ContentType) -> Void) {
         let alert = UIAlertController(title: nil, message: "Please select content type", preferredStyle: .ActionSheet)
         var actions = allowedTypes.map { type in
             return UIAlertAction(title: type.name(), style: .Default, handler: { _ in completion(type: type) })
@@ -77,8 +89,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     /// MARK: -
     /// MARK: Edit Variant Controller Delegate 
     
-    func addVariant(variant: LiteAnswerVariant) -> EditVariantController? {
-        content?.variants = variants + [variant]
+    func addVariant(variant: AnswerVariant) -> EditVariantController? {
         guard let controller = EditVariantController.controllerWithVariant(variant) else {
             return nil
         }
@@ -89,7 +100,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     func editVariantControllerDidSelectDeleteVariant(controller: EditVariantController) {
         var answerVariants = variants
         guard let variant = controller.variant,
-                let idx = answerVariants.indexOf(variant) else {
+                let idx = answerVariants.indexOf({ $0.objectId == variant.objectId }) else {
                 return
         }
         for i in (idx + 1)..<(answerVariants.count) {
@@ -104,7 +115,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
 
 
 extension EditContentFabric {
-    class func variantsController(variants: LiteVariantsAnswerContent?) -> EditAnswerViewController? {
+    class func variantsController(variants: NewVariantsAnswerContent?) -> EditAnswerViewController? {
         return EditAnswerViewController.controllerWithContent(variants)
     }
 }

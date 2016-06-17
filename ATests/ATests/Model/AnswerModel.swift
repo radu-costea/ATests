@@ -12,6 +12,7 @@ protocol AnswerModel {
     associatedtype ContentType: ContentModel
     var content: ContentType? { get set }
     func isValid() -> Bool
+//    init?()
 }
 
 extension AnswerModel {

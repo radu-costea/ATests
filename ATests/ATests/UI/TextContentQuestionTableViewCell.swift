@@ -9,16 +9,14 @@
 import UIKit
 
 class TextContentQuestionTableViewCell: UITableViewCell {
-    var getImageOperation: NSBlockOperation?
-    
-    var question: LiteQuestion? {
+    var question: ParseQuestion? {
         didSet {
-            content = question?.content as? LiteTextContent
+            content = question?.content as? TextContent
             refreshValidState()
         }
     }
     
-    var content: LiteTextContent? {
+    var content: TextContent? {
         didSet {
             questionLabel?.text = content?.text
         }

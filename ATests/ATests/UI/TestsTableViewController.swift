@@ -7,42 +7,51 @@
 //
 
 import UIKit
+import Parse
 
 class TestsTableViewController: UITableViewController, TestTableViewCellDelegate {
-    var tests: [LiteTest] = []
+    var tests: [ParseDomain] = []
     var selectedIndex: Int?
+    let currentUser = ParseUser.currentUser()!
+    var contentLoaded: Bool = false
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        do {
-            tests = try LiteTest.all().flatMap{ $0 as? LiteTest }
-        } catch {}
-    }
+    /// MARK: -
+    /// MARK: Lifecycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if contentLoaded == false {
+            contentLoaded = true
+            // Fetching all domains
+            AnimatingViewController.showInController(self, status: "Fetching domains.. ")
+            currentUser.fetchSubEntities("ParseDomain", key: "owner"){ (objects, error) in
+                AnimatingViewController.hide()
+                self.tests = objects?.flatMap{ $0 as? ParseDomain } ?? []
+                self.tableView.reloadData()
+            }
+            return
+        }
+        
         if let idx = selectedIndex {
             tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
         }
     }
 
-    // MARK: - Table view data source
+    /// MARK: -
+    /// MARK: Table View Data Source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tests.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! TestTableViewCell
-        cell.test = tests[indexPath.row]
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        if let testCell = cell as? TestTableViewCell {
+            testCell.test = tests[indexPath.row]
+            testCell.delegate = self
+        }
         return cell
     }
     
@@ -55,12 +64,27 @@ class TestsTableViewController: UITableViewController, TestTableViewCellDelegate
     /// MARK: Actions
     
     @IBAction func didTapCreateTest() {
-        if let test = LiteTest(with: ["title" : "New Test"]) {
-            selectedIndex = tests.count
-            tests.append(test)
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: selectedIndex!, inSection: 0)], withRowAnimation: .Automatic)
-            test.tryPersit()
-            performSegueWithIdentifier("goToEditTest", sender: self)
+        AnimatingViewController.showInController(self, status: "Preparing domain..")
+        
+        let test = ParseDomain(className: ParseDomain.parseClassName())
+        let user = ParseUser.currentUser()!
+        test.owner = user
+        
+        AnimatingViewController.setStatus("Creating new test")
+        test.saveInBackgroundWithBlock { (sucess, error) in
+            AnimatingViewController.setStatus("Saving changes")
+            user.saveInBackgroundWithBlock { (success, error) in
+                AnimatingViewController.hide()
+                print("user saved \(success)")
+                test.owner = user
+                
+                // Proceed
+                let idx = self.tests.count
+                self.selectedIndex = idx
+                self.tests.append(test)
+                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
+                self.performSegueWithIdentifier("goToEditTest", sender: self)
+            }
         }
     }
 
@@ -74,14 +98,15 @@ class TestsTableViewController: UITableViewController, TestTableViewCellDelegate
             switch identifier {
             case "goToEditTest":
                 if let idx = selectedIndex,
-                    let destination = segue.destinationViewController as? TestTableViewController{
+                    let destination = segue.destinationViewController as? TestTableViewController {
                     destination.test = tests[idx]
                 }
             case "goToCreateSimulation":
-                if let cell = sender as? TestTableViewCell,
-                    let destination = segue.destinationViewController as? CreateSimulationTableViewController {
-                    destination.test = cell.test
-                }
+                break;
+//                if let cell = sender as? TestTableViewCell<ParseDomain>,
+//                    let destination = segue.destinationViewController as? CreateSimulationTableViewController {
+//                    destination.test = cell.test
+//                }
             default:
                 break
             }
@@ -97,7 +122,7 @@ class TestsTableViewController: UITableViewController, TestTableViewCellDelegate
     /// MARK: -
     /// MARK: TestQuestionTableViewCellDelegate
     
-    func testCellDidSelectCreateTest(cell: TestTableViewCell) {
+    func testCellDidSelectCreateTest(cell: UITableViewCell) {
         performSegueWithIdentifier("goToCreateSimulation", sender: cell)
     }
 

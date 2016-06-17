@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import Parse
 
 protocol ContainedController {
     var presenter: UIViewController? { get set }
 }
 
 class EditQuestionViewController: UIViewController, EditContentViewControllerDelegate {
+    var question: ParseQuestion?
+    
+    // Outlets
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var questionContentView: UIView!
     @IBOutlet var questionAnswerView: UIView!
-    @IBOutlet var discardButton: UIButton!
-    var saveOnExit: Bool = true
     
+    // Contained controllers
     var editContentController: EditContentViewController!
-    var editTextController: ContainedViewController!
+    var editAnswerController: EditContentController!
     
     /// MARK: -
     /// MARK: Class
@@ -30,25 +33,9 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     class func controller() -> EditQuestionViewController? {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditQuestionViewController
     }
-    
-    var question: LiteQuestion? {
-        didSet {
-            print("new question: \(question)")
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let _ = question { }
-        else {
-            let answerContent = LiteVariantsAnswerContent(with: [
-                "identifier": NSUUID().UUIDString,
-                "variants": []
-            ])!
-            let answer = LiteAnswer(with: ["content": answerContent])!
-            question = LiteQuestion(with: ["answer": answer])!
-        }
 
         // Do any additional setup after loading the view.
         var contentController = EditContentViewController.controller()!
@@ -59,14 +46,8 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
         editContentController = contentController
         
         var answerController = EditContentFabric.editController((question?.answer?.content)!)
-        addEditController(&answerController, toView: questionAnswerView)
-        editTextController = answerController
-        discardButton.hidden = true
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        discardButton.hidden = !(question?.hasDeepChanges ?? false)
+        self.addEditController(&answerController, toView: self.questionAnswerView)
+        self.editAnswerController = answerController
     }
     
     func addEditController<T: ContainedViewController>(inout controller: T, toView view: UIView) {
@@ -86,39 +67,32 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
         if controller === editContentController {
-            question?.content = controller.content
+            question?.content = controller.content as? ParseQuestion.ContentType
         }
     }
     
     /// MARK: -
     /// MARK: Actions
     
-    @IBAction func didTapDiscard() {
-        UIAlertController.showIn(self,
-            message: "Are you sure you want to discard changes?",
-            style: .Alert,
-            actions: [(
-                title: "Yes",
-                action: {[unowned self] _ in
-                    self.saveOnExit = false
+    @IBAction func didTapSave(sender: AnyObject?) {
+        guard let q = question else {
+            self.navigationController?.popViewControllerAnimated(true)
+            return
+        }
+        AnimatingViewController.showInController(self, status: "Saving question..")
+        q.parseContent = [editContentController.content as! PFObject]
+        q.saveInBackgroundWithBlock { (success, error) in
+            if let err = error {
+                AnimatingViewController.setStatus("Error: \(err.localizedDescription)")
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                    AnimatingViewController.hide()
                     self.navigationController?.popViewControllerAnimated(true)
                 })
-            ],
-            cancelAction: (
-                title: "Cancel",
-                action: nil
-            )
-        )
-    }
-    
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        if parent == nil {
-            if saveOnExit {
-                question?.tryPersit()
-            } else {
-                question?.rollback()
+                return
+            }
+            AnimatingViewController.hide { 
+                self.navigationController?.popViewControllerAnimated(true)
             }
         }
-        super.willMoveToParentViewController(parent)
     }
 }

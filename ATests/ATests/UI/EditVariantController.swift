@@ -16,7 +16,7 @@ class EditVariantController: ContainedViewController {
     weak var delegate: EditVariantControllerDelegate?
     
     @IBOutlet var selectionView: UIView!
-    var variant: LiteAnswerVariant?
+    var variant: AnswerVariant?
     var editContentController: EditContentController!
     
     override class var storyboardName: String { return "EditQuestionStoryboard" }
@@ -26,7 +26,7 @@ class EditVariantController: ContainedViewController {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditVariantController
     }
     
-    class func controllerWithVariant(variant: LiteAnswerVariant) -> EditVariantController? {
+    class func controllerWithVariant(variant: AnswerVariant) -> EditVariantController? {
         let ctlr = controller()
         ctlr?.variant = variant
         return ctlr
