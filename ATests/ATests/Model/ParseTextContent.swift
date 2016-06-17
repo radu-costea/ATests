@@ -9,9 +9,11 @@
 import UIKit
 import Parse
 
-extension ParseTextContent: TextContent {
+extension ParseTextContent {
     @NSManaged var text: String?
-    
+}
+
+extension ParseTextContent {
     override func isValid() -> Bool {
         return (text?.length ?? 0) > 0
     }
@@ -21,17 +23,4 @@ class ParseTextContent: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "ParseTextContent"
     }
-    
-    override class func initialize() {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0;
-        }
-        dispatch_once(&Static.onceToken) {
-            self.registerSubclass()
-        }
-    }
-    
-//    required override init() {
-//        super.init()
-//    }
 }

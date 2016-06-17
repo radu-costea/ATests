@@ -9,10 +9,12 @@
 import UIKit
 import Parse
 
-extension ParseImageContent: ImageContent {
+extension ParseImageContent {
     @NSManaged var image: PFFile?
     @NSManaged var size: Int
-    
+}
+
+extension ParseImageContent {
     func getImageInBackgroundWithBlock(block: (image: UIImage?, error: NSError?) -> Void) {
         guard let imgFile = image else {
             block(image: nil, error: NSError(domain: "QuizzBuilder", code: 0, userInfo: [NSLocalizedDescriptionKey: "Image file not found"]))
@@ -45,17 +47,4 @@ class ParseImageContent: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "ParseImageContent"
     }
-    
-    override class func initialize() {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0;
-        }
-        dispatch_once(&Static.onceToken) {
-            self.registerSubclass()
-        }
-    }
-    
-//    required override init() {
-//        super.init()
-//    }
 }
