@@ -56,6 +56,11 @@
 		33EAF3781D11A723001ABE17 /* CreateSimulationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */; };
 		33EAF37C1D11C97C001ABE17 /* QuizWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */; };
 		33EC502F1D14B19700A971E0 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC502E1D14B19700A971E0 /* ContentType.swift */; };
+		33EC50311D14DEA900A971E0 /* ParseExamQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50301D14DEA900A971E0 /* ParseExamQuestion.swift */; };
+		33EC50331D14DECD00A971E0 /* ParseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */; };
+		33EC50351D14E04400A971E0 /* ParseExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50341D14E04400A971E0 /* ParseExam.swift */; };
+		33EC50371D14E25500A971E0 /* ParseExamAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */; };
+		33EC50391D14E37300A971E0 /* ParseExamResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50381D14E37300A971E0 /* ParseExamResult.swift */; };
 		6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
@@ -213,6 +218,11 @@
 		33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSimulationTableViewController.swift; sourceTree = "<group>"; };
 		33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizWaitingViewController.swift; sourceTree = "<group>"; };
 		33EC502E1D14B19700A971E0 /* ContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		33EC50301D14DEA900A971E0 /* ParseExamQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExamQuestion.swift; sourceTree = "<group>"; };
+		33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConfiguration.swift; sourceTree = "<group>"; };
+		33EC50341D14E04400A971E0 /* ParseExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExam.swift; sourceTree = "<group>"; };
+		33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExamAnswer.swift; sourceTree = "<group>"; };
+		33EC50381D14E37300A971E0 /* ParseExamResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExamResult.swift; sourceTree = "<group>"; };
 		6205EC8B1CBEB07600B9A9F1 /* Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgoritm.swift; sourceTree = "<group>"; };
@@ -333,6 +343,11 @@
 				3391C2B91D130ABC00697132 /* ParseQuestion.swift */,
 				3391C2BB1D130C1C00697132 /* ParseDomain.swift */,
 				33EC502E1D14B19700A971E0 /* ContentType.swift */,
+				33EC50301D14DEA900A971E0 /* ParseExamQuestion.swift */,
+				33EC50381D14E37300A971E0 /* ParseExamResult.swift */,
+				33EC50341D14E04400A971E0 /* ParseExam.swift */,
+				33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */,
+				33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -730,7 +745,9 @@
 				3391C2B21D1306C100697132 /* ParseImageContent.swift in Sources */,
 				3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
+				33EC50351D14E04400A971E0 /* ParseExam.swift in Sources */,
 				3391C2B01D1305F700697132 /* PFObject-Additions.swift in Sources */,
+				33EC50331D14DECD00A971E0 /* ParseConfiguration.swift in Sources */,
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */,
 				6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
@@ -752,7 +769,9 @@
 				3391C2A71D12C59A00697132 /* ParseUser.swift in Sources */,
 				33EAF3781D11A723001ABE17 /* CreateSimulationTableViewController.swift in Sources */,
 				33EAF3761D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift in Sources */,
+				33EC50311D14DEA900A971E0 /* ParseExamQuestion.swift in Sources */,
 				62D4039D1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
+				33EC50371D14E25500A971E0 /* ParseExamAnswer.swift in Sources */,
 				33EAF3721D119398001ABE17 /* SimulationQuestionTableViewCell.swift in Sources */,
 				3391C2B81D13081D00697132 /* ParseAnswer.swift in Sources */,
 				33EAF3741D11A388001ABE17 /* ImageSimulationQuestionTableViewCell.swift in Sources */,
@@ -761,6 +780,7 @@
 				334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */,
 				62C044461CBE400B00682E77 /* Buttons.swift in Sources */,
 				33EAF36F1D114EF7001ABE17 /* TestTableViewCell.swift in Sources */,
+				33EC50391D14E37300A971E0 /* ParseExamResult.swift in Sources */,
 				334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */,
 				6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */,

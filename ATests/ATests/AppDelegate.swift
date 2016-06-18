@@ -29,14 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ****************************************************************************
         // Uncomment and fill in with your Parse credentials:
-        ParseDomain.registerSubclass()
-        ParseUser.registerSubclass()
-        ParseAnswer.registerSubclass()
-        ParseTextContent.registerSubclass()
-        ParseImageContent.registerSubclass()
-        ParseVariantsAnswerContent.registerSubclass()
-        ParseQuestion.registerSubclass()
-        ParseAnswerVariant.registerSubclass()
+        ParseConfiguration.registerClassNames()
         
         Parse.setApplicationId("LhlGs02Z4VsK2eRQF8WPDR8VpGMpjRO2LZ5PLnDQ", clientKey: "YI7FfxORbIYGZITklq1ONROZFV6WDpz5HQg4tTfr")
         
