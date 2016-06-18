@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 class KeyboardAvoidingScrollView: UIScrollView {
     var avoider: ScrollViewKeyboardAvoider!
     

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 protocol ValidationTextFieldDelegate: class {
     func validationFieldTextDidChanged(validationField: ValidationTextField)
     func validationFieldTextDidEndEditing(validationField: ValidationTextField)

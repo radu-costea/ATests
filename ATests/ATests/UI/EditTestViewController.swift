@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class EditTestViewController: UIViewController {
     @IBOutlet var stackView: UIStackView!
     var questions: [ParseQuestion] = []
@@ -26,19 +26,29 @@ class EditTestViewController: UIViewController {
         addChildViewController(editController)
         editController.question = question
         editController.view.translatesAutoresizingMaskIntoConstraints = false
-//        editController.presenter = self
         stackView.insertArrangedSubview(editController.view, atIndex: atIndex)
         editController.didMoveToParentViewController(self)
     }
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
-        let answerContent = ParseVariantsAnswerContent()
-        let answer = ParseAnswer()
-        answer.content = answerContent
-        let question = ParseQuestion()
-        question.answer = answer
-        addQuestion(question, atIndex: questions.count)
+        AnimatingViewController.showInController(self, status: "Preparing question...")
         
-        questions.append(question)
+        let answerContent = ParseVariantsAnswerContent()
+        answerContent.saveInBackgroundWithBlock { (success, error) in
+            let answer = ParseAnswer()
+            
+            AnimatingViewController.showInController(self, status: "Preparing answer...")
+            answer.saveInBackgroundWithBlock({ (success2, error2) in
+                let question = ParseQuestion()
+                question.answer = answer
+            
+                AnimatingViewController.showInController(self, status: "Finalizing ...")
+                question.saveInBackgroundWithBlock({ (success3, error3) in
+                    AnimatingViewController.hide()
+                    self.addQuestion(question, atIndex: self.questions.count)
+                    self.questions.append(question)
+                })
+            })
+        }
     }
 }

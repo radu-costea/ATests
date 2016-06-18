@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class KeyboardPlaceholderView: UIView {
     var heightConstraint: NSLayoutConstraint!
     

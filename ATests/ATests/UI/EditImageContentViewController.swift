@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import Parse
 class EditImageContentViewController: EditContentController, ContentProviderDelegate {
-    var content: ImageContent?
+    var content:ParseImageContent?
     var image: UIImage?
     var contentProvider = PhotoViewController.photoProvider(nil)!
     
@@ -30,8 +30,8 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
         loadImage()
     }
     
-    override func loadWith(content: ContentModel?) {
-        guard let img = content as? ImageContent else {
+    override func loadWith(content: PFObject?) {
+        guard let img = content as?ParseImageContent else {
             return
         }
         self.content = img
@@ -44,6 +44,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
             self?.imageView?.image = img
             self?.contentProvider.loadWith(img)
             self?.correctRatio()
+            self?.errorView?.hidden = (error == nil)
         }
     }
     
@@ -92,7 +93,7 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
 }
 
 extension EditContentFabric {
-    class func imageController(image: ImageContent?) -> EditImageContentViewController? {
+    class func imageController(image:ParseImageContent?) -> EditImageContentViewController? {
         return EditImageContentViewController.editController(image) as? EditImageContentViewController
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class ValidationFormViewController: BaseViewController, ValidationTextFieldDelegate {
     lazy var bindings: [ValidationTextField: FieldValidationViewModel] = self.createBindings()
     lazy var viewModels: [FieldValidationViewModel] = self.createViewModels()

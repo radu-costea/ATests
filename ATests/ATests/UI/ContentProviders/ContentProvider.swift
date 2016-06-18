@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 protocol RawContent { }
 extension String: RawContent { }
 extension UIImage: RawContent { }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class TextProviderViewController: UIViewController, ContentProvider, UITextViewDelegate {
     @IBOutlet var keyboardPlaceholderHeightConstraint: NSLayoutConstraint!
     @IBOutlet var textView: UITextView!

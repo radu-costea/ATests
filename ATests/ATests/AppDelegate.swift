@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        AppearenceCustomizer.setupDefaultAppearence()
+        let contextManager = ContextManager(modelFileName: "Database", storeFileName: "Database", concurency: .MainQueueConcurrencyType)
+        NSManagedObject.configureWithContextManager(contextManager)
+        return true
+    }
+    
+    func configureParse() {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
@@ -35,11 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("LhlGs02Z4VsK2eRQF8WPDR8VpGMpjRO2LZ5PLnDQ", clientKey: "YI7FfxORbIYGZITklq1ONROZFV6WDpz5HQg4tTfr")
         
         PFUser.enableAutomaticUser()
-        
-        AppearenceCustomizer.setupDefaultAppearence()
-        let contextManager = ContextManager(modelFileName: "Database", storeFileName: "Database", concurency: .MainQueueConcurrencyType)
-        NSManagedObject.configureWithContextManager(contextManager)
-        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

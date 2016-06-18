@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 protocol EditVariantControllerDelegate: class {
     func editVariantControllerDidSelectDeleteVariant(controller: EditVariantController)
 }
@@ -16,7 +16,7 @@ class EditVariantController: ContainedViewController {
     weak var delegate: EditVariantControllerDelegate?
     
     @IBOutlet var selectionView: UIView!
-    var variant: AnswerVariant?
+    var variant: ParseAnswerVariant?
     var editContentController: EditContentController!
     
     override class var storyboardName: String { return "EditQuestionStoryboard" }
@@ -26,7 +26,7 @@ class EditVariantController: ContainedViewController {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditVariantController
     }
     
-    class func controllerWithVariant(variant: AnswerVariant) -> EditVariantController? {
+    class func controllerWithVariant(variant: ParseAnswerVariant) -> EditVariantController? {
         let ctlr = controller()
         ctlr?.variant = variant
         return ctlr
@@ -70,8 +70,14 @@ class EditVariantController: ContainedViewController {
     }
     
     @IBAction func didTapVariantAsCorrect(sender: AnyObject?) {
-        variant?.correct = !(variant?.correct ?? false)
+        guard let v = variant  else { return }
+        
+        v.correct = !v.correct
         refreshSelection()
+        AnimatingViewController.showInController(self, status: "Saving choice..")
+        v.saveInBackgroundWithBlock { (success, error) in
+            AnimatingViewController.hide()
+        }
     }
     
     func refreshSelection() {

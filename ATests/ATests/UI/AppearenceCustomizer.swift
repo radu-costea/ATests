@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 class OrangeNavigationController: UINavigationController { }
 
 class AppearenceCustomizer {

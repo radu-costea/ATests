@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 @objc protocol TestTableViewCellDelegate: class {
     func testCellDidSelectCreateTest(cell: UITableViewCell)
 }

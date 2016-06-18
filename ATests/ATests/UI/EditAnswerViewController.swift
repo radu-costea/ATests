@@ -14,20 +14,20 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     @IBOutlet var addAnswerView: UIView!
     var allowedTypes: [ContentType] = [.Text, .Image]
     
-    var content: NewVariantsAnswerContent?
-    var variants: [AnswerVariant] = []
+    var content: ParseAnswer?
+    var variants: [ParseAnswerVariant] = []
     
     override class var storyboardName: String { return "EditQuestionStoryboard" }
     override class var storyboardId: String { return "editAnswer" }
     
-    class func controllerWithContent(content: NewVariantsAnswerContent?) -> EditAnswerViewController? {
+    class func controllerWithContent(content: ParseAnswer?) -> EditAnswerViewController? {
         let controller = self.controller() as? EditAnswerViewController
         controller?.content = content
         return controller
     }
     
-    override func loadWith(content: ContentModel?) {
-        if let content = content as? NewVariantsAnswerContent {
+    override func loadWith(content: PFObject?) {
+        if let content = content as? ParseAnswer {
             self.content = content
         }
     }
@@ -40,7 +40,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         /// Load variants
         content?.loadVariantsInBackgroundWithBlock{ (objects, error) in
             if let v = objects {
-                self.variants = v.flatMap{ $0 as? AnswerVariant }
+                self.variants = v.flatMap{ $0 as? ParseAnswerVariant }
                 let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
                 controllers.forEach { self.setupVariantController($0) }
             }
@@ -58,19 +58,22 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
         showSelectContentType {  [unowned self] type in
-            let variant = ParseAnswerVariant()
-            variant.index = Int32(self.variants.count)
             let variantContent = type.createNewParseContent()
-            variant.content = variantContent
-            
-            print("variant content: \(variant.content)")
-            variant.answerContent = self.content
             
             AnimatingViewController.showInController(self, status: "Preparing new variant..")
-            variant.saveInBackgroundWithBlock({ (success, error) in
-                AnimatingViewController.hide({
-                    let controller = self.addVariant(variant)
-                    controller?.startEditing()
+            variantContent.saveInBackgroundWithBlock({ (success, error) in
+                print("variant content saved \(success)")
+                let variant = ParseAnswerVariant()
+                variant.index = Int32(self.variants.count)
+                variant.content = variantContent
+                variant.owner = self.content
+                
+                variant.saveInBackgroundWithBlock({ (success2, error2) in
+                    print("variant saved \(success2)")
+                    AnimatingViewController.hide({
+                        let controller = self.addVariant(variant)
+                        controller?.startEditing()
+                    })
                 })
             })
         }
@@ -89,7 +92,7 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
     /// MARK: -
     /// MARK: Edit Variant Controller Delegate 
     
-    func addVariant(variant: AnswerVariant) -> EditVariantController? {
+    func addVariant(variant: ParseAnswerVariant) -> EditVariantController? {
         guard let controller = EditVariantController.controllerWithVariant(variant) else {
             return nil
         }
@@ -109,13 +112,16 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         answerVariants.removeAtIndex(idx)
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
-        content?.variants = answerVariants
+        do {
+            try variant.delete()
+        } catch { }
+        // FIXME: this needs to be fixed
     }
 }
 
 
 extension EditContentFabric {
-    class func variantsController(variants: NewVariantsAnswerContent?) -> EditAnswerViewController? {
+    class func variantsController(variants: ParseAnswer?) -> EditAnswerViewController? {
         return EditAnswerViewController.controllerWithContent(variants)
     }
 }

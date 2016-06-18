@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 extension UIAlertController {
     static func showIn(controller: UIViewController, title: String? = nil, message: String? = nil, style: UIAlertControllerStyle = .ActionSheet, actions:[(title: String, action: ((UIAlertAction) -> Void)?)], cancelAction: (title: String, action: ((UIAlertAction) -> Void)?), completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)

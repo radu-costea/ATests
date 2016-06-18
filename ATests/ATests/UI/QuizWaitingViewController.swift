@@ -7,17 +7,17 @@
 //
 
 import UIKit
-
+import Parse
 class QuizWaitingViewController: UIViewController {
     @IBOutlet var joinIdField: UITextField!
     
-    var quiz: LiteSimulationTest?
+//    var quiz: LiteSimulationTest?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        joinIdField.text = quiz?.joinId
+//        joinIdField.text = quiz?.joinId
     }
 
 }

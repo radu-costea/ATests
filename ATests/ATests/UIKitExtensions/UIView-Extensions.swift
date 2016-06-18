@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 extension UIView {
     @IBInspectable dynamic var borderColor: UIColor? {
         get {

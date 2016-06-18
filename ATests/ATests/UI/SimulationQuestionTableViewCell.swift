@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 @objc protocol SimulationQuestionTableViewCellDelegate {
     func simulationQuestionCellDidUpdateWeight(cell: SimulationQuestionTableViewCell)
     func simulationQuestionCellDidUpdateInclude(cell: SimulationQuestionTableViewCell)
@@ -20,11 +20,11 @@ class SimulationQuestionTableViewCell: UITableViewCell {
     @IBOutlet var weightSettingsView: UIView!
     @IBOutlet var delegate: SimulationQuestionTableViewCellDelegate?
     
-    var builder: SimulationQuestionBuilder? {
-        didSet {
-            refresh()
-        }
-    }
+//    var builder: SimulationQuestionBuilder? {
+//        didSet {
+//            refresh()
+//        }
+//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,10 +35,10 @@ class SimulationQuestionTableViewCell: UITableViewCell {
     }
 
     func refresh() {
-        let weight = builder?.weight ?? 1
-        weightStepper.value = Double(weight)
-        weightLabel.text = "\(weight)"
-        includeSwitch.on = builder?.include ?? false
+//        let weight = builder?.weight ?? 1
+//        weightStepper.value = Double(weight)
+//        weightLabel.text = "\(weight)"
+//        includeSwitch.on = builder?.include ?? false
         weightSettingsView.hidden = !includeSwitch.on
     }
     
@@ -47,14 +47,14 @@ class SimulationQuestionTableViewCell: UITableViewCell {
     
     @IBAction func didSwitched(sender: UISwitch?) {
         let include = sender?.on ?? false
-        builder?.include = include
+//        builder?.include = include
         weightSettingsView.hidden = !include
         delegate?.simulationQuestionCellDidUpdateInclude(self)
     }
     
     @IBAction func didChangeStepper(sender: UIStepper?) {
         let newValue = Int(sender?.value ?? 1)
-        builder?.weight = newValue
+//        builder?.weight = newValue
         weightLabel.text = "\(newValue)"
         delegate?.simulationQuestionCellDidUpdateWeight(self)
     }

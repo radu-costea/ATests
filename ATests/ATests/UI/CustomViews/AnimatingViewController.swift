@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class AnimatingViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     static var sharedInstance: AnimatingViewController? = nil

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 class KeyboardAvoidingTableView: UITableView {
     var avoider: ScrollViewKeyboardAvoider!
     

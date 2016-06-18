@@ -45,7 +45,13 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
         addEditController(&contentController, toView: questionContentView)
         editContentController = contentController
         
-        var answerController = EditContentFabric.editController((question?.answer?.content)!)
+        if let answer = question?.answer {
+            do {
+                try answer.fetchIfNeeded()
+            } catch {}
+        }
+        
+        var answerController = EditContentFabric.editController((question?.answer)!)
         self.addEditController(&answerController, toView: self.questionAnswerView)
         self.editAnswerController = answerController
     }
@@ -67,7 +73,7 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
         if controller === editContentController {
-            question?.content = controller.content as? ParseQuestion.ContentType
+            question?.content = controller.content
         }
     }
     
@@ -80,7 +86,7 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
             return
         }
         AnimatingViewController.showInController(self, status: "Saving question..")
-        q.parseContent = [editContentController.content as! PFObject]
+        q.parseContent = [editContentController.content!]
         q.saveInBackgroundWithBlock { (success, error) in
             if let err = error {
                 AnimatingViewController.setStatus("Error: \(err.localizedDescription)")

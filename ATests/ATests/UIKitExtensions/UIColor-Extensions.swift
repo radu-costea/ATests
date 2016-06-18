@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 extension UIColor {
     convenience init?(hex: String) {
         guard hex.length == 7 else {

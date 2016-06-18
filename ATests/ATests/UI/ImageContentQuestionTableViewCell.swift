@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class ImageContentQuestionTableViewCell: UITableViewCell {
     @IBOutlet var questionImageView: UIImageView!
     @IBOutlet var validIcon: UIImageView!
@@ -24,12 +24,12 @@ class ImageContentQuestionTableViewCell: UITableViewCell {
     
     var question: ParseQuestion? {
         didSet {
-            content = question?.content as? ImageContent
+            content = question?.content as?ParseImageContent
             refreshValidState()
         }
     }
     
-    var content: ImageContent? {
+    var content:ParseImageContent? {
         didSet {
             let current = content
             current?.getImageInBackgroundWithBlock{ [unowned self] (image, error) in

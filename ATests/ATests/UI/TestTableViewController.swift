@@ -76,14 +76,14 @@ class TestTableViewController: UITableViewController {
             try content.fetchIfNeeded()
         } catch { }
         
-        if let _ = content as? ImageContent {
+        if let _ = content as?ParseImageContent {
             if let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as? ImageContentQuestionTableViewCell {
                 cell.question = question
                 return cell
             }
         }
         
-        if let _ = content as? TextContent {
+        if let _ = content as?ParseTextContent {
             if let cell = tableView.dequeueReusableCellWithIdentifier("textCell") as? TextContentQuestionTableViewCell {
                 cell.question = question
                 return cell
@@ -133,32 +133,29 @@ class TestTableViewController: UITableViewController {
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
         AnimatingViewController.showInController(self, status: "Preparing question..")
-        let answerContent = ParseVariantsAnswerContent(className: ParseVariantsAnswerContent.parseClassName())
-        let answer = ParseAnswer(className: ParseAnswer.parseClassName())
+        let answer = ParseAnswer()
         
         AnimatingViewController.setStatus("Preparing answer ..")
-        answerContent.saveEventually { (succes, error) in
-            answer.content = answerContent
-            answer.saveInBackgroundWithBlock({ (success2, error2) in
-                AnimatingViewController.setStatus("Saving answer ..")
-                let question = ParseQuestion()
-                question.answer = answer
-                let idx = self.questions.count
-                self.questions.append(question)
-                
-                question.domain = self.test
-                
-                AnimatingViewController.setStatus("Saving question ..")
-                question.saveInBackgroundWithBlock { (success, error) in
-                    self.test.saveInBackgroundWithBlock({ (success2, err2) in
-                        AnimatingViewController.hide()
+        answer.saveInBackgroundWithBlock({ (success2, error2) in
+            AnimatingViewController.setStatus("Saving answer ..")
+            let question = ParseQuestion()
+            question.answer = answer
+            let idx = self.questions.count
+            self.questions.append(question)
+            
+            question.domain = self.test
+            
+            AnimatingViewController.setStatus("Saving question ..")
+            question.saveInBackgroundWithBlock { (success, error) in
+                self.test.saveInBackgroundWithBlock({ (success2, err2) in
+                    AnimatingViewController.hide({ 
                         self.selectedIndex = idx
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: idx, inSection: 0)], withRowAnimation: .Automatic)
                         self.performSegueWithIdentifier("goToEditQuestion", sender: self)
                     })
-                }
-            })
-        }
+                })
+            }
+        })
     }
     
 }

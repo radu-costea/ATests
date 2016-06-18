@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 
 class ContainedViewController: UIViewController, ContainedController {
@@ -32,7 +33,7 @@ class ContainedViewController: UIViewController, ContainedController {
 }
 
 class EditContentController: ContainedViewController {
-    func getContent() -> ContentModel? {
+    func getContent() -> PFObject? {
         return nil
     }
     
@@ -40,27 +41,27 @@ class EditContentController: ContainedViewController {
         return super.controller() as? EditContentController
     }
     
-    class func editController(content: ContentModel?) -> EditContentController! {
+    class func editController(content: PFObject?) -> EditContentController! {
         let controllerVC: EditContentController = self.controller()!
         controllerVC.loadWith(content)
         return controllerVC
     }
     
-    func loadWith(content: ContentModel?) { /* STUB */  }
+    func loadWith(content: PFObject?) { /* STUB */  }
     func startEditing() { /* STUB */  }
 }
 
 class EditContentFabric {
-    class func editController(content: ContentModel) -> EditContentController {
-        if let text = content as? TextContent {
+    class func editController(content: PFObject) -> EditContentController {
+        if let text = content as? ParseTextContent {
             return textController(text)!
         }
         
-        if let image = content as? ImageContent {
+        if let image = content as? ParseImageContent {
             return imageController(image)!
         }
         
-        if let variants = content as? NewVariantsAnswerContent {
+        if let variants = content as? ParseAnswer {
             return variantsController(variants)!
         }
         

@@ -15,13 +15,19 @@ extension ParseImageContent {
 }
 
 extension ParseImageContent {
-    func getImageInBackgroundWithBlock(block: (image: UIImage?, error: NSError?) -> Void) {
-        guard let imgFile = image else {
-            block(image: nil, error: NSError(domain: "QuizzBuilder", code: 0, userInfo: [NSLocalizedDescriptionKey: "Image file not found"]))
-            return
+    func getImageInBackgroundWithBlock(block: ((image: UIImage?, error: NSError?) -> Void)?) {
+        self.fetchIfNeededInBackgroundWithBlock { (obj, err) in
+            if let error = err {
+                block?(image: nil, error: error)
+                return
+            }
+            
+            guard let imgFile = self.image else {
+                block?(image: nil, error: NSError(domain: "QuizzBuilder", code: 0, userInfo: [NSLocalizedDescriptionKey: "Image file not found"]))
+                return
+            }
+            imgFile.getImageInBackgroundWithBlock(block)
         }
-        imgFile.getImageInBackgroundWithBlock(block)
-        
     }
     
     func updateWithImage(image: UIImage, inBackgroundWithBlock block: (sucess: Bool, error: NSError?) -> Void) {

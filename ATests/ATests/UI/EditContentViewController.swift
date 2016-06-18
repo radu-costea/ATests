@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 protocol EditContentViewControllerDelegate: class {
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController)
@@ -20,7 +21,7 @@ class EditContentViewController: ContainedViewController {
     private var editController: EditContentController?
     var contentLoaded: Bool = false
     
-    var content: ContentModel? {
+    var content: PFObject? {
         didSet {
             refresh()
             delegate?.editContentViewControllerDidUpdateContent(self)

@@ -10,10 +10,22 @@ import UIKit
 import Parse
 
 extension ParseAnswerVariant {
-    @NSManaged var content: PFObject?
+    @NSManaged var parseContent: [PFObject]?
     @NSManaged var index: Int32
     @NSManaged var correct: Bool
-    @NSManaged var owner: ParseVariantsAnswerContent?
+    @NSManaged var owner: ParseAnswer?
+    
+    
+    var content: PFObject? {
+        get { return parseContent?.first }
+        set {
+            guard let newContent = newValue else {
+                parseContent = nil
+                return
+            }
+            parseContent = [newContent]
+        }
+    }
 }
 
 class ParseAnswerVariant: PFObject, PFSubclassing {

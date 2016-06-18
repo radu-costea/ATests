@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class RoundedButton: UIButton { }
 class OrangeButton: RoundedButton { }
 class BlueButton: RoundedButton { }

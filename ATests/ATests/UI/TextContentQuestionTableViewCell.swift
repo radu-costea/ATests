@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class TextContentQuestionTableViewCell: UITableViewCell {
     var question: ParseQuestion? {
         didSet {
-            content = question?.content as? TextContent
+            content = question?.content as? ParseTextContent
             refreshValidState()
         }
     }
     
-    var content: TextContent? {
+    var content:ParseTextContent? {
         didSet {
             questionLabel?.text = content?.text
         }

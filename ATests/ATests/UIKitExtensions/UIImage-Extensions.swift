@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 
 extension UIImage {
     var base64String: String? {

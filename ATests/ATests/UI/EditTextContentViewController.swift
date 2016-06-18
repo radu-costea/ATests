@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+import Parse
 class EditTextContentViewController: EditContentController, ContentProviderDelegate {
-    var content: TextContent?
+    var content:ParseTextContent?
     var text: String?
     var contentProvider: TextProviderViewController!
     
-    override func getContent() -> ContentModel? { return content }
+    override func getContent() -> PFObject? { return content }
 
     @IBOutlet var textView: UILabel!
     @IBOutlet var errorView: UIView!
@@ -42,8 +42,8 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
         }
     }
     
-    override func loadWith(content: ContentModel?) {
-        if let txt = content as? TextContent {
+    override func loadWith(content: PFObject?) {
+        if let txt = content as?ParseTextContent {
             self.content = txt
             loadText()
         }
@@ -87,7 +87,7 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
 }
 
 extension EditContentFabric {
-    class func textController(text: TextContent?) -> EditTextContentViewController? {
+    class func textController(text:ParseTextContent?) -> EditTextContentViewController? {
         return EditTextContentViewController.editController(text) as? EditTextContentViewController
     }
 }

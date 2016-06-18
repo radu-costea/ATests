@@ -11,7 +11,7 @@ import Parse
 
 extension ParseQuestion {
     @NSManaged var parseContent: [PFObject]?
-    @NSManaged var answer: ParseAnswer?
+    @NSManaged var parseAnswer: [PFObject]?
     @NSManaged var domain: ParseDomain?
     
     var content: PFObject? {
@@ -22,6 +22,17 @@ extension ParseQuestion {
                 return
             }
             parseContent = [newContent]
+        }
+    }
+    
+    var answer: PFObject? {
+        get { return parseAnswer?.first }
+        set {
+            guard let newContent = newValue else {
+                parseAnswer = nil
+                return
+            }
+            parseAnswer = [newContent]
         }
     }
 }
