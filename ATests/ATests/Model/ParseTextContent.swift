@@ -14,6 +14,13 @@ extension ParseTextContent {
 }
 
 extension ParseTextContent {
+    convenience init(content: ParseTextContent) {
+        self.init(className: ParseTextContent.parseClassName())
+        self.text = content.text
+    }
+}
+
+extension ParseTextContent {
     override func isValid() -> Bool {
         return (text?.length ?? 0) > 0
     }

@@ -15,6 +15,14 @@ extension ParseImageContent {
 }
 
 extension ParseImageContent {
+    convenience init(content: ParseImageContent) {
+        self.init(className: ParseImageContent.parseClassName())
+        image = content.image
+        size = content.size
+    }
+}
+
+extension ParseImageContent {
     func getImageInBackgroundWithBlock(block: ((image: UIImage?, error: NSError?) -> Void)?) {
         self.fetchIfNeededInBackgroundWithBlock { (obj, err) in
             if let error = err {

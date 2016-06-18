@@ -33,22 +33,19 @@ class EditTestViewController: UIViewController {
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
         AnimatingViewController.showInController(self, status: "Preparing question...")
         
-        let answerContent = ParseVariantsAnswerContent()
-        answerContent.saveInBackgroundWithBlock { (success, error) in
-            let answer = ParseAnswer()
-            
-            AnimatingViewController.showInController(self, status: "Preparing answer...")
-            answer.saveInBackgroundWithBlock({ (success2, error2) in
-                let question = ParseQuestion()
-                question.answer = answer
-            
-                AnimatingViewController.showInController(self, status: "Finalizing ...")
-                question.saveInBackgroundWithBlock({ (success3, error3) in
-                    AnimatingViewController.hide()
-                    self.addQuestion(question, atIndex: self.questions.count)
-                    self.questions.append(question)
-                })
+        let answer = ParseAnswer()
+        
+        AnimatingViewController.showInController(self, status: "Preparing answer...")
+        answer.saveInBackgroundWithBlock({ (success2, error2) in
+            let question = ParseQuestion()
+            question.answer = answer
+        
+            AnimatingViewController.showInController(self, status: "Finalizing ...")
+            question.saveInBackgroundWithBlock({ (success3, error3) in
+                AnimatingViewController.hide()
+                self.addQuestion(question, atIndex: self.questions.count)
+                self.questions.append(question)
             })
-        }
+        })
     }
 }

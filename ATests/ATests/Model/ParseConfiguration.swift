@@ -16,7 +16,6 @@ class ParseConfiguration {
         ParseAnswer.registerSubclass()
         ParseTextContent.registerSubclass()
         ParseImageContent.registerSubclass()
-        ParseVariantsAnswerContent.registerSubclass()
         ParseQuestion.registerSubclass()
         ParseAnswerVariant.registerSubclass()
         ParseExamQuestion.registerSubclass()

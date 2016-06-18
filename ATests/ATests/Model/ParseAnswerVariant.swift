@@ -28,6 +28,15 @@ extension ParseAnswerVariant {
     }
 }
 
+extension ParseAnswerVariant {
+    convenience init(variant: ParseAnswerVariant) {
+        self.init(className: ParseAnswerVariant.parseClassName())
+        index = variant.index
+        correct = variant.correct
+        content = variant.content
+    }
+}
+
 class ParseAnswerVariant: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "ParseAnswerVariant"

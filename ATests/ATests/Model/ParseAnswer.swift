@@ -11,18 +11,13 @@ import Parse
 
 extension ParseAnswer {
     @NSManaged var variants: [ParseAnswerVariant]?
-//    func loadVariantsInBackgroundWithBlock(block: (([PFObject]?, NSError?) -> Void)?) {
-//        let querry = PFQuery(className: "ParseAnswerVariant")
-//        querry.whereKey("owner", equalTo: self)
-//        querry.findObjectsInBackgroundWithBlock { (objects, error) in
-//            if let _ = error {
-//                block?(nil, error)
-//                return
-//            }
-//            let variants = objects?.flatMap{ $0 as? ParseAnswerVariant }
-//            block?(variants, error)
-//        }
-//    }
+}
+
+extension ParseAnswer {
+    convenience init(answer: ParseAnswer) {
+        self.init(className: ParseAnswer.parseClassName())
+        variants = answer.variants?.flatMap{ ParseAnswerVariant(variant: $0) }
+    }
 }
 
 class ParseAnswer: PFObject, PFSubclassing {
