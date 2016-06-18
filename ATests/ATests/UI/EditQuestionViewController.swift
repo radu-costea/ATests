@@ -45,12 +45,6 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
         addEditController(&contentController, toView: questionContentView)
         editContentController = contentController
         
-        if let answer = question?.answer {
-            do {
-                try answer.fetchIfNeeded()
-            } catch {}
-        }
-        
         var answerController = EditContentFabric.editController((question?.answer)!)
         self.addEditController(&answerController, toView: self.questionAnswerView)
         self.editAnswerController = answerController

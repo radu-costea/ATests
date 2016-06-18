@@ -38,9 +38,11 @@ class EditVariantController: ContainedViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        editContentController = EditContentFabric.editController((variant?.content)!)
-        addController(editContentController)
-        refreshSelection()
+        variant?.fetchIfNeededInBackgroundWithBlock({ (v, error) in
+            self.editContentController = EditContentFabric.editController((self.variant?.content)!)
+            self.addController(self.editContentController)
+            self.refreshSelection()
+        })
     }
     
     func addController(controller: EditContentController) {

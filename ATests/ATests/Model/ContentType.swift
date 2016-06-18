@@ -25,9 +25,9 @@ enum ContentType {
     func createNewParseContent() -> PFObject {
         switch self {
         case .Text:
-            return ParseTextContent(className: ParseTextContent.parseClassName())
+            return ParseTextContent()
         case .Image:
-            return ParseImageContent(className: ParseImageContent.parseClassName())
+            return ParseImageContent()
         }
     }
 }

@@ -939,6 +939,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="eVe-yb-cTv">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="oWm-sg-fNZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="02U-sK-IUS">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave:" destination="94V-F6-jZD" eventType="touchUpInside" id="BXf-Xm-0Ka"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aK4-pZ-3Yd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="pIb-pr-YL2">
                                 <rect key="frame" x="282" y="11" width="22" height="22"/>

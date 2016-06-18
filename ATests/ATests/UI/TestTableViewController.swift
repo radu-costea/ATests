@@ -30,6 +30,8 @@ class TestTableViewController: UITableViewController {
         
         let query = PFQuery(className: "ParseQuestion")
         query.whereKey("domain", equalTo: test)
+        query.includeKey("parseContent")
+        query.includeKey("parseAnswer")
         
         query.findObjectsInBackgroundWithBlock({ (objects, error) in
             if let q = objects {
@@ -64,19 +66,11 @@ class TestTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let question = questions[indexPath.row]
-        do {
-            try question.fetchIfNeeded()
-        } catch { }
-        
         guard let content = question.content else {
             return tableView.dequeueReusableCellWithIdentifier("undefined")!
         }
         
-        do {
-            try content.fetchIfNeeded()
-        } catch { }
-        
-        if let _ = content as?ParseImageContent {
+        if let _ = content as? ParseImageContent {
             if let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as? ImageContentQuestionTableViewCell {
                 cell.question = question
                 return cell
@@ -130,6 +124,15 @@ class TestTableViewController: UITableViewController {
     
     /// MARK: -
     /// MARK: Add Question
+    
+    @IBAction func didTapSave(sender: AnyObject?) {
+        AnimatingViewController.showInController(self, status: "Saving domain...")
+        test.saveInBackgroundWithBlock { (success, error) in
+            AnimatingViewController.hide({ 
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+        }
+    }
     
     @IBAction func didTapAddQuestion(sender: AnyObject?) {
         AnimatingViewController.showInController(self, status: "Preparing question..")

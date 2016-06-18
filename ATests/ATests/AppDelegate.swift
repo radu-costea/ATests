@@ -17,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        configureParse()
         AppearenceCustomizer.setupDefaultAppearence()
-        let contextManager = ContextManager(modelFileName: "Database", storeFileName: "Database", concurency: .MainQueueConcurrencyType)
-        NSManagedObject.configureWithContextManager(contextManager)
         return true
     }
     

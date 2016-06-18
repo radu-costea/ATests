@@ -32,8 +32,7 @@ class TestTableViewCell: UITableViewCell {
     
     func refresh() {
         labelTitle.text = test?.title
-        let count = test?.questions?.count ?? 0
-        labelSubtitle.text = "\(count) Question\(count != 1 ? "s" : "")"
+//        labelSubtitle.text = "\(count) Question\(count != 1 ? "s" : "")"
     }
     
     override func didMoveToSuperview() {

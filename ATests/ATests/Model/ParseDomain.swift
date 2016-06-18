@@ -11,7 +11,6 @@ import Parse
 
 extension ParseDomain {
     @NSManaged var title: String?
-    @NSManaged var questions: [ParseQuestion]?
     @NSManaged var owner: ParseUser?
 }
 

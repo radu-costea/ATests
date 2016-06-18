@@ -38,25 +38,34 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         super.viewDidLoad()
         
         /// Load variants
-        content?.loadVariantsInBackgroundWithBlock{ (objects, error) in
-            if let v = objects {
-                self.variants = v.flatMap{ $0 as? ParseAnswerVariant }
-                let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
-                controllers.forEach { self.setupVariantController($0) }
-            }
+
+        self.variants = content?.variants ?? []
+        let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
+        
+        for controller in controllers {
+            self.setupVariantController(controller)
         }
+        self.view.layoutIfNeeded()
     }
     
     func setupVariantController(controller: EditVariantController) {
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         addChildViewController(controller)
-        stackView.insertArrangedSubview(controller.view, atIndex: stackView.arrangedSubviews.count - 1) ///insertSubview(controller.view, aboveSubview: addAnswerView)
+        
+        let idx = stackView.arrangedSubviews.count - 1
+        stackView.insertArrangedSubview(controller.view, atIndex: idx) ///insertSubview(controller.view, aboveSubview: addAnswerView)
         controller.didMoveToParentViewController(self)
         controller.delegate = self
         controller.presenter = self
+        
+        print("insert at index: \(idx)")
     }
     
     @IBAction func didTapAddAnswer(sender: AnyObject?) {
+        guard let answer = content else {
+            return
+        }
+        
         showSelectContentType {  [unowned self] type in
             let variantContent = type.createNewParseContent()
             
@@ -66,13 +75,15 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
                 let variant = ParseAnswerVariant()
                 variant.index = Int32(self.variants.count)
                 variant.content = variantContent
-                variant.owner = self.content
-                
                 variant.saveInBackgroundWithBlock({ (success2, error2) in
                     print("variant saved \(success2)")
-                    AnimatingViewController.hide({
-                        let controller = self.addVariant(variant)
-                        controller?.startEditing()
+                    self.variants.append(variant)
+                    answer.variants = self.variants
+                    answer.saveInBackgroundWithBlock({ (success3, error3) in
+                        AnimatingViewController.hide({
+                            let controller = self.addVariant(variant)
+                            controller?.startEditing()
+                        })
                     })
                 })
             })

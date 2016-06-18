@@ -35,15 +35,18 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     }
     
     func loadText() {
-        if let txt = content?.text {
-            text = txt
-            contentProvider?.loadWith(txt)
-            textView?.text = txt
-        }
+        content?.fetchIfNeededInBackgroundWithBlock({ (c, error) in
+            if let txt = self.content?.text {
+                self.text = txt
+                self.errorView?.hidden = txt.length > 0
+                self.contentProvider?.loadWith(txt)
+                self.textView?.text = txt
+            }
+        })
     }
     
     override func loadWith(content: PFObject?) {
-        if let txt = content as?ParseTextContent {
+        if let txt = content as? ParseTextContent {
             self.content = txt
             loadText()
         }

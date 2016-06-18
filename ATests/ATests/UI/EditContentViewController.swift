@@ -50,12 +50,10 @@ class EditContentViewController: ContainedViewController {
         
         guard contentLoaded else {
             if let currentContent = content {
-                do {
-                    try currentContent.fetchIfNeededInBackgroundWithBlock{ _, _ in
-                        self.contentLoaded = true
-                        self.refresh()
-                    }
-                } catch { contentLoaded = true }
+                currentContent.fetchIfNeededInBackgroundWithBlock{ _, _ in
+                    self.contentLoaded = true
+                    self.refresh()
+                }
             } else {
                 contentLoaded = true
             }

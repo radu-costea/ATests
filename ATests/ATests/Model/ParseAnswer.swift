@@ -10,18 +10,19 @@ import UIKit
 import Parse
 
 extension ParseAnswer {
-    func loadVariantsInBackgroundWithBlock(block: (([PFObject]?, NSError?) -> Void)?) {
-        let querry = PFQuery(className: "ParseAnswerVariant")
-        querry.whereKey("owner", equalTo: self)
-        querry.findObjectsInBackgroundWithBlock { (objects, error) in
-            if let _ = error {
-                block?(nil, error)
-                return
-            }
-            let variants = objects?.flatMap{ $0 as? ParseAnswerVariant }
-            block?(variants, error)
-        }
-    }
+    @NSManaged var variants: [ParseAnswerVariant]?
+//    func loadVariantsInBackgroundWithBlock(block: (([PFObject]?, NSError?) -> Void)?) {
+//        let querry = PFQuery(className: "ParseAnswerVariant")
+//        querry.whereKey("owner", equalTo: self)
+//        querry.findObjectsInBackgroundWithBlock { (objects, error) in
+//            if let _ = error {
+//                block?(nil, error)
+//                return
+//            }
+//            let variants = objects?.flatMap{ $0 as? ParseAnswerVariant }
+//            block?(variants, error)
+//        }
+//    }
 }
 
 class ParseAnswer: PFObject, PFSubclassing {
