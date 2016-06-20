@@ -16,6 +16,7 @@ protocol EditContentViewControllerDelegate: class {
 class EditContentViewController: ContainedViewController {
     @IBOutlet var choseContentTypeView: UIView!
     @IBOutlet var contentView: UIView!
+    var editingEnabled: Bool = true
     
     weak var delegate: EditContentViewControllerDelegate? = nil
     private var editController: EditContentController?
@@ -45,10 +46,11 @@ class EditContentViewController: ContainedViewController {
         refresh()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         guard contentLoaded else {
+            choseContentTypeView?.hidden = true
             if let currentContent = content {
                 currentContent.fetchIfNeededInBackgroundWithBlock{ _, _ in
                     self.contentLoaded = true
@@ -82,6 +84,7 @@ class EditContentViewController: ContainedViewController {
         editController = EditContentFabric.editController(contentObj)
         editController?.view.translatesAutoresizingMaskIntoConstraints = false
         editController?.presenter = self
+        editController?.editingEnabled = self.editingEnabled
         embedEditController()
     }
     

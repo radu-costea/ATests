@@ -28,18 +28,10 @@ class TestTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        let query = PFQuery(className: "ParseQuestion")
-        query.whereKey("domain", equalTo: test)
-        query.includeKey("parseContent")
-        query.includeKey("parseAnswer")
-        
-        query.findObjectsInBackgroundWithBlock({ (objects, error) in
-            if let q = objects {
-                self.questions = q.flatMap{ $0 as? ParseQuestion }
-                print("questions: \(objects)")
-                self.tableView.reloadData()
-            }
-        })
+        test.fetchQuestionsInBackgroundWithBlock { (q, error) in
+            self.questions = q ?? []
+            self.tableView.reloadData()
+        }
         keyboardAvoider = ScrollViewKeyboardAvoider(scrollView: tableView)
     }
     
@@ -94,8 +86,21 @@ class TestTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier where identifier == "goToEditQuestion" {
             if let controller = segue.destinationViewController as? EditQuestionViewController,
-                let idx = selectedIndex{
-                controller.question = questions[idx]
+                let idx = selectedIndex {
+                
+                let question = questions[idx]
+                controller.provideContentBlock = { _ in question.content }
+                controller.provideAnswerBlock = { _ in question.answer! }
+                controller.onSaveBlock = { editQuestionController in
+                    question.content = editQuestionController.content
+                    question.answer = editQuestionController.answer
+                    AnimatingViewController.showInController(editQuestionController, status: "Saving changes..")
+                    question.saveInBackgroundWithBlock({ (success, error) in
+                        AnimatingViewController.hide({ 
+                            self.navigationController?.popViewControllerAnimated(true)
+                        })
+                    })
+                }
             }
         }
         view.endEditing(true)

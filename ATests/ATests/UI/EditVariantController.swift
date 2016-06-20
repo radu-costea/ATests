@@ -14,8 +14,12 @@ protocol EditVariantControllerDelegate: class {
 
 class EditVariantController: ContainedViewController {
     weak var delegate: EditVariantControllerDelegate?
+    var editingEnabled: Bool = true
     
     @IBOutlet var selectionView: UIView!
+    @IBOutlet var deleteButton: UIView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     var variant: ParseAnswerVariant?
     var editContentController: EditContentController!
     
@@ -37,9 +41,13 @@ class EditVariantController: ContainedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        deleteButton.hidden = !editingEnabled
+        
         // Do any additional setup after loading the view.
         variant?.fetchIfNeededInBackgroundWithBlock({ (v, error) in
+            self.activityIndicator.stopAnimating()
             self.editContentController = EditContentFabric.editController((self.variant?.content)!)
+            self.editContentController.editingEnabled = self.editingEnabled
             self.addController(self.editContentController)
             self.refreshSelection()
         })
@@ -61,7 +69,9 @@ class EditVariantController: ContainedViewController {
     }
     
     func startEditing() {
-        editContentController?.startEditing()
+        if editingEnabled {
+            editContentController?.startEditing()
+        }
     }
     
     /// MARK: -
@@ -76,10 +86,10 @@ class EditVariantController: ContainedViewController {
         
         v.correct = !v.correct
         refreshSelection()
-        AnimatingViewController.showInController(self, status: "Saving choice..")
-        v.saveInBackgroundWithBlock { (success, error) in
-            AnimatingViewController.hide()
-        }
+//        AnimatingViewController.showInController(self, status: "Saving choice..")
+//        v.saveInBackgroundWithBlock { (success, error) in
+//            AnimatingViewController.hide()
+//        }
     }
     
     func refreshSelection() {

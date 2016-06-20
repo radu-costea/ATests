@@ -9,6 +9,13 @@
 import UIKit
 import Parse
 
+@objc enum ParseExamState: Int {
+    case NotStarted = 0
+    case WaitingForClients
+    case Started
+    case Ended
+}
+
 class ParseExam: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "ParseExam"
@@ -20,7 +27,7 @@ extension ParseExam {
     @NSManaged var owner: ParseUser?
     @NSManaged var joinId: String?
     @NSManaged var duration: Int
-    @NSManaged var clients: [ParseUser]?
-    @NSManaged var state: Int
+    @NSManaged var clients: [ParseClientExam]?
+    @NSManaged var state: ParseExamState
     @NSManaged var results: [ParseExam]
 }

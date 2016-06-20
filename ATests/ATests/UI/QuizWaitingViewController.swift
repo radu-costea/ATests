@@ -11,13 +11,21 @@ import Parse
 class QuizWaitingViewController: UIViewController {
     @IBOutlet var joinIdField: UITextField!
     
-//    var quiz: LiteSimulationTest?
+    var quizz: ParseExam?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("user: \(ParseUser.currentUser()?.objectId), join id: \(quizz?.joinId)")
 
         // Do any additional setup after loading the view.
-//        joinIdField.text = quiz?.joinId
+        joinIdField.text = quizz?.joinId
+        quizz?.state = .WaitingForClients
+        
+        AnimatingViewController.showInController(self, status: "Preparing...")
+        quizz?.saveInBackgroundWithBlock({ (success, err) in
+            AnimatingViewController.hide()
+        })
     }
 
 }

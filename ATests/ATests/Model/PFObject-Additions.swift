@@ -9,11 +9,25 @@
 import UIKit
 import Parse
 
+protocol CopyableObject: class {
+    func copyObject() -> PFObject
+}
+
 extension PFObject {
     func fetchSubEntities(className:String, key: String, inBackgroundWithBlock block: (([PFObject]?, NSError?) -> Void)?) {
         let query = PFQuery(className: className)
         query.whereKey(key, equalTo: self)
         query.findObjectsInBackgroundWithBlock(block)
+    }
+}
+
+extension PFObject: CopyableObject {
+    func copyObject() -> PFObject {
+        return PFObject(className: parseClassName)
+    }
+    
+    func cleanCopyObject() -> PFObject {
+        return PFObject(className: parseClassName)
     }
 }
 

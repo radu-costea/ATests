@@ -26,7 +26,6 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        errorView.hidden = content?.isValid() ?? false
         loadImage()
     }
     
@@ -40,11 +39,14 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
 
     func loadImage() {
         content?.getImageInBackgroundWithBlock{ [weak self] (img, error) in
-            self?.image = img
-            self?.imageView?.image = img
-            self?.contentProvider.loadWith(img)
-            self?.correctRatio()
-            self?.errorView?.hidden = (error == nil)
+            UIView.animateWithDuration(0.3, animations: { 
+                self?.image = img
+                self?.imageView?.image = img
+                self?.contentProvider.loadWith(img)
+                self?.correctRatio()
+                self?.errorView?.hidden = (error == nil)
+                self?.view.layoutIfNeeded()
+            })
         }
     }
     
@@ -62,7 +64,9 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
     }
     
     override func startEditing() {
-        presentViewController(self.contentProvider, animated: true, completion: nil)
+        if editingEnabled {
+            presentViewController(self.contentProvider, animated: true, completion: nil)
+        }
     }
     
     /// MARK: -
@@ -74,13 +78,10 @@ class EditImageContentViewController: EditContentController, ContentProviderDele
             let imgContent = self.content {
                 imageView.image = img
                 correctRatio()
-            
-                AnimatingViewController.showInController(currentProvider, status: "Preparing image..")
-                imgContent.updateWithImage(img, inBackgroundWithBlock: { (sucess, error) in
-                    AnimatingViewController.hide()
-                    currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                    self.errorView.hidden = imgContent.isValid() ?? false
-                })
+        
+                imgContent.updateImage(img)
+                currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.errorView.hidden = imgContent.isValid() ?? false
         }
     }
     

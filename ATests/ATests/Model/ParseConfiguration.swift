@@ -21,6 +21,6 @@ class ParseConfiguration {
         ParseExamQuestion.registerSubclass()
         ParseExam.registerSubclass()
         ParseExamAnswer.registerSubclass()
-        ParseExamResult.registerSubclass()
+        ParseClientExam.registerSubclass()
     }
 }

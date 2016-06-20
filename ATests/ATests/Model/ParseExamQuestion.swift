@@ -12,7 +12,7 @@ import Parse
 extension ParseExamQuestion {
     @NSManaged var parseContent: [PFObject]?
     @NSManaged var parseAnswer: [PFObject]?
-    @NSManaged var weight: Int
+    @NSManaged var points: Int
     
     var content: PFObject? {
         get { return parseContent?.first }
@@ -38,11 +38,11 @@ extension ParseExamQuestion {
 }
 
 extension ParseExamQuestion {
-    convenience init(question: ParseQuestion) {
+    convenience init(question: ParseQuestion, points: Int = 1) {
         self.init()
         content = question.content
         answer = question.answer
-        weight = 1
+        self.points = points
     }
 }
 

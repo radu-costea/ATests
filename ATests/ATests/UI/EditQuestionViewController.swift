@@ -14,7 +14,14 @@ protocol ContainedController {
 }
 
 class EditQuestionViewController: UIViewController, EditContentViewControllerDelegate {
-    var question: ParseQuestion?
+    var provideContentBlock:((EditQuestionViewController) -> PFObject?)!
+    var provideAnswerBlock:((EditQuestionViewController) -> PFObject?)!
+    var onSaveBlock:((EditQuestionViewController) -> Void)?
+    
+//    var question: ParseQuestion?
+    var content: PFObject?
+    var answer: PFObject!
+    var editingEnabled: Bool = true
     
     // Outlets
     @IBOutlet var stackView: UIStackView!
@@ -37,17 +44,22 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
+        content = provideContentBlock(self)
         var contentController = EditContentViewController.controller()!
-        contentController.content = question?.content
+        contentController.content = content
         contentController.delegate = self
         
         addEditController(&contentController, toView: questionContentView)
         editContentController = contentController
+        editContentController.editingEnabled = editingEnabled
         
-        var answerController = EditContentFabric.editController((question?.answer)!)
-        self.addEditController(&answerController, toView: self.questionAnswerView)
-        self.editAnswerController = answerController
+        answer = provideAnswerBlock(self)
+        var answerController = EditContentFabric.editController(answer)
+        answerController.editingEnabled = editingEnabled
+        addEditController(&answerController, toView: self.questionAnswerView)
+        editAnswerController = answerController
     }
     
     func addEditController<T: ContainedViewController>(inout controller: T, toView view: UIView) {
@@ -67,7 +79,7 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController) {
         if controller === editContentController {
-            question?.content = controller.content
+            content = controller.content
         }
     }
     
@@ -75,24 +87,26 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     /// MARK: Actions
     
     @IBAction func didTapSave(sender: AnyObject?) {
-        guard let q = question else {
-            self.navigationController?.popViewControllerAnimated(true)
-            return
-        }
-        AnimatingViewController.showInController(self, status: "Saving question..")
-        q.parseContent = [editContentController.content!]
-        q.saveInBackgroundWithBlock { (success, error) in
-            if let err = error {
-                AnimatingViewController.setStatus("Error: \(err.localizedDescription)")
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                    AnimatingViewController.hide()
-                    self.navigationController?.popViewControllerAnimated(true)
-                })
-                return
-            }
-            AnimatingViewController.hide { 
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-        }
+        onSaveBlock?(self)
+        
+//        guard let q = question else {
+//            self.navigationController?.popViewControllerAnimated(true)
+//            return
+//        }
+//        AnimatingViewController.showInController(self, status: "Saving question..")
+//        q.parseContent = [editContentController.content!]
+//        q.saveInBackgroundWithBlock { (success, error) in
+//            if let err = error {
+//                AnimatingViewController.setStatus("Error: \(err.localizedDescription)")
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+//                    AnimatingViewController.hide()
+//                    self.navigationController?.popViewControllerAnimated(true)
+//                })
+//                return
+//            }
+//            AnimatingViewController.hide { 
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }
+//        }
     }
 }

@@ -16,8 +16,23 @@ class ParseExamAnswer: PFObject, PFSubclassing {
 }
 
 extension ParseExamAnswer {
-    @NSManaged var owner: ParseUser
     @NSManaged var question: ParseExamQuestion
-    @NSManaged var exam: ParseExam
-    @NSManaged var variants: [ParseAnswerVariant]
+    @NSManaged var parseAnswer: [PFObject]?
+    
+    convenience init(question: ParseExamQuestion, answer: PFObject?) {
+        self.init()
+        self.question = question
+        self.answer = answer
+    }
+    
+    var answer: PFObject? {
+        get { return parseAnswer?.first }
+        set {
+            guard let newContent = newValue else {
+                parseAnswer = nil
+                return
+            }
+            parseAnswer = [newContent]
+        }
+    }
 }

@@ -25,19 +25,19 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RiU-18-BCQ">
-                                            <rect key="frame" x="85" y="240" width="150" height="89"/>
+                                            <rect key="frame" x="0.0" y="240" width="320" height="89"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-OE-fFh">
-                                                    <rect key="frame" x="15" y="15" width="120" height="59"/>
+                                                    <rect key="frame" x="15" y="15" width="290" height="59"/>
                                                     <subviews>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="bmC-DX-APT">
-                                                            <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                            <rect key="frame" x="135" y="0.0" width="20" height="20"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="tintColor" red="0.01176470588" green="0.67843137249999996" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         </activityIndicatorView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvZ-4g-sXf">
-                                                            <rect key="frame" x="0.0" y="30" width="120" height="21"/>
+                                                            <rect key="frame" x="0.0" y="30" width="290" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,18 +61,12 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="kA3-OE-fFh" secondAttribute="bottom" id="SpO-lp-J7m"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kA3-OE-fFh" secondAttribute="trailing" id="sBU-dd-dsq"/>
                                                 <constraint firstItem="kA3-OE-fFh" firstAttribute="top" secondItem="RiU-18-BCQ" secondAttribute="topMargin" id="tHY-Aa-JzR"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="w1F-2F-Yeh"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="15" left="15" bottom="15" right="15"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="RiU-18-BCQ" firstAttribute="width" relation="lessThanOrEqual" secondItem="jgf-FW-wwc" secondAttribute="width" id="1wL-1T-wLl"/>
+                                        <constraint firstItem="RiU-18-BCQ" firstAttribute="width" secondItem="jgf-FW-wwc" secondAttribute="width" id="1wL-1T-wLl"/>
                                         <constraint firstItem="RiU-18-BCQ" firstAttribute="centerX" secondItem="jgf-FW-wwc" secondAttribute="centerX" id="44p-Rr-hAc"/>
                                         <constraint firstItem="RiU-18-BCQ" firstAttribute="centerY" secondItem="jgf-FW-wwc" secondAttribute="centerY" id="QSk-fo-n8g"/>
                                     </constraints>

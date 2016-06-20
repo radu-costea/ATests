@@ -52,6 +52,12 @@ extension ParseImageContent {
         })
     }
     
+    func updateImage(image: UIImage) {
+        let imageFile = PFFile(image: image)
+        self.image = imageFile
+        self.size = Int.max
+    }
+    
     override func isValid() -> Bool {
         return size > 0
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		330403981D0A0C2F007287D5 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330403971D0A0C2F007287D5 /* TestTableViewController.swift */; };
+		3312442B1D16C55500695784 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3312442A1D16C55500695784 /* PickerViewController.swift */; };
 		3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC321D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift */; };
 		3317BC351D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */; };
 		3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */; };
@@ -22,9 +23,11 @@
 		334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BF4141CFE3DAD008E97AC /* EditVariantController.swift */; };
 		335D74BB1D10AA3D00589248 /* UIAlertController-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */; };
 		336FF63E1D04BEAC0068BF8B /* EditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */; };
-		336FF6401D04D24B0068BF8B /* EditTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336FF63F1D04D24B0068BF8B /* EditTestViewController.swift */; };
 		33762EC21CFB790000167F87 /* EditImageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33762EC11CFB790000167F87 /* EditImageContentViewController.swift */; };
 		33762EC61CFB791C00167F87 /* EditTextContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33762EC51CFB791C00167F87 /* EditTextContentViewController.swift */; };
+		3388D67A1D16FBB10098C261 /* ParseClientExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388D6791D16FBB10098C261 /* ParseClientExam.swift */; };
+		3388D67D1D1728100098C261 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388D67C1D1728100098C261 /* JoinViewController.swift */; };
+		3388D67F1D17694B0098C261 /* TakeExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388D67E1D17694B0098C261 /* TakeExamViewController.swift */; };
 		3391C29C1D12B91D00697132 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3391C29A1D12B91D00697132 /* Bolts.framework */; };
 		3391C29D1D12B91D00697132 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3391C29B1D12B91D00697132 /* Parse.framework */; };
 		3391C29F1D12C19400697132 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3391C29E1D12C19400697132 /* libsqlite3.tbd */; };
@@ -59,7 +62,6 @@
 		33EC50331D14DECD00A971E0 /* ParseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */; };
 		33EC50351D14E04400A971E0 /* ParseExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50341D14E04400A971E0 /* ParseExam.swift */; };
 		33EC50371D14E25500A971E0 /* ParseExamAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */; };
-		33EC50391D14E37300A971E0 /* ParseExamResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50381D14E37300A971E0 /* ParseExamResult.swift */; };
 		6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
@@ -173,6 +175,7 @@
 
 /* Begin PBXFileReference section */
 		330403971D0A0C2F007287D5 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TestTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3312442A1D16C55500695784 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		3317BC321D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TextContentQuestionTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImageContentQuestionTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsTableViewController.swift; sourceTree = "<group>"; };
@@ -184,9 +187,11 @@
 		334BF4141CFE3DAD008E97AC /* EditVariantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariantController.swift; sourceTree = "<group>"; };
 		335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Additions.swift"; sourceTree = "<group>"; };
 		336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContentViewController.swift; sourceTree = "<group>"; };
-		336FF63F1D04D24B0068BF8B /* EditTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTestViewController.swift; sourceTree = "<group>"; };
 		33762EC11CFB790000167F87 /* EditImageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditImageContentViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		33762EC51CFB791C00167F87 /* EditTextContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditTextContentViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3388D6791D16FBB10098C261 /* ParseClientExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClientExam.swift; sourceTree = "<group>"; };
+		3388D67C1D1728100098C261 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		3388D67E1D17694B0098C261 /* TakeExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeExamViewController.swift; sourceTree = "<group>"; };
 		3391C29A1D12B91D00697132 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3391C29B1D12B91D00697132 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3391C29E1D12C19400697132 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -221,7 +226,6 @@
 		33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConfiguration.swift; sourceTree = "<group>"; };
 		33EC50341D14E04400A971E0 /* ParseExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExam.swift; sourceTree = "<group>"; };
 		33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExamAnswer.swift; sourceTree = "<group>"; };
-		33EC50381D14E37300A971E0 /* ParseExamResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseExamResult.swift; sourceTree = "<group>"; };
 		6205EC8B1CBEB07600B9A9F1 /* Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgoritm.swift; sourceTree = "<group>"; };
@@ -323,9 +327,17 @@
 				33762EC51CFB791C00167F87 /* EditTextContentViewController.swift */,
 				334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */,
 				336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */,
-				336FF63F1D04D24B0068BF8B /* EditTestViewController.swift */,
 			);
 			name = EditQuestion;
+			sourceTree = "<group>";
+		};
+		3388D67B1D1727D20098C261 /* Client Mode */ = {
+			isa = PBXGroup;
+			children = (
+				3388D67C1D1728100098C261 /* JoinViewController.swift */,
+				3388D67E1D17694B0098C261 /* TakeExamViewController.swift */,
+			);
+			name = "Client Mode";
 			sourceTree = "<group>";
 		};
 		3391C2AC1D12E9F300697132 /* Parse */ = {
@@ -342,8 +354,8 @@
 				3391C2BB1D130C1C00697132 /* ParseDomain.swift */,
 				33EC502E1D14B19700A971E0 /* ContentType.swift */,
 				33EC50301D14DEA900A971E0 /* ParseExamQuestion.swift */,
-				33EC50381D14E37300A971E0 /* ParseExamResult.swift */,
 				33EC50341D14E04400A971E0 /* ParseExam.swift */,
+				3388D6791D16FBB10098C261 /* ParseClientExam.swift */,
 				33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */,
 				33EC50321D14DECD00A971E0 /* ParseConfiguration.swift */,
 			);
@@ -520,6 +532,7 @@
 				62C044451CBE400B00682E77 /* Buttons.swift */,
 				6251BC831CC688D000880612 /* KeyboardPlaceholderView.swift */,
 				3391C2AA1D12DC7600697132 /* AnimatingViewController.swift */,
+				3312442A1D16C55500695784 /* PickerViewController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -527,6 +540,7 @@
 		62E4E6F61CB7F5BE003C6FB2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3388D67B1D1727D20098C261 /* Client Mode */,
 				33EAF3701D11932C001ABE17 /* SImulation */,
 				330403931D0A0898007287D5 /* Test */,
 				33B3A3C41CEE61B300BEC8E9 /* ContentProviders */,
@@ -740,7 +754,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				336FF6401D04D24B0068BF8B /* EditTestViewController.swift in Sources */,
 				3391C2B21D1306C100697132 /* ParseImageContent.swift in Sources */,
 				3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
@@ -753,9 +766,12 @@
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
 				3391C2B41D13072100697132 /* ParseTextContent.swift in Sources */,
 				62D403931CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
+				3388D67D1D1728100098C261 /* JoinViewController.swift in Sources */,
 				33EAF37C1D11C97C001ABE17 /* QuizWaitingViewController.swift in Sources */,
 				62D403A11CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
 				33762EC21CFB790000167F87 /* EditImageContentViewController.swift in Sources */,
+				3388D67A1D16FBB10098C261 /* ParseClientExam.swift in Sources */,
+				3312442B1D16C55500695784 /* PickerViewController.swift in Sources */,
 				33B3A3C61CEE61DE00BEC8E9 /* ContentProvider.swift in Sources */,
 				62D4038F1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
 				3391C2AB1D12DC7600697132 /* AnimatingViewController.swift in Sources */,
@@ -779,7 +795,6 @@
 				334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */,
 				62C044461CBE400B00682E77 /* Buttons.swift in Sources */,
 				33EAF36F1D114EF7001ABE17 /* TestTableViewCell.swift in Sources */,
-				33EC50391D14E37300A971E0 /* ParseExamResult.swift in Sources */,
 				334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
 				3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */,
 				6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */,
@@ -801,6 +816,7 @@
 				3317BC351D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift in Sources */,
 				6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
 				625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
+				3388D67F1D17694B0098C261 /* TakeExamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

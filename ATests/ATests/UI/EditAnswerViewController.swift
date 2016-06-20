@@ -12,6 +12,8 @@ import Parse
 class EditAnswerViewController: EditContentController, EditVariantControllerDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var addAnswerView: UIView!
+    @IBOutlet var activityView: UIActivityIndicatorView!
+    
     var allowedTypes: [ContentType] = [.Text, .Image]
     
     var content: ParseAnswer?
@@ -38,17 +40,22 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         super.viewDidLoad()
         
         /// Load variants
-
-        self.variants = content?.variants ?? []
-        let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
-        
-        for controller in controllers {
-            self.setupVariantController(controller)
+        addAnswerView.hidden = true
+        content?.fetchIfNeededInBackgroundWithBlock { (success, error) in
+            self.activityView.stopAnimating()
+            self.addAnswerView.hidden = !self.editingEnabled
+            self.variants = self.content?.variants ?? []
+            let controllers = self.variants.flatMap{ EditVariantController.controllerWithVariant($0) }
+            
+            for controller in controllers {
+                self.setupVariantController(controller)
+            }
         }
-        self.view.layoutIfNeeded()
+//        view.layoutIfNeeded()
     }
     
     func setupVariantController(controller: EditVariantController) {
+        controller.editingEnabled = editingEnabled
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         addChildViewController(controller)
         
@@ -69,24 +76,17 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         showSelectContentType {  [unowned self] type in
             let variantContent = type.createNewParseContent()
             
-            AnimatingViewController.showInController(self, status: "Preparing new variant..")
-            variantContent.saveInBackgroundWithBlock({ (success, error) in
-                print("variant content saved \(success)")
-                let variant = ParseAnswerVariant()
-                variant.index = Int32(self.variants.count)
-                variant.content = variantContent
-                variant.saveInBackgroundWithBlock({ (success2, error2) in
-                    print("variant saved \(success2)")
-                    self.variants.append(variant)
-                    answer.variants = self.variants
-                    answer.saveInBackgroundWithBlock({ (success3, error3) in
-                        AnimatingViewController.hide({
-                            let controller = self.addVariant(variant)
-                            controller?.startEditing()
-                        })
-                    })
+            let variant = ParseAnswerVariant()
+            variant.index = Int32(self.variants.count)
+            variant.content = variantContent
+            self.variants.append(variant)
+            answer.variants = self.variants
+//            answer.saveInBackgroundWithBlock({ (success3, error3) in
+                AnimatingViewController.hide({
+                    let controller = self.addVariant(variant)
+                    controller?.startEditing()
                 })
-            })
+//            })
         }
     }
     
@@ -123,10 +123,18 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         answerVariants.removeAtIndex(idx)
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
-        do {
-            try variant.delete()
-        } catch { }
-        // FIXME: this needs to be fixed
+        
+        content?.variants = answerVariants
+        
+        if let answer = content {
+            
+//            answer.saveInBackgroundWithBlock({ (sucess, err) in
+                AnimatingViewController.showInController(self, status: "Cleaning up data")
+                variant.deleteInBackgroundWithBlock({ (success, err) in
+                    AnimatingViewController.hide()
+                })
+//            })
+        }
     }
 }
 

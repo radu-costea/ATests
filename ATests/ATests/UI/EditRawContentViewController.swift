@@ -33,6 +33,8 @@ class ContainedViewController: UIViewController, ContainedController {
 }
 
 class EditContentController: ContainedViewController {
+    var editingEnabled: Bool = true
+    
     func getContent() -> PFObject? {
         return nil
     }

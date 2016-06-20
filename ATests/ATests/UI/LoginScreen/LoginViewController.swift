@@ -26,6 +26,12 @@ class LoginViewController: ValidationFormViewController {
         // Do any additional setup after loading the view.
         passwordField.delegate = self
         emailField.delegate = self
+        
+        emailField.text = "radu.costea@mail.com"
+        passwordField.text = "password"
+        
+        validationFieldTextDidChanged(emailField)
+        validationFieldTextDidChanged(passwordField)
     }
     
     // MARK: - Overrides
@@ -99,7 +105,7 @@ class LoginViewController: ValidationFormViewController {
     
     func loginEncounteredAnError(error: NSError) {
         AnimatingViewController.hide()
-        UIAlertController.showIn(self, message: "An error occured while trying to login: \(error.localizedDescription)", actions: [], cancelAction: (title: "Ok", action: nil))
+        UIAlertController.showIn(self, message: "An error occured while trying to login: \(error.localizedDescription)", style: .Alert, actions: [], cancelAction: (title: "Ok", action: nil))
     }
     
     // MARK: - Navigation

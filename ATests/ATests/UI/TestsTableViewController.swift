@@ -102,11 +102,11 @@ class TestsTableViewController: UITableViewController, TestTableViewCellDelegate
                     destination.test = tests[idx]
                 }
             case "goToCreateSimulation":
-                break;
-//                if let cell = sender as? TestTableViewCell<ParseDomain>,
-//                    let destination = segue.destinationViewController as? CreateSimulationTableViewController {
-//                    destination.test = cell.test
-//                }
+//                break;
+                if let cell = sender as? TestTableViewCell,
+                    let destination = segue.destinationViewController as? CreateSimulationTableViewController {
+                    destination.domain = cell.test
+                }
             default:
                 break
             }

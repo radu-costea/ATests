@@ -29,7 +29,7 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadText()
-        let contentValid = content?.isValid() ?? false
+        let contentValid = true;//content?.isValid() ?? false
         errorView.hidden = contentValid
         textView.hidden = !contentValid
     }
@@ -37,10 +37,12 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     func loadText() {
         content?.fetchIfNeededInBackgroundWithBlock({ (c, error) in
             if let txt = self.content?.text {
-                self.text = txt
-                self.errorView?.hidden = txt.length > 0
-                self.contentProvider?.loadWith(txt)
-                self.textView?.text = txt
+                UIView.animateWithDuration(0.3, animations: { 
+                    self.text = txt
+                    self.errorView?.hidden = txt.length > 0
+                    self.contentProvider?.loadWith(txt)
+                    self.textView?.text = txt
+                })
             }
         })
     }
@@ -66,7 +68,9 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     }
     
     override func startEditing() {
-        presentViewController(self.contentProvider, animated: true, completion: nil)
+        if editingEnabled {
+            presentViewController(self.contentProvider, animated: true, completion: nil)
+        }
     }
     
     /// MARK: -
@@ -78,13 +82,8 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
             textView.text = txt
             self.content?.text = txt
             
-            AnimatingViewController.showInController(currentProvider, status: "Saving changes..")
-            self.content?.saveInBackgroundWithBlock({ (success, err) in
-                AnimatingViewController.hide { 
-                    currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                    self.errorView.hidden = self.content?.isValid() ?? false
-                }
-            })
+            currentProvider.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            self.errorView.hidden = self.content?.isValid() ?? false
         }
     }
 }

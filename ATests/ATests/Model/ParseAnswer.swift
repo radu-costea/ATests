@@ -13,10 +13,20 @@ extension ParseAnswer {
     @NSManaged var variants: [ParseAnswerVariant]?
 }
 
+
+
 extension ParseAnswer {
     convenience init(answer: ParseAnswer) {
-        self.init(className: ParseAnswer.parseClassName())
-        variants = answer.variants?.flatMap{ ParseAnswerVariant(variant: $0) }
+        self.init()
+        variants = answer.variants?.flatMap{ $0.cleanCopyObject() }
+    }
+    
+    override func copyObject() -> ParseAnswer {
+        return ParseAnswer(answer: self)
+    }
+    
+    override func cleanCopyObject() -> ParseAnswer {
+        return copyObject()
     }
 }
 

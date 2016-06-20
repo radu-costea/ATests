@@ -35,6 +35,17 @@ extension ParseQuestion {
             parseAnswer = [newContent]
         }
     }
+    
+    convenience init(question: ParseQuestion) {
+        self.init(className: "ParseQuestion")
+        parseContent = question.parseContent?.flatMap{ $0.copyObject() }
+        parseAnswer = question.parseAnswer?.flatMap{ $0.copyObject() }
+        domain = question.domain
+    }
+    
+    override func copyObject() -> ParseQuestion {
+        return ParseQuestion(question: self)
+    }
 }
 
 class ParseQuestion: PFObject, PFSubclassing {

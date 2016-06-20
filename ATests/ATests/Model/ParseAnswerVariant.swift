@@ -30,10 +30,25 @@ extension ParseAnswerVariant {
 
 extension ParseAnswerVariant {
     convenience init(variant: ParseAnswerVariant) {
-        self.init(className: ParseAnswerVariant.parseClassName())
+        self.init()
+        do {
+        try variant.fetchIfNeeded()
+        } catch {
+            print("exception thrown")
+        }
         index = variant.index
         correct = variant.correct
         content = variant.content
+    }
+    
+    override func copyObject() -> ParseAnswerVariant {
+        return ParseAnswerVariant(variant: self)
+    }
+    
+    override func cleanCopyObject() -> ParseAnswerVariant {
+        let obj = copyObject()
+        obj.correct = false
+        return obj
     }
 }
 
