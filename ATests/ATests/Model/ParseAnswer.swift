@@ -18,7 +18,12 @@ extension ParseAnswer {
 extension ParseAnswer {
     convenience init(answer: ParseAnswer) {
         self.init()
-        variants = answer.variants?.flatMap{ $0.cleanCopyObject() }
+        do {
+            try answer.fetchIfNeeded()
+            variants = answer.variants?.flatMap{ $0.cleanCopyObject() }
+        } catch {
+            print("why me!!!")
+        }
     }
     
     override func copyObject() -> ParseAnswer {

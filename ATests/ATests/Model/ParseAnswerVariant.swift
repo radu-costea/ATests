@@ -30,9 +30,9 @@ extension ParseAnswerVariant {
 
 extension ParseAnswerVariant {
     convenience init(variant: ParseAnswerVariant) {
-        self.init()
+        self.init(className: "ParseAnswerVariant")
         do {
-        try variant.fetchIfNeeded()
+            try variant.fetchIfNeeded()
         } catch {
             print("exception thrown")
         }
@@ -42,6 +42,13 @@ extension ParseAnswerVariant {
     }
     
     override func copyObject() -> ParseAnswerVariant {
+//        if self.objectId != nil {
+//            do {
+//                try self.fetchIfNeeded()
+//            } catch {
+//                print("exception thrown")
+//            }
+//        }
         return ParseAnswerVariant(variant: self)
     }
     

@@ -20,6 +20,13 @@ class QuizWaitingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         joinIdField.text = quizz?.joinId
+       
+        
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         quizz?.state = .WaitingForClients
         
         AnimatingViewController.showInController(self, status: "Preparing...")

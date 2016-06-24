@@ -24,7 +24,7 @@ class JoinViewController: UIViewController {
     
     @IBAction func didTapJoin(sender: AnyObject?) {
         // Find exam
-        let id = "1A27F47F-2557-4831-8778-5149EF0DA544"
+        let id = textField.text ?? "A7E2383D-8896-477F-9262-99211338203B"
         let query = PFQuery(className: "ParseExam", predicate: NSPredicate(format: "joinId = \"\(id)\" AND state = \(ParseExamState.WaitingForClients.rawValue)"))
         
         AnimatingViewController.showInController(self, status: "Pairing..")
