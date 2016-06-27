@@ -48,10 +48,7 @@ class LoginViewController: ValidationFormViewController {
     }
     
     override func createViewModels() -> [FieldValidationViewModel] {
-        return [
-            self.passwordVM,
-            self.emailVM
-        ]
+        return [self.passwordVM, self.emailVM]
     }
     
     override func validationFieldTextDidChanged(validationField: ValidationTextField) {
@@ -63,6 +60,11 @@ class LoginViewController: ValidationFormViewController {
     
     @IBAction func login(sender: UIButton?) {
         self.view.endEditing(true)
+        
+        if let _ = self.user {
+            logout()
+            return
+        }
         
         guard   let email = emailVM.text,
                 let password = passwordVM.text else {
@@ -82,38 +84,54 @@ class LoginViewController: ValidationFormViewController {
         }
     }
     
+    func logout() -> Void {
+        AnimatingViewController.showInController(self, status: "Logging out ..")
+        ParseUser.logOutInBackgroundWithBlock{ err in
+            AnimatingViewController.hide {
+                self.emailField.textField.enabled = true
+                self.passwordField.textField.enabled = true
+                self.loginButton.setTitle("Log in", forState: .Normal)
+                self.user = nil
+            }
+        }
+    }
+    
+    // MARK: - Helper methods
+    
     func loginSuccedeedWithUser(user: ParseUser) {
         self.user = user
-        
-        if let avatar = self.user?.avatar {
-            avatar.getImageInBackgroundWithBlock{ [unowned self] (image, error) in
-                AnimatingViewController.hide()
-                self.animateAvatarAndProceed(image)
-            }
-            return
+        let completion: (UIImage?) -> Void = { [unowned self] image in
+            AnimatingViewController.hide{ self.animateAvatarAndProceed(image) }
         }
         
-        AnimatingViewController.hide()
-        animateAvatarAndProceed(nil)
+        if let avatar = user.avatar {
+            avatar.getImageInBackgroundWithBlock { (img, err) in completion(img) }
+        } else {
+            completion(nil)
+        }
     }
     
     func animateAvatarAndProceed(image: UIImage?) {
+        emailField.textField.enabled = false
+        passwordField.textField.enabled = false
+        loginButton.setTitle("Log out", forState: .Normal)
+        
         guard let img = image else {
             self.performSegueWithIdentifier("toMyAccount", sender: nil)
             return
         }
-
+        
         UIView.animateWithDuration(0.5,
-        animations: { [unowned self] _ in
-            self.avatarContainer.hidden = false
-            self.imageView.image = img
-            self.view.layoutIfNeeded()
-        },
-        completion: { success in
+            animations: { [unowned self] _ in
+                self.avatarContainer.hidden = false
+                self.imageView.image = img
+                self.view.layoutIfNeeded()
+            }
+        ){ success in
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                 self.performSegueWithIdentifier("toMyAccount", sender: nil)
             })
-        })
+        }
     }
     
     
@@ -135,5 +153,15 @@ class LoginViewController: ValidationFormViewController {
         ]
     }
     
-    @IBAction func unwindToLogin(segue: UIStoryboardSegue) -> Void { }
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) -> Void {
+        if let source = segue.sourceViewController as? RegisterViewController {
+            // Back from register
+            user = source.user
+            emailField.text = user?.username
+            passwordField.text = user?.password
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.animateAvatarAndProceed(source.image)
+            })
+        }
+    }
 }

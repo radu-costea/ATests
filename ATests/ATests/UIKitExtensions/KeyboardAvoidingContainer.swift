@@ -69,9 +69,9 @@ class ScrollViewKeyboardAvoider: KeyboardAvoidingContainer {
         
         let duration = info[UIKeyboardAnimationDurationUserInfoKey]?.floatValue ?? 0.0
         
-        let animationBlock = { [unowned self] in
-            self.scrollView.contentInset = contentInsets
-            self.scrollView.scrollIndicatorInsets = scrollerInsets
+        let animationBlock = { [weak self] in
+            self?.scrollView.contentInset = contentInsets
+            self?.scrollView.scrollIndicatorInsets = scrollerInsets
         }
         
         UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: option, animations: animationBlock) { _ in animationBlock() }

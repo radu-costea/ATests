@@ -69,8 +69,8 @@ class ValidationTextField: UIStackView, UITextFieldDelegate {
         UIView.animateWithDuration(0.25, animations: { [unowned self] in
             self.validationIcon.hidden = isVisible
             self.layoutIfNeeded()
-            }) { [unowned self]  _ in
-                self.validationIcon.hidden = isVisible
+            }) { [weak self]  _ in
+                self?.validationIcon.hidden = isVisible
         }
     }
     

@@ -116,10 +116,8 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
             self.defaults.setObject(self.passwordVM.text!, forKey: "password")
             
             self.user = user
-            AnimatingViewController.setStatus("Success!!!")
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { [unowned self] in
-                AnimatingViewController.hide()
-                self.performSegueWithIdentifier("toMyAccount", sender: nil)
+            AnimatingViewController.hide({ [unowned self] in
+                self.performSegueWithIdentifier("registerFinished", sender: nil)
             })
         }
     }
