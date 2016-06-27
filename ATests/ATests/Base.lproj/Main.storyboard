@@ -1223,7 +1223,7 @@
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5V-1F-R85">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Add image"/>
                                                                 <connections>
                                                                     <action selector="loadImage:" destination="681-XR-wj7" eventType="touchUpInside" id="laO-W6-RXj"/>
                                                                 </connections>

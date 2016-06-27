@@ -13,6 +13,8 @@ import Parse
 protocol ImagePickerDelegate: UINavigationControllerDelegate, UIImagePickerControllerDelegate {}
 
 class RegisterViewController: ValidationFormViewController, ImagePickerDelegate {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     lazy var emailVM: FieldValidationViewModel = ValidationFieldViewModel(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")
     lazy var firstNameVM: FieldValidationViewModel = WordLengthValidationFieldViewModel(length: 1)
     lazy var lastNameVM: FieldValidationViewModel = WordLengthValidationFieldViewModel(length: 1)
@@ -109,6 +111,9 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
                 self.registerEncounteredAnError(err)
                 return
             }
+            
+            self.defaults.setObject(self.emailVM.text!, forKey: "username")
+            self.defaults.setObject(self.passwordVM.text!, forKey: "password")
             
             self.user = user
             AnimatingViewController.setStatus("Success!!!")

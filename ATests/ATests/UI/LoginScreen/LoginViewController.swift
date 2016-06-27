@@ -19,6 +19,7 @@ class LoginViewController: ValidationFormViewController {
     @IBOutlet var emailField: ValidationTextField!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var avatarContainer: UIView!
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +28,15 @@ class LoginViewController: ValidationFormViewController {
         passwordField.delegate = self
         emailField.delegate = self
         
-        emailField.text = "radu.costea@mail.com"
-        passwordField.text = "password"
         
-        validationFieldTextDidChanged(emailField)
-        validationFieldTextDidChanged(passwordField)
+        if let email = defaults.stringForKey("username"),
+            let password = defaults.stringForKey("password") {
+            emailField.text = email
+            passwordField.text = password
+            
+            validationFieldTextDidChanged(emailField)
+            validationFieldTextDidChanged(passwordField)
+        }
     }
     
     // MARK: - Overrides
@@ -58,10 +63,19 @@ class LoginViewController: ValidationFormViewController {
     
     @IBAction func login(sender: UIButton?) {
         self.view.endEditing(true)
+        
+        guard   let email = emailVM.text,
+                let password = passwordVM.text else {
+            return
+        }
+        
         AnimatingViewController.showInController(self, status: "Logging in ..")
-        ParseUser.logInWithUsernameInBackground(emailVM.text!, password: passwordVM.text!) { [unowned self] currentUser, error in
+        
+        ParseUser.logInWithUsernameInBackground(email, password: password) { [unowned self] currentUser, error in
             if let usr = currentUser as? ParseUser {
                 self.loginSuccedeedWithUser(usr)
+                self.defaults.setObject(email, forKey: "username")
+                self.defaults.setObject(email, forKey: "password")
                 return
             }
             self.loginEncounteredAnError(error!)
@@ -104,8 +118,9 @@ class LoginViewController: ValidationFormViewController {
     
     
     func loginEncounteredAnError(error: NSError) {
-        AnimatingViewController.hide()
-        UIAlertController.showIn(self, message: "An error occured while trying to login: \(error.localizedDescription)", style: .Alert, actions: [], cancelAction: (title: "Ok", action: nil))
+        AnimatingViewController.hide { [unowned self] in
+            UIAlertController.showIn(self, message: "An error occured while trying to login: \(error.localizedDescription)", style: .Alert, actions: [], cancelAction: (title: "Ok", action: nil))
+        }
     }
     
     // MARK: - Navigation

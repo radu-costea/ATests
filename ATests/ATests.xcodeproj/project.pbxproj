@@ -13,13 +13,9 @@
 		3317BC351D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC341D0B700D00E9CC79 /* ImageContentQuestionTableViewCell.swift */; };
 		3317BC391D0B8AC300E9CC79 /* TestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317BC381D0B8AC300E9CC79 /* TestsTableViewController.swift */; };
 		332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F11CC047F9004F7602 /* BaseViewController.swift */; };
-		332B76F31CC047F9004F7602 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F11CC047F9004F7602 /* BaseViewController.swift */; };
-		332B76F41CC047F9004F7602 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332B76F11CC047F9004F7602 /* BaseViewController.swift */; };
 		334AC04F1CFCD01D0079C089 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AC04E1CFCD01D0079C089 /* EditAnswerViewController.swift */; };
 		334AC0511CFCD75B0079C089 /* EditRawContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */; };
 		334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
-		334B69691CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
-		334B696A1CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
 		334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BF4141CFE3DAD008E97AC /* EditVariantController.swift */; };
 		335D74BB1D10AA3D00589248 /* UIAlertController-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */; };
 		336FF63E1D04BEAC0068BF8B /* EditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */; };
@@ -63,14 +59,8 @@
 		33EC50351D14E04400A971E0 /* ParseExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50341D14E04400A971E0 /* ParseExam.swift */; };
 		33EC50371D14E25500A971E0 /* ParseExamAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC50361D14E25500A971E0 /* ParseExamAnswer.swift */; };
 		6205EC8C1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
-		6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
-		6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8B1CBEB07600B9A9F1 /* Digest.swift */; };
 		6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */; };
-		6205EC911CBEB0B300B9A9F1 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */; };
-		6205EC921CBEB0B300B9A9F1 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */; };
 		6205EC941CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
-		6205EC951CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
-		6205EC961CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */; };
 		6240843A1CB50D44008C78C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624084391CB50D44008C78C1 /* AppDelegate.swift */; };
 		6240843F1CB50D45008C78C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6240843D1CB50D45008C78C1 /* Main.storyboard */; };
 		624084441CB50D45008C78C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624084431CB50D45008C78C1 /* Assets.xcassets */; };
@@ -78,23 +68,11 @@
 		624084521CB50D45008C78C1 /* ATestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624084511CB50D45008C78C1 /* ATestsTests.swift */; };
 		6240845D1CB50D45008C78C1 /* ATestsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6240845C1CB50D45008C78C1 /* ATestsUITests.swift */; };
 		6251BC841CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6251BC831CC688D000880612 /* KeyboardPlaceholderView.swift */; };
-		6251BC851CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6251BC831CC688D000880612 /* KeyboardPlaceholderView.swift */; };
-		6251BC861CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6251BC831CC688D000880612 /* KeyboardPlaceholderView.swift */; };
 		625C599A1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C59991CBCC9AF00B155A7 /* Dictionary-Extensions.swift */; };
-		625C599B1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C59991CBCC9AF00B155A7 /* Dictionary-Extensions.swift */; };
-		625C599C1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C59991CBCC9AF00B155A7 /* Dictionary-Extensions.swift */; };
 		625C599E1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C599D1CBCD11200B155A7 /* ValidationFormViewController.swift */; };
-		625C599F1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C599D1CBCD11200B155A7 /* ValidationFormViewController.swift */; };
-		625C59A01CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C599D1CBCD11200B155A7 /* ValidationFormViewController.swift */; };
 		625C5A051CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
-		625C5A061CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
-		625C5A071CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */; };
 		6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
-		6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
-		6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6289F0FE1CB6D667004022FE /* UIView-Extensions.swift */; };
 		62C044461CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
-		62C044471CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
-		62C044481CBE400B00682E77 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C044451CBE400B00682E77 /* Buttons.swift */; };
 		62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C045751CBE6F9300682E77 /* NSData-Extensions.swift */; };
 		62C045AE1CBE759B00682E77 /* CommonCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 62C045AD1CBE759B00682E77 /* CommonCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62C045B21CBE759B00682E77 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C045AB1CBE759A00682E77 /* CommonCrypto.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -102,37 +80,15 @@
 		62C045BB1CBE764E00682E77 /* CommonCrypto.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 62C045B91CBE764500682E77 /* CommonCrypto.xcconfig */; };
 		62C045BC1CBE76B900682E77 /* CommonCrypto.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 62C045B91CBE764500682E77 /* CommonCrypto.xcconfig */; };
 		62D4038F1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4038E1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift */; };
-		62D403901CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4038E1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift */; };
-		62D403911CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4038E1CBBBA7800C53316 /* KeyboardAvoidingScrollView.swift */; };
 		62D403931CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403921CBBBFF700C53316 /* KeyboardAvoidingTableView.swift */; };
-		62D403941CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403921CBBBFF700C53316 /* KeyboardAvoidingTableView.swift */; };
-		62D403951CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403921CBBBFF700C53316 /* KeyboardAvoidingTableView.swift */; };
 		62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403981CBBD11A00C53316 /* LoginViewController.swift */; };
-		62D4039A1CBBD11A00C53316 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403981CBBD11A00C53316 /* LoginViewController.swift */; };
-		62D4039B1CBBD11A00C53316 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403981CBBD11A00C53316 /* LoginViewController.swift */; };
 		62D4039D1CBBD12E00C53316 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4039C1CBBD12E00C53316 /* RegisterViewController.swift */; };
-		62D4039E1CBBD12E00C53316 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4039C1CBBD12E00C53316 /* RegisterViewController.swift */; };
-		62D4039F1CBBD12E00C53316 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D4039C1CBBD12E00C53316 /* RegisterViewController.swift */; };
 		62D403A11CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A01CBBD1C000C53316 /* ValidationFieldViewModel.swift */; };
-		62D403A21CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A01CBBD1C000C53316 /* ValidationFieldViewModel.swift */; };
-		62D403A31CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A01CBBD1C000C53316 /* ValidationFieldViewModel.swift */; };
 		62D403A61CBBDCE500C53316 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A51CBBDCE500C53316 /* ValidationTextField.swift */; };
-		62D403A71CBBDCE500C53316 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A51CBBDCE500C53316 /* ValidationTextField.swift */; };
-		62D403A81CBBDCE500C53316 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D403A51CBBDCE500C53316 /* ValidationTextField.swift */; };
 		62E4E6F81CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6F71CB7F5DB003C6FB2 /* AppearenceCustomizer.swift */; };
-		62E4E6F91CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6F71CB7F5DB003C6FB2 /* AppearenceCustomizer.swift */; };
-		62E4E6FA1CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6F71CB7F5DB003C6FB2 /* AppearenceCustomizer.swift */; };
 		62E4E6FC1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6FB1CB7F688003C6FB2 /* UIColor-Extensions.swift */; };
-		62E4E6FD1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6FB1CB7F688003C6FB2 /* UIColor-Extensions.swift */; };
-		62E4E6FE1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E6FB1CB7F688003C6FB2 /* UIColor-Extensions.swift */; };
 		62E4E7011CB8012E003C6FB2 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7001CB8012E003C6FB2 /* String-Extensions.swift */; };
-		62E4E7021CB8012E003C6FB2 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7001CB8012E003C6FB2 /* String-Extensions.swift */; };
-		62E4E7031CB8012E003C6FB2 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7001CB8012E003C6FB2 /* String-Extensions.swift */; };
 		62E4E7051CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7041CB80298003C6FB2 /* KeyboardAvoidingContainer.swift */; };
-		62E4E7061CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7041CB80298003C6FB2 /* KeyboardAvoidingContainer.swift */; };
-		62E4E7071CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4E7041CB80298003C6FB2 /* KeyboardAvoidingContainer.swift */; };
-		62FE98531CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C045751CBE6F9300682E77 /* NSData-Extensions.swift */; };
-		62FE98541CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C045751CBE6F9300682E77 /* NSData-Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -824,29 +780,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62D4039A1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
-				62E4E6F91CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
-				62D403A71CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
-				6251BC851CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
-				625C599F1CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
-				6205EC951CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
-				6289F1001CB6D667004022FE /* UIView-Extensions.swift in Sources */,
-				62C044471CBE400B00682E77 /* Buttons.swift in Sources */,
-				332B76F31CC047F9004F7602 /* BaseViewController.swift in Sources */,
-				62D403901CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
-				62FE98531CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				624084521CB50D45008C78C1 /* ATestsTests.swift in Sources */,
-				6205EC911CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
-				62E4E6FD1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
-				625C599B1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
-				334B69691CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
-				62E4E7021CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
-				62D403941CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
-				62D403A21CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
-				625C5A061CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
-				62D4039E1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
-				62E4E7061CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
-				6205EC8D1CBEB07600B9A9F1 /* Digest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,29 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62D4039B1CBBD11A00C53316 /* LoginViewController.swift in Sources */,
-				62E4E6FA1CB7F5DB003C6FB2 /* AppearenceCustomizer.swift in Sources */,
-				62D403A81CBBDCE500C53316 /* ValidationTextField.swift in Sources */,
-				6251BC861CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
-				625C59A01CBCD11200B155A7 /* ValidationFormViewController.swift in Sources */,
-				6205EC961CBEB2E200B9A9F1 /* HMACAlgoritm.swift in Sources */,
-				6289F1011CB6D667004022FE /* UIView-Extensions.swift in Sources */,
-				62C044481CBE400B00682E77 /* Buttons.swift in Sources */,
-				332B76F41CC047F9004F7602 /* BaseViewController.swift in Sources */,
-				62D403911CBBBA7900C53316 /* KeyboardAvoidingScrollView.swift in Sources */,
-				62FE98541CBEA9BC002FEF08 /* NSData-Extensions.swift in Sources */,
 				6240845D1CB50D45008C78C1 /* ATestsUITests.swift in Sources */,
-				6205EC921CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
-				62E4E6FE1CB7F688003C6FB2 /* UIColor-Extensions.swift in Sources */,
-				625C599C1CBCC9AF00B155A7 /* Dictionary-Extensions.swift in Sources */,
-				334B696A1CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */,
-				62E4E7031CB8012E003C6FB2 /* String-Extensions.swift in Sources */,
-				62D403951CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
-				62D403A31CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
-				625C5A071CBD28DB00B155A7 /* MyAccountViewController.swift in Sources */,
-				62D4039F1CBBD12E00C53316 /* RegisterViewController.swift in Sources */,
-				62E4E7071CB80298003C6FB2 /* KeyboardAvoidingContainer.swift in Sources */,
-				6205EC8E1CBEB07600B9A9F1 /* Digest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +929,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1029,6 +942,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.education.QuizzStudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1036,6 +950,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
