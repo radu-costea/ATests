@@ -18,6 +18,7 @@ class ParseExamAnswer: PFObject, PFSubclassing {
 extension ParseExamAnswer {
     @NSManaged var question: ParseExamQuestion
     @NSManaged var parseAnswer: [PFObject]?
+    @NSManaged var result: Float
     
     convenience init(question: ParseExamQuestion, answer: PFObject?) {
         self.init()

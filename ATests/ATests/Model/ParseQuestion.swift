@@ -46,6 +46,10 @@ extension ParseQuestion {
     override func copyObject() -> ParseQuestion {
         return ParseQuestion(question: self)
     }
+    
+    override func isValid() -> Bool {
+        return (content?.isValid() ?? false) && (answer?.isValid() ?? false)
+    }
 }
 
 class ParseQuestion: PFObject, PFSubclassing {

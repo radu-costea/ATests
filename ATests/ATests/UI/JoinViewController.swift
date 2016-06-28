@@ -70,6 +70,7 @@ class JoinViewController: UIViewController {
             let clientExam = ParseClientExam()
             clientExam.answers = newAnswers
             clientExam.owner = user
+            clientExam.displayName = "\(user.lastName ?? "-" ), \(user.firstName ?? "-")"
             clientExam.source = exam
             self.exam = clientExam
             return clientExam.saveInBackground()
@@ -96,6 +97,7 @@ class JoinViewController: UIViewController {
             switch identifier {
             case "startExam":
                 let examController = segue.destinationViewController as! TakeExamViewController
+                self.exam?.startDate = NSDate()
                 examController.exam = self.exam
             default:
                 break

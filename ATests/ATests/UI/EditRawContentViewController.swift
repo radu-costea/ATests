@@ -9,30 +9,28 @@
 import UIKit
 import Parse
 
+protocol Contained: class {
+    associatedtype SelfType = Self
+    static var storyboardName: String { get }
+    static var storyboardId: String { get }
+    static func controller() -> SelfType?
+}
 
-class ContainedViewController: UIViewController, ContainedController {
-    weak var presenter: UIViewController?
-    
+func storyboardController(storyboard: String, identifier: String) -> UIViewController {
+     return UIStoryboard(name: storyboard, bundle: nil).instantiateViewControllerWithIdentifier(identifier)
+}
+
+
+class ContainedViewController: UIViewController, Contained {
     class var storyboardName: String { return "" }
     class var storyboardId: String { return "" }
-    
     class func controller() -> ContainedViewController? {
-        return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? ContainedViewController
-    }
-    
-    /// MARK: -
-    /// MARK: Modal controllers
-    
-    override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        presenter?.presentViewController(viewControllerToPresent, animated: flag, completion: completion)
-    }
-    
-    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
-        presenter?.dismissViewControllerAnimated(flag, completion: completion)
+        return storyboardController(storyboardName, identifier: storyboardId) as? ContainedViewController
     }
 }
 
 class EditContentController: ContainedViewController {
+    typealias SelfType = EditContentController
     var editingEnabled: Bool = true
     
     func getContent() -> PFObject? {

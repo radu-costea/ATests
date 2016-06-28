@@ -11,6 +11,7 @@ import Parse
 
 extension ParseAnswer {
     @NSManaged var variants: [ParseAnswerVariant]?
+    @NSManaged var isValidAnswer: Bool
 }
 
 
@@ -21,6 +22,7 @@ extension ParseAnswer {
         do {
             try answer.fetchIfNeeded()
             variants = answer.variants?.flatMap{ $0.cleanCopyObject() }
+            isValidAnswer = answer.isValidAnswer
         } catch {
             print("why me!!!")
         }
@@ -32,6 +34,29 @@ extension ParseAnswer {
     
     override func cleanCopyObject() -> ParseAnswer {
         return copyObject()
+    }
+    
+    func updateValidState() -> Void {
+        var isValid = true
+        var isSelected = false
+        variants?.forEach({ (variant) in
+            isValid = (isValid && variant.isValid())
+            isSelected = isSelected || variant.correct
+        })
+        isValidAnswer = isSelected && isValid
+    }
+    
+    override func isValid() -> Bool {
+        return isValidAnswer
+    }
+    
+    override func equalTo(object: AnyObject?) -> Bool {
+        if let answer = object as? ParseAnswer,
+            let myVariants = variants?.sort({ $0.index < $1.index }),
+            let otherVariants = answer.variants?.sort({ $0.index < $1.index }) {
+            return myVariants == otherVariants
+        }
+        return super.equalTo(object)
     }
 }
 

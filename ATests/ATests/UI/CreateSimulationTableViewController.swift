@@ -31,8 +31,10 @@ class CreateSimulationTableViewController: UITableViewController, SimulationQues
     @IBOutlet var selectFreePoints: UIButton!
     @IBOutlet var selectDuration: UIButton!
     @IBOutlet var total: UIButton!
+    @IBOutlet var buttonNeXT: UIButton!
     
     var freePoints = 0 { didSet { refreshPoints() } }
+    var totalPoints = 0
     var duration = 1800 { didSet { refreshDuration() } }
     var domain: ParseDomain!
     var dataSource: [ParseExamQuestionBuilder] = []
@@ -43,6 +45,10 @@ class CreateSimulationTableViewController: UITableViewController, SimulationQues
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let d = domain else {
+            return
+        }
         
         domain.fetchQuestionsInBackgroundWithBlock { (questions, error) in
             self.dataSource = questions?.flatMap{ ParseExamQuestionBuilder(question: $0) } ?? []
@@ -62,14 +68,20 @@ class CreateSimulationTableViewController: UITableViewController, SimulationQues
     }
     
     func refreshPoints() {
-        let totalPoints = self.dataSource.reduce(freePoints) { $0 + ($1.include ? $1.points : 0) }
+        totalPoints = self.dataSource.reduce(freePoints) { $0 + ($1.include ? $1.points : 0) }
         selectFreePoints?.setTitle("\(freePoints)", forState: .Normal)
         total.setTitle("\(totalPoints)", forState: .Normal)
+    }
+    
+    func refreshNextButtonState() -> Void {
+        let atLeastOneQuestion = self.dataSource.contains { $0.include == true }
+        self.buttonNeXT.enabled = atLeastOneQuestion
     }
     
     func refresh() {
         refreshDuration()
         refreshPoints()
+        refreshNextButtonState()
     }
 
     // MARK: - Table view data source
@@ -131,6 +143,7 @@ class CreateSimulationTableViewController: UITableViewController, SimulationQues
     
     func simulationQuestionCellDidUpdateInclude(cell: SimulationQuestionTableViewCell) {
         refreshPoints()
+        refreshNextButtonState()
     }
     
     
@@ -177,6 +190,8 @@ class CreateSimulationTableViewController: UITableViewController, SimulationQues
         exam.duration = duration
         exam.state = .NotStarted
         exam.joinId = NSUUID().UUIDString
+        exam.freePoints = freePoints
+        exam.totalPoints = totalPoints
         
         AnimatingViewController.showInController(self, status: "Preparing questions..")
         exam.saveInBackgroundWithBlock { (success, error) in

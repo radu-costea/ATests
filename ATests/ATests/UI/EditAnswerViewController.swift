@@ -51,7 +51,6 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
                 self.setupVariantController(controller)
             }
         }
-//        view.layoutIfNeeded()
     }
     
     func setupVariantController(controller: EditVariantController) {
@@ -63,7 +62,6 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         stackView.insertArrangedSubview(controller.view, atIndex: idx) ///insertSubview(controller.view, aboveSubview: addAnswerView)
         controller.didMoveToParentViewController(self)
         controller.delegate = self
-        controller.presenter = self
         
         print("insert at index: \(idx)")
     }
@@ -81,12 +79,10 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
             variant.content = variantContent
             self.variants.append(variant)
             answer.variants = self.variants
-//            answer.saveInBackgroundWithBlock({ (success3, error3) in
-                AnimatingViewController.hide({
-                    let controller = self.addVariant(variant)
-                    controller?.startEditing()
-                })
-//            })
+            AnimatingViewController.hide {
+                let controller = self.addVariant(variant)
+                controller?.startEditing()
+            }
         }
     }
     
@@ -124,16 +120,12 @@ class EditAnswerViewController: EditContentController, EditVariantControllerDele
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
         
-        content?.variants = answerVariants
-        
         if let answer = content {
-            
-//            answer.saveInBackgroundWithBlock({ (sucess, err) in
-                AnimatingViewController.showInController(self, status: "Cleaning up data")
-                variant.deleteInBackgroundWithBlock({ (success, err) in
-                    AnimatingViewController.hide()
-                })
-//            })
+            answer.variants = answerVariants
+            AnimatingViewController.showInController(self, status: "Cleaning up data")
+            variant.deleteInBackgroundWithBlock { (success, err) in
+                AnimatingViewController.hide()
+            }
         }
     }
 }

@@ -11,8 +11,12 @@ import Parse
 
 extension ParseClientExam {
     @NSManaged var owner: ParseUser
+    @NSManaged var displayName: String?
     @NSManaged var answers: [ParseExamAnswer]
     @NSManaged var source: ParseExam
+    @NSManaged var startDate: NSDate?
+    @NSManaged var endDate: NSDate?
+    @NSManaged var grade: Float
 }
 
 class ParseClientExam: PFObject, PFSubclassing {

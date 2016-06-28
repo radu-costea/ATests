@@ -18,9 +18,11 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
     var answers: [ParseExamAnswer] = []
     var currentIdx: Int?
     var current: EditQuestionViewController?
+    var currentAnswer: ParseExamAnswer?
+    
+    var timeout: NSTimer?
     
     var seenOnce: Bool = false
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,17 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
         if let allAnswers = exam?.answers where allAnswers.count > 0 {
             self.answers = allAnswers
         }
+        
+        if let dt = exam?.source.duration where dt > 0 {
+            let elapsed = NSDate().timeIntervalSinceDate(exam?.startDate ?? NSDate())
+            let remaining = Double(dt) - elapsed
+            
+            timeout = NSTimer.scheduledTimerWithTimeInterval(remaining, target: self, selector: #selector(TakeExamViewController.timedOut(_:)), userInfo: nil, repeats: false)
+        }
+    }
+    
+    deinit {
+        timeout?.invalidate()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,6 +61,7 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
             self.currentIdx = index
             self.refreshIdx()
             let answer = self.answers[index]
+            self.currentAnswer = answer
             if let controller = EditQuestionViewController.controller() {
                 controller.editingEnabled = false
                 controller.provideContentBlock = { _ in answer.question.content }
@@ -76,8 +90,9 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
         if let idx = currentIdx where answers[idx].dirty {
             AnimatingViewController.showInController(self, status: "Saving state")
             answers[idx].saveInBackgroundWithBlock( { (success, err) in
-                AnimatingViewController.hide()
-                completion()
+                self.exam?.saveInBackgroundWithBlock({ (success, err) in
+                    AnimatingViewController.hide(completion)
+                })
             })
         } else {
             completion()
@@ -108,11 +123,31 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
     /// MARK: Actions
     
     @IBAction func didTapNext(sender: AnyObject?) -> Void {
+        validateAnswer(currentAnswer)
         loadControllerForIdx(currentIdx?.successor() ?? 0, direction: .Forward, animated: true)
     }
     
     @IBAction func didTapPrevious(sender: AnyObject?) -> Void {
+        validateAnswer(currentAnswer)
         loadControllerForIdx(currentIdx?.predecessor() ?? 0, direction: .Reverse, animated: true)
+    }
+    
+    @IBAction func didTapDone(sender: AnyObject?) -> Void {
+        validateAnswer(currentAnswer)
+        exam?.endDate = NSDate()
+        saveIfNeeded { [unowned self] _ in
+            UIAlertController.showIn(self,
+                style: .Alert,
+                title: "Exam over",
+                message: "You scored \(self.exam?.grade ?? 0) out of \(self.exam?.source.totalPoints ?? 0)",
+                actions: [(title: "View results", action: { _ in
+                    self.performSegueWithIdentifier("backToMyAccount", sender: nil)
+                })],
+                cancelAction: (title: "Go Back", action: { _ in
+                    self.performSegueWithIdentifier("backToMyAccount", sender: nil)
+                })
+            )
+        }
     }
     
     /// MARK: -
@@ -125,10 +160,25 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         return nil
     }
+    
+    /// MARK: -
+    /// MARK: Answers validtaion
+    
+    func timedOut(sender: NSTimer?) -> Void {
+        didTapDone(nil)
+    }
+    
+    func validateAnswer(answer: ParseExamAnswer?) -> Bool {
+        let correct = answer?.question.answer
+        let current = answer?.answer
+        let isCorrect = correct?.equalTo(current) ?? false
+        answer?.result = isCorrect ? 1.0 : 0.0
+        computeScore()
+        return isCorrect
+    }
 
     func computeScore() -> Void {
-//        let score = answers.reduce(0){
-//            return $0 + ($1.answer?.isEqual($1.question.answer) ? $1.question.points : 0)
-//        }
+        let grade = answers.reduce(Float(exam?.source.freePoints ?? 0.0), combine: { $0 + $1.result * Float($1.question.points)})
+        exam?.grade = grade
     }
 }

@@ -33,6 +33,26 @@ extension PFObject: CopyableObject {
 
 extension PFObject {
     func isValid() -> Bool {
-        return true
+        return false
     }
+    
+    public func equalTo(object: AnyObject?) -> Bool {
+        if let pfObject = object as? PFObject {
+            return pfObject.objectId == objectId
+        }
+        return self.isEqual(object)
+    }
+}
+
+func ==<T: PFObject>(lhs: Array<T>, rhs: Array<T>) -> Bool {
+    guard lhs.count == rhs.count else {
+        return false
+    }
+    for idx in 0..<lhs.count {
+        print("comparing variant \(idx)")
+        guard lhs[idx].equalTo(rhs[idx]) else {
+            return false
+        }
+    }
+    return true
 }

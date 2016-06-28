@@ -33,5 +33,7 @@ class MyAccountViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func backFromQuiz(segue: UIStoryboardSegue) -> Void { }
 
 }

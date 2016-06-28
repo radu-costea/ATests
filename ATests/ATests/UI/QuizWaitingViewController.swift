@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MessageUI
 import Parse
-class QuizWaitingViewController: UIViewController {
+
+class QuizWaitingViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var joinIdField: UITextField!
+    @IBOutlet var connected: ConnectedUsersController?
     
     var quizz: ParseExam?
 
@@ -20,9 +23,6 @@ class QuizWaitingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         joinIdField.text = quizz?.joinId
-       
-        
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -34,5 +34,55 @@ class QuizWaitingViewController: UIViewController {
             AnimatingViewController.hide()
         })
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier where identifier == "embedController" {
+            self.connected = segue.destinationViewController as? ConnectedUsersController
+            self.connected?.exam = quizz
+        }
+    }
+    
+    /// MARK: -
+    /// MARK: Actions
+    
+    @IBAction func shaareButtonPressed(sender: AnyObject?) -> Void {
+        UIAlertController.showIn(self,
+            title: "Share exam",
+            message: "Select sharing method",
+            actions: [
+                (
+                    title: "E-mail",
+                    action: { _ in
+                        let composer = MFMailComposeViewController()
+                        composer.setMessageBody("You have been invited to take a test. Please use the following code to access it: \(self.quizz?.joinId ?? "")", isHTML: false)
+                        composer.setSubject("New exam invitation")
+                        composer.mailComposeDelegate = self
+                        self.presentViewController(composer, animated: true, completion: nil)
+                    }
+                ),
+                (
+                    title: "Sms",
+                    action: { _ in
+                        let smsComposer = MFMessageComposeViewController()
+                        smsComposer.body = "You have been invited to take a test. Please use the following code to access it: \(self.quizz?.joinId ?? "")"
+                        smsComposer.subject = "New exam invitation"
+                        smsComposer.messageComposeDelegate = self
+                        self.presentViewController(smsComposer, animated: true, completion: nil)
+                    }
+                )
+            ],
+            cancelAction: (title: "Cancel", action: nil)
+        )
+    }
+    
+    /// MARK: -
+    /// MARK: Delegate
 
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

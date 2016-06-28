@@ -77,7 +77,8 @@ class LoginViewController: ValidationFormViewController {
             if let usr = currentUser as? ParseUser {
                 self.loginSuccedeedWithUser(usr)
                 self.defaults.setObject(email, forKey: "username")
-                self.defaults.setObject(email, forKey: "password")
+                self.defaults.setObject(password, forKey: "password")
+                self.defaults.synchronize()
                 return
             }
             self.loginEncounteredAnError(error!)

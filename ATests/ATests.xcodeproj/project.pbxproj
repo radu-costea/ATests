@@ -41,6 +41,8 @@
 		3391C2BA1D130ABC00697132 /* ParseQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391C2B91D130ABC00697132 /* ParseQuestion.swift */; };
 		3391C2BC1D130C1C00697132 /* ParseDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391C2BB1D130C1C00697132 /* ParseDomain.swift */; };
 		3391C2BF1D134DE400697132 /* ParseAnswerVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391C2BE1D134DE400697132 /* ParseAnswerVariant.swift */; };
+		33A17D6A1D21EDD800EC549D /* ConnectedUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A17D691D21EDD800EC549D /* ConnectedUsersController.swift */; };
+		33A17D6C1D21FEF300EC549D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A17D6B1D21FEF200EC549D /* MessageUI.framework */; };
 		33B3A3C11CEE546100BEC8E9 /* EditQuestionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B3A3C01CEE546100BEC8E9 /* EditQuestionStoryboard.storyboard */; };
 		33B3A3C31CEE60E500BEC8E9 /* ContentProvidersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B3A3C21CEE60E500BEC8E9 /* ContentProvidersStoryboard.storyboard */; };
 		33B3A3C61CEE61DE00BEC8E9 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3A3C51CEE61DE00BEC8E9 /* ContentProvider.swift */; };
@@ -165,6 +167,8 @@
 		3391C2B91D130ABC00697132 /* ParseQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQuestion.swift; sourceTree = "<group>"; };
 		3391C2BB1D130C1C00697132 /* ParseDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDomain.swift; sourceTree = "<group>"; };
 		3391C2BE1D134DE400697132 /* ParseAnswerVariant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAnswerVariant.swift; sourceTree = "<group>"; };
+		33A17D691D21EDD800EC549D /* ConnectedUsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectedUsersController.swift; sourceTree = "<group>"; };
+		33A17D6B1D21FEF200EC549D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		33B3A3C01CEE546100BEC8E9 /* EditQuestionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionStoryboard.storyboard; sourceTree = "<group>"; };
 		33B3A3C21CEE60E500BEC8E9 /* ContentProvidersStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContentProvidersStoryboard.storyboard; sourceTree = "<group>"; };
 		33B3A3C51CEE61DE00BEC8E9 /* ContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A17D6C1D21FEF300EC549D /* MessageUI.framework in Frameworks */,
 				3391C2A51D12C1B700697132 /* AudioToolbox.framework in Frameworks */,
 				3391C2A31D12C1AB00697132 /* SystemConfiguration.framework in Frameworks */,
 				3391C2A11D12C19D00697132 /* libstdc++.6.tbd in Frameworks */,
@@ -349,6 +354,7 @@
 				33EAF3751D11A576001ABE17 /* TextSimulationQuestionTableViewCell.swift */,
 				33EAF3771D11A723001ABE17 /* CreateSimulationTableViewController.swift */,
 				33EAF37B1D11C97C001ABE17 /* QuizWaitingViewController.swift */,
+				33A17D691D21EDD800EC549D /* ConnectedUsersController.swift */,
 			);
 			name = SImulation;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 		6240842D1CB50D44008C78C1 = {
 			isa = PBXGroup;
 			children = (
+				33A17D6B1D21FEF200EC549D /* MessageUI.framework */,
 				3328AEF61D15EF1E00B1767C /* CloudKit.framework */,
 				624084381CB50D44008C78C1 /* ATests */,
 				624084501CB50D45008C78C1 /* ATestsTests */,
@@ -712,6 +719,7 @@
 			files = (
 				3391C2B21D1306C100697132 /* ParseImageContent.swift in Sources */,
 				3317BC331D0B6FFC00E9CC79 /* TextContentQuestionTableViewCell.swift in Sources */,
+				33A17D6A1D21EDD800EC549D /* ConnectedUsersController.swift in Sources */,
 				62D403991CBBD11A00C53316 /* LoginViewController.swift in Sources */,
 				33EC50351D14E04400A971E0 /* ParseExam.swift in Sources */,
 				3391C2B01D1305F700697132 /* PFObject-Additions.swift in Sources */,

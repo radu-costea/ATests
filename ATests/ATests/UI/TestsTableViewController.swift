@@ -104,8 +104,9 @@ class TestsTableViewController: UITableViewController, TestTableViewCellDelegate
             case "goToCreateSimulation":
 //                break;
                 if let cell = sender as? TestTableViewCell,
+                    test = cell.test,
                     let destination = segue.destinationViewController as? CreateSimulationTableViewController {
-                    destination.domain = cell.test
+                    destination.domain = test
                 }
             default:
                 break

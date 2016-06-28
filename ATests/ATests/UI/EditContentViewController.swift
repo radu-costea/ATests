@@ -13,31 +13,35 @@ protocol EditContentViewControllerDelegate: class {
     func editContentViewControllerDidUpdateContent(controller: EditContentViewController)
 }
 
-class EditContentViewController: ContainedViewController {
-    @IBOutlet var choseContentTypeView: UIView!
-    @IBOutlet var contentView: UIView!
-    var editingEnabled: Bool = true
-    
-    weak var delegate: EditContentViewControllerDelegate? = nil
-    private var editController: EditContentController?
-    var contentLoaded: Bool = false
-    
-    var content: PFObject? {
-        didSet {
-            refresh()
-            delegate?.editContentViewControllerDidUpdateContent(self)
-        }
-    }
-    var allowedTypes: [ContentType] = [.Text, .Image]
-    
-    /// MARK: -
-    /// MARK: Class
-    
+extension EditContentViewController {
     override static var storyboardName: String { return "EditQuestionStoryboard" }
     override static var storyboardId: String { return "createOrEditContent" }
     override class func controller() -> EditContentViewController? {
-        return super.controller() as? EditContentViewController
+        return storyboardController(storyboardName, identifier: storyboardId) as? EditContentViewController
     }
+}
+
+enum ContentState {
+    case NotLoaded
+    case Loading
+    case Loaded
+}
+
+class EditContentViewController: ContainedViewController {
+    @IBOutlet var choseContentTypeView: UIView!
+    @IBOutlet var contentView: UIView!
+    
+    weak var delegate: EditContentViewControllerDelegate? = nil
+    
+    private var editController: EditContentController?
+    private var contentState: ContentState = .NotLoaded
+    
+    var allowedTypes: [ContentType] = [.Text, .Image]
+    var editingEnabled: Bool = true
+    var content: PFObject?
+    
+    /// MARK: -
+    /// MARK: Class
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,43 +53,40 @@ class EditContentViewController: ContainedViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard contentLoaded else {
-            choseContentTypeView?.hidden = true
-            if let currentContent = content {
-                currentContent.fetchIfNeededInBackgroundWithBlock{ _, _ in
-                    self.contentLoaded = true
+        if let c = content {
+            switch contentState {
+            case .NotLoaded:
+                contentState = .Loading
+                c.fetchIfNeededInBackgroundWithBlock{ (fetched, error) in
+                    guard let fetchedObj = fetched else {
+                        self.contentState = .NotLoaded
+                        return
+                    }
+                    self.contentState = .Loaded
+                    self.createContentEditor(fetchedObj)
                     self.refresh()
                 }
-            } else {
-                contentLoaded = true
+            case .Loading:
+                self.refresh()
+                break
+            case .Loaded:
+                self.refresh()
+                break
             }
-            return
         }
-        refresh()
+    }
+    
+    func createContentEditor(object: PFObject) -> Void {
+        editController = EditContentFabric.editController(object)
+        editController?.view.translatesAutoresizingMaskIntoConstraints = false
+        editController?.editingEnabled = self.editingEnabled
+        embedEditController()
     }
     
     func refresh() {
-        guard contentLoaded else {
-            return
-        }
-        
-        let weHaveContent: Bool
-        defer {
-            contentView?.hidden = !weHaveContent
-            choseContentTypeView?.hidden = weHaveContent
-        }
-        guard let contentObj = content else {
-            weHaveContent = false
-            editController?.view.removeFromSuperview()
-            editController = nil
-            return
-        }
-        weHaveContent = true
-        editController = EditContentFabric.editController(contentObj)
-        editController?.view.translatesAutoresizingMaskIntoConstraints = false
-        editController?.presenter = self
-        editController?.editingEnabled = self.editingEnabled
-        embedEditController()
+        let weHaveContent = (content != nil)
+        self.choseContentTypeView.hidden = weHaveContent
+        self.contentView.hidden = !weHaveContent
     }
     
     func embedEditController() {
@@ -113,6 +114,7 @@ class EditContentViewController: ContainedViewController {
         var actions = allowedTypes.map { type in
             return UIAlertAction(title: type.name(), style: .Default, handler: { [unowned self] _ in
                 self.content = type.createNewParseContent()
+                self.createContentEditor(self.content!)
                 self.editController?.startEditing()
             })
         }

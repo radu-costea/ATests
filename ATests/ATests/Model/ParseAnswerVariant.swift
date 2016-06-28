@@ -26,6 +26,22 @@ extension ParseAnswerVariant {
             parseContent = [newContent]
         }
     }
+    
+    override func isValid() -> Bool {
+//        do {
+//            try self.fetchIfNeeded()
+            return content?.isValid() ?? false
+//        } catch { return false }
+    }
+    
+    override func equalTo(object: AnyObject?) -> Bool {
+        if let variant = object as? ParseAnswerVariant,
+            let myContent = content,
+            let otherContent = variant.content {
+            return myContent.equalTo(otherContent) && correct == variant.correct
+        }
+        return super.equalTo(object)
+    }
 }
 
 extension ParseAnswerVariant {
@@ -42,13 +58,6 @@ extension ParseAnswerVariant {
     }
     
     override func copyObject() -> ParseAnswerVariant {
-//        if self.objectId != nil {
-//            do {
-//                try self.fetchIfNeeded()
-//            } catch {
-//                print("exception thrown")
-//            }
-//        }
         return ParseAnswerVariant(variant: self)
     }
     

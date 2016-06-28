@@ -26,14 +26,14 @@ class EditVariantController: ContainedViewController {
     override class var storyboardName: String { return "EditQuestionStoryboard" }
     override class var storyboardId: String { return "editVariant" }
     
-    override class func controller() -> EditVariantController? {
-        return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(storyboardId) as? EditVariantController
-    }
-    
     class func controllerWithVariant(variant: ParseAnswerVariant) -> EditVariantController? {
         let ctlr = controller()
         ctlr?.variant = variant
         return ctlr
+    }
+    
+    override static func controller() -> EditVariantController? {
+        return storyboardController(storyboardName, identifier: storyboardId) as? EditVariantController
     }
     
     @IBOutlet var contentView: UIView!
@@ -65,7 +65,6 @@ class EditVariantController: ContainedViewController {
             contentView.bottomAnchor.constraintEqualToAnchor(subview.bottomAnchor)
         ])
         controller.didMoveToParentViewController(self)
-        controller.presenter = self
     }
     
     func startEditing() {

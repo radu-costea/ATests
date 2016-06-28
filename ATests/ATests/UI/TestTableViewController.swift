@@ -93,6 +93,7 @@ class TestTableViewController: UITableViewController {
                 controller.provideAnswerBlock = { _ in question.answer! }
                 controller.onSaveBlock = { editQuestionController in
                     question.content = editQuestionController.content
+                    (question.answer as? ParseAnswer)?.updateValidState()
                     question.answer = editQuestionController.answer
                     AnimatingViewController.showInController(editQuestionController, status: "Saving changes..")
                     question.saveInBackgroundWithBlock({ (success, error) in

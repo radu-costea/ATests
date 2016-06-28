@@ -27,6 +27,8 @@ extension ParseExam {
     @NSManaged var owner: ParseUser?
     @NSManaged var joinId: String?
     @NSManaged var duration: Int
+    @NSManaged var freePoints: Int
+    @NSManaged var totalPoints: Int
     @NSManaged var clients: [ParseClientExam]?
     @NSManaged var state: ParseExamState
     @NSManaged var results: [ParseExam]

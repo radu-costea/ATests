@@ -9,10 +9,6 @@
 import UIKit
 import Parse
 
-protocol ContainedController {
-    var presenter: UIViewController? { get set }
-}
-
 class EditQuestionViewController: UIViewController, EditContentViewControllerDelegate {
     var provideContentBlock:((EditQuestionViewController) -> PFObject?)!
     var provideAnswerBlock:((EditQuestionViewController) -> PFObject?)!
@@ -64,7 +60,6 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     
     func addEditController<T: ContainedViewController>(inout controller: T, toView view: UIView) {
         controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.presenter = self
         
         addChildViewController(controller)
         view.addSubview(controller.view)
@@ -87,6 +82,7 @@ class EditQuestionViewController: UIViewController, EditContentViewControllerDel
     /// MARK: Actions
     
     @IBAction func didTapSave(sender: AnyObject?) {
+        self.content = editContentController.content
         onSaveBlock?(self)
         
 //        guard let q = question else {
