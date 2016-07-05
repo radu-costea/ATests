@@ -112,8 +112,16 @@ class RegisterViewController: ValidationFormViewController, ImagePickerDelegate 
                 return
             }
             
-            self.defaults.setObject(self.emailVM.text!, forKey: "username")
-            self.defaults.setObject(self.passwordVM.text!, forKey: "password")
+            let email = self.emailVM.text!
+            let password = self.passwordVM.text!
+            
+            // Save username
+            self.defaults.setObject(email, forKey: "username")
+            self.defaults.synchronize()
+            
+            // Save password
+            let keychain = KeychainItemWrapper(identifier: email)
+            keychain["password"] = password
             
             self.user = user
             AnimatingViewController.hide({ [unowned self] in

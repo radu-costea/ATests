@@ -17,6 +17,7 @@
 		334AC0511CFCD75B0079C089 /* EditRawContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */; };
 		334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
 		334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BF4141CFE3DAD008E97AC /* EditVariantController.swift */; };
+		335D4D441D2C28D30043BFDE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D4D431D2C28D30043BFDE /* KeychainWrapper.swift */; };
 		335D74BB1D10AA3D00589248 /* UIAlertController-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */; };
 		336FF63E1D04BEAC0068BF8B /* EditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */; };
 		33762EC21CFB790000167F87 /* EditImageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33762EC11CFB790000167F87 /* EditImageContentViewController.swift */; };
@@ -143,6 +144,7 @@
 		334AC0501CFCD75B0079C089 /* EditRawContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditRawContentViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
 		334BF4141CFE3DAD008E97AC /* EditVariantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariantController.swift; sourceTree = "<group>"; };
+		335D4D431D2C28D30043BFDE /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Additions.swift"; sourceTree = "<group>"; };
 		336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContentViewController.swift; sourceTree = "<group>"; };
 		33762EC11CFB790000167F87 /* EditImageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditImageContentViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -365,6 +367,7 @@
 				6205EC8F1CBEB0B300B9A9F1 /* Encryption.swift */,
 				6205EC8B1CBEB07600B9A9F1 /* Digest.swift */,
 				6205EC931CBEB2E200B9A9F1 /* HMACAlgoritm.swift */,
+				335D4D431D2C28D30043BFDE /* KeychainWrapper.swift */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				3391C2AB1D12DC7600697132 /* AnimatingViewController.swift in Sources */,
 				33EC502F1D14B19700A971E0 /* ContentType.swift in Sources */,
 				334AC0511CFCD75B0079C089 /* EditRawContentViewController.swift in Sources */,
+				335D4D441D2C28D30043BFDE /* KeychainWrapper.swift in Sources */,
 				3391C2BA1D130ABC00697132 /* ParseQuestion.swift in Sources */,
 				6251BC841CC688D000880612 /* KeyboardPlaceholderView.swift in Sources */,
 				62D403A61CBBDCE500C53316 /* ValidationTextField.swift in Sources */,

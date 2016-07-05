@@ -28,14 +28,15 @@ class LoginViewController: ValidationFormViewController {
         passwordField.delegate = self
         emailField.delegate = self
         
-        
-        if let email = defaults.stringForKey("username"),
-            let password = defaults.stringForKey("password") {
-            emailField.text = email
-            passwordField.text = password
-            
-            validationFieldTextDidChanged(emailField)
-            validationFieldTextDidChanged(passwordField)
+        if let email = defaults.stringForKey("username") {
+            let keychain = KeychainItemWrapper(identifier: email)
+            if let password = keychain["password"] as? String {
+                emailField.text = email
+                passwordField.text = password
+                
+                validationFieldTextDidChanged(emailField)
+                validationFieldTextDidChanged(passwordField)
+            }
         }
     }
     
@@ -77,8 +78,11 @@ class LoginViewController: ValidationFormViewController {
             if let usr = currentUser as? ParseUser {
                 self.loginSuccedeedWithUser(usr)
                 self.defaults.setObject(email, forKey: "username")
-                self.defaults.setObject(password, forKey: "password")
                 self.defaults.synchronize()
+                
+                let keychain = KeychainItemWrapper(identifier: email)
+                keychain["password"] = password
+
                 return
             }
             self.loginEncounteredAnError(error!)
