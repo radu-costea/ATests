@@ -15,6 +15,7 @@ class LoginViewController: ValidationFormViewController {
     var user: ParseUser?
     
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet var homeButton: UIButton!
     @IBOutlet var passwordField: ValidationTextField!
     @IBOutlet var emailField: ValidationTextField!
     @IBOutlet var imageView: UIImageView!
@@ -38,6 +39,11 @@ class LoginViewController: ValidationFormViewController {
                 validationFieldTextDidChanged(passwordField)
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.homeButton.hidden = (self.user == nil)
     }
     
     // MARK: - Overrides
@@ -87,6 +93,10 @@ class LoginViewController: ValidationFormViewController {
             }
             self.loginEncounteredAnError(error!)
         }
+    }
+    
+    @IBAction func home(sender: AnyObject?) -> Void {
+        self.performSegueWithIdentifier("toMyAccount", sender: nil)
     }
     
     func logout() -> Void {

@@ -276,13 +276,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q6W-ge-wTX">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="D35-dX-AmN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6id-BH-OX0" customClass="BlueButton" customModule="ATests" customModuleProvider="target">
-                                <rect key="frame" x="204" y="7" width="100" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="13N-ze-OMQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i3y-Wi-4fC" customClass="BlueButton" customModule="ATests" customModuleProvider="target">
+                                <rect key="frame" x="16" y="7" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Customize"/>
                                 <connections>
-                                    <segue destination="PZr-CB-0p3" kind="show" identifier="customize" id="54H-vd-rq9"/>
+                                    <segue destination="PZr-CB-0p3" kind="show" id="cTr-wp-Z1R"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="82h-XG-6dF">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uxp-3q-TQS" customClass="BlueButton" customModule="ATests" customModuleProvider="target">
+                                <rect key="frame" x="234" y="7" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Home"/>
+                                <connections>
+                                    <action selector="home:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zmg-dw-qTt"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -291,6 +301,7 @@
                     <connections>
                         <outlet property="avatarContainer" destination="lyj-S9-6mN" id="Ss9-l9-epl"/>
                         <outlet property="emailField" destination="Xhn-od-BaM" id="tl3-6w-E8C"/>
+                        <outlet property="homeButton" destination="uxp-3q-TQS" id="5IT-Tf-KpJ"/>
                         <outlet property="imageView" destination="dT2-dy-mHT" id="YPf-WF-igf"/>
                         <outlet property="loginButton" destination="QlY-Rd-nO2" id="Xcz-Tj-hOn"/>
                         <outlet property="passwordField" destination="roF-Ks-8Ul" id="lVz-sx-NJF"/>

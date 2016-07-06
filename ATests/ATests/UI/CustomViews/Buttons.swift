@@ -37,7 +37,7 @@ class ThemeButton: UIButton {
 
 class RoundedButton: ThemeButton { }
 
-class OrangeButton: ThemeButton {
+class OrangeButton: RoundedButton {
     override func registerForAppearenceChanges() {
         observer = NSNotificationCenter.defaultCenter().addObserverForName(kThemeColor, object: nil, queue: nil) { [unowned self] (notif) in
             if let color = notif.userInfo?["color"] as? UIColor {
@@ -47,7 +47,7 @@ class OrangeButton: ThemeButton {
     }
 }
 
-class BlueButton: ThemeButton {
+class BlueButton: RoundedButton {
     override func registerForAppearenceChanges() {
         observer = NSNotificationCenter.defaultCenter().addObserverForName(kAlternateThemeColor, object: nil, queue: nil) { [unowned self] (notif) in
             if let color = notif.userInfo?["color"] as? UIColor {
