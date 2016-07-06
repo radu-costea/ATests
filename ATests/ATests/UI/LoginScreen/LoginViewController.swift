@@ -106,6 +106,7 @@ class LoginViewController: ValidationFormViewController {
                 self.emailField.textField.enabled = true
                 self.passwordField.textField.enabled = true
                 self.loginButton.setTitle("Log in", forState: .Normal)
+                self.homeButton.hidden = true
                 self.user = nil
             }
         }
