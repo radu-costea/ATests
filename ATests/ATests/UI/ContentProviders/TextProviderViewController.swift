@@ -25,6 +25,7 @@ class TextProviderViewController: UIViewController, ContentProvider, UITextViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
+        textView.text = (content ?? "Enter some text here")
     }
     
     override func viewWillDisappear(animated: Bool) {

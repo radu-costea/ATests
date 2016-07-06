@@ -154,7 +154,11 @@ class LoginViewController: ValidationFormViewController {
                 self.view.endEditing(true)
                 let myAccountScreen = next as! MyAccountViewController
                 myAccountScreen.user = self.user!
+            },
+            "customize" : { [unowned self] next in
+                self.view.endEditing(true)
             }
+            
         ]
     }
     
@@ -169,4 +173,6 @@ class LoginViewController: ValidationFormViewController {
             })
         }
     }
+    
+    @IBAction func unwindToLoginWithCancel(segue: UIStoryboardSegue) -> Void { }
 }

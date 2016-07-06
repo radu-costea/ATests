@@ -140,9 +140,7 @@ class TakeExamViewController: UIViewController, UIPageViewControllerDataSource, 
                 style: .Alert,
                 title: "Exam over",
                 message: "You scored \(self.exam?.grade ?? 0) out of \(self.exam?.source.totalPoints ?? 0)",
-                actions: [(title: "View results", action: { _ in
-                    self.performSegueWithIdentifier("backToMyAccount", sender: nil)
-                })],
+                actions: [],
                 cancelAction: (title: "Go Back", action: { _ in
                     self.performSegueWithIdentifier("backToMyAccount", sender: nil)
                 })

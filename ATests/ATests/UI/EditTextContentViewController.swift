@@ -18,12 +18,19 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     @IBOutlet var textView: UILabel!
     @IBOutlet var errorView: UIView!
     
+    var isLoading: Bool = false
+    var needsRefresh: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         contentProvider = TextProviderViewController.textProvider(nil)
         contentProvider.delegate = self
+        
+        if needsRefresh {
+            refresh()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,16 +42,34 @@ class EditTextContentViewController: EditContentController, ContentProviderDeleg
     }
     
     func loadText() {
+        guard isLoading == false else {
+            return
+        }
+        isLoading = true
+        needsRefresh = false
         content?.fetchIfNeededInBackgroundWithBlock({ (c, error) in
-            if let txt = self.content?.text {
-                UIView.animateWithDuration(0.3, animations: { 
-                    self.text = txt
-                    self.errorView?.hidden = txt.length > 0
-                    self.contentProvider?.loadWith(txt)
-                    self.textView?.text = txt
-                })
+            print("loaded: \(c), error: \(error)")
+            if let txt = (c as? ParseTextContent)?.text {
+                self.text = txt
+                guard (self.isViewLoaded() && self.view?.window != nil) else {
+                    self.needsRefresh = true
+                    return
+                }
+                self.refresh()
             }
         })
+    }
+    
+    func refresh() -> Void {
+        if let txt = self.text {
+            UIView.animateWithDuration(0.3, animations: {
+                self.errorView.hidden = txt.length > 0
+                self.contentProvider.loadWith(txt)
+                self.textView.text = txt
+                self.isLoading = false
+            })
+        }
+        self.needsRefresh = false
     }
     
     override func loadWith(content: PFObject?) {

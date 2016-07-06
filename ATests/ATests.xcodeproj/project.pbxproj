@@ -18,6 +18,8 @@
 		334B69681CBEFD9B00B4E5E8 /* UIImage-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */; };
 		334BF4151CFE3DAD008E97AC /* EditVariantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334BF4141CFE3DAD008E97AC /* EditVariantController.swift */; };
 		335D4D441D2C28D30043BFDE /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D4D431D2C28D30043BFDE /* KeychainWrapper.swift */; };
+		335D4D461D2C4BC40043BFDE /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D4D451D2C4BC40043BFDE /* CustomizeViewController.swift */; };
+		335D4D481D2C61FF0043BFDE /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D4D471D2C61FF0043BFDE /* ColorPickerViewController.swift */; };
 		335D74BB1D10AA3D00589248 /* UIAlertController-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */; };
 		336FF63E1D04BEAC0068BF8B /* EditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */; };
 		33762EC21CFB790000167F87 /* EditImageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33762EC11CFB790000167F87 /* EditImageContentViewController.swift */; };
@@ -145,6 +147,8 @@
 		334B69671CBEFD9B00B4E5E8 /* UIImage-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extensions.swift"; sourceTree = "<group>"; };
 		334BF4141CFE3DAD008E97AC /* EditVariantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariantController.swift; sourceTree = "<group>"; };
 		335D4D431D2C28D30043BFDE /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		335D4D451D2C4BC40043BFDE /* CustomizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
+		335D4D471D2C61FF0043BFDE /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		335D74BA1D10AA3D00589248 /* UIAlertController-Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Additions.swift"; sourceTree = "<group>"; };
 		336FF63D1D04BEAC0068BF8B /* EditContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContentViewController.swift; sourceTree = "<group>"; };
 		33762EC11CFB790000167F87 /* EditImageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditImageContentViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -436,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				625C5A041CBD28DB00B155A7 /* MyAccountViewController.swift */,
+				335D4D451D2C4BC40043BFDE /* CustomizeViewController.swift */,
 			);
 			path = MyAccountScreen;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				6251BC831CC688D000880612 /* KeyboardPlaceholderView.swift */,
 				3391C2AA1D12DC7600697132 /* AnimatingViewController.swift */,
 				3312442A1D16C55500695784 /* PickerViewController.swift */,
+				335D4D471D2C61FF0043BFDE /* ColorPickerViewController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -730,10 +736,12 @@
 				6289F0FF1CB6D667004022FE /* UIView-Extensions.swift in Sources */,
 				332B76F21CC047F9004F7602 /* BaseViewController.swift in Sources */,
 				6205EC901CBEB0B300B9A9F1 /* Encryption.swift in Sources */,
+				335D4D481D2C61FF0043BFDE /* ColorPickerViewController.swift in Sources */,
 				62C045761CBE6F9300682E77 /* NSData-Extensions.swift in Sources */,
 				3391C2B41D13072100697132 /* ParseTextContent.swift in Sources */,
 				62D403931CBBBFF700C53316 /* KeyboardAvoidingTableView.swift in Sources */,
 				3388D67D1D1728100098C261 /* JoinViewController.swift in Sources */,
+				335D4D461D2C4BC40043BFDE /* CustomizeViewController.swift in Sources */,
 				33EAF37C1D11C97C001ABE17 /* QuizWaitingViewController.swift in Sources */,
 				62D403A11CBBD1C000C53316 /* ValidationFieldViewModel.swift in Sources */,
 				33762EC21CFB790000167F87 /* EditImageContentViewController.swift in Sources */,

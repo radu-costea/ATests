@@ -17,10 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        if let url = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
+            NSUserDefaults.standardUserDefaults().setURL(url, forKey: "launchURL")
+        }
+        
         configureParse()
-        AppearenceCustomizer.setupDefaultAppearence()
+        AppearenceCustomizer.setupAppearence()
+        
         return true
     }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        print("handle open url \(url)")
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print("open url \(url)")
+        return true
+    }
+    
     
     func configureParse() {
         // Enable storing and querying data from Local Datastore.

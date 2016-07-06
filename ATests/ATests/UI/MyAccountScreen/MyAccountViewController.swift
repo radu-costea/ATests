@@ -13,14 +13,22 @@ class MyAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print("received user: \(user)")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if NSUserDefaults.standardUserDefaults().URLForKey("launchURL") != nil {
+            performSegueWithIdentifier("goToExam", sender: nil)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier where identifier == "goToExam" {
+            let join = segue.destinationViewController as! JoinViewController
+            join.url = NSUserDefaults.standardUserDefaults().URLForKey("launchURL")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("launchURL")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
     
 
@@ -35,5 +43,4 @@ class MyAccountViewController: UIViewController {
     */
     
     @IBAction func backFromQuiz(segue: UIStoryboardSegue) -> Void { }
-
 }

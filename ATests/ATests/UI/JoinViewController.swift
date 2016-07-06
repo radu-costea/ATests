@@ -12,11 +12,55 @@ import Parse
 class JoinViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     var exam: ParseClientExam?
+    var url: NSURL?
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        textField.becomeFirstResponder()
+        
+        if let launchURL = url,
+            let components = NSURLComponents(URL: launchURL, resolvingAgainstBaseURL: true) {
+            var testId: String? = nil
+            var ownerId: String? = nil
+            
+            if let items = components.queryItems {
+                for item in items {
+                    if item.name == "testId" {
+                        testId = item.value
+                        continue
+                    }
+                    
+                    if item.name == "userId" {
+                        ownerId = item.value
+                        continue
+                    }
+                }
+            }
+            
+            
+            
+            if let test = testId {
+                let goToTest: () -> Void = { [unowned self] _ in
+                    self.textField.text = test
+                    self.didTapJoin(nil)
+                }
+                
+                if let owner = ownerId where owner == ParseUser.currentUser()?.objectId {
+                    UIAlertController.showIn(self,
+                         title: "Please select",
+                         style: .Alert,
+                         message: "Are you sure you want to take the exam you created?",
+                         actions: [(title: "Yes", action: { _ in
+                            goToTest()
+                         })], cancelAction: (title: "Cancel", action: nil)
+                    )
+                } else {
+                    goToTest()
+                }
+            }
+        }
+        
+        url = nil
     }
 
     /// MARK: -

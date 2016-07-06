@@ -54,7 +54,10 @@ class QuizWaitingViewController: UIViewController, MFMailComposeViewControllerDe
                     title: "E-mail",
                     action: { _ in
                         let composer = MFMailComposeViewController()
-                        composer.setMessageBody("You have been invited to take a test. Please use the following code to access it: \(self.quizz?.joinId ?? "")", isHTML: false)
+                        let signed = /*Encryption.SHA256.sign(*/self.quizz?.joinId ?? ""/*, key: "Cei mai bravi fii a getodacilor 2016")*/
+                        let url = "quizapp://test?testId=\(signed ?? "")&userId=\(ParseUser.currentUser()?.objectId ?? "")"
+                        
+                        composer.setMessageBody("You have been invited to take a test. Please use the following code to access it: <a href=\"\(url)\">Test</a>", isHTML: true)
                         composer.setSubject("New exam invitation")
                         composer.mailComposeDelegate = self
                         self.presentViewController(composer, animated: true, completion: nil)
@@ -64,7 +67,10 @@ class QuizWaitingViewController: UIViewController, MFMailComposeViewControllerDe
                     title: "Sms",
                     action: { _ in
                         let smsComposer = MFMessageComposeViewController()
-                        smsComposer.body = "You have been invited to take a test. Please use the following code to access it: \(self.quizz?.joinId ?? "")"
+                        let signed = /*Encryption.SHA256.sign(*/self.quizz?.joinId ?? ""/*, key: "Cei mai bravi fii a getodacilor 2016")*/
+                        
+                        let url = "quizapp://test?testId=\(signed ?? "")&userId=\(ParseUser.currentUser()?.objectId ?? "")"
+                        smsComposer.body = "You have been invited to take a test. Please use the following code to access it: \(url)"
                         smsComposer.subject = "New exam invitation"
                         smsComposer.messageComposeDelegate = self
                         self.presentViewController(smsComposer, animated: true, completion: nil)

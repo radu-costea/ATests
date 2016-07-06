@@ -8,18 +8,31 @@
 
 import Foundation
 import UIKit
-import Parse
+
 extension UIColor {
+    
     convenience init?(hex: String) {
-        guard hex.length == 7 else {
+        guard hex.length == 7 && hex[hex.startIndex] == "#" else {
             return nil
         }
-        guard hex[hex.startIndex] == "#" else {
-            return nil
-        }
-        let start = hex.startIndex.successor()
-        let colors = (0..<3).map{ hex.substringWithRange(start.advancedBy($0 * 2)..<start.advancedBy($0 * 2 + 2)) }
-        let floatValues = colors.map{ CGFloat(Int($0, radix: 16) ?? 0.0) / 255.0 }
-        self.init(red: floatValues[0], green: floatValues[1], blue: floatValues[2], alpha: 1.0)
+        
+        let hexString = hex.substringFromIndex(hex.startIndex.successor())
+        let hexValue = Int(hexString, radix: 16)!
+        
+        let red = (hexValue & (255 << 16)) >> 16
+        let green = (hexValue & (255 << 8)) >> 8
+        let blue = hexValue & 255
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    var hex: String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return String(format: "#%02X%02X%02X", arguments: [Int(red * 255), Int(green * 255), Int(blue * 255)])
     }
 }
